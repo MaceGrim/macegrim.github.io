@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Mason Grimshaw"
 title_separator          : "-"
 name                     : &name "Mason Grimshaw"
-description              : &description "personal description"
+description              : &description "Husband, Dad, Data Scientist, Educator"
 url                      : https://macegrim.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "macegrim/academicpages.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Mason Grimshaw"
   avatar           : "profile.png"
-  bio              : "Sicangu Lakota, Dad of 3, Husband to 1, Data Scientist, Educator"
+  bio              : "Husband<br>Dad to 4<br>Sicangu Lakota<br>Data Scientist<br>Educator"
   location         : "Rapid City, South Dakota"
   employer         :
   pubmed           :
@@ -103,7 +103,7 @@ author:
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         :
-  orcid            : 
+  orcid            :
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username

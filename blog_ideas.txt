@@ -1,0 +1,13 @@
+Ideas for Website Quick Viz
+
+Football Monte Carlo (Win %)
+
+“Count Every Parking Space”
+
+Cribbage Exploration
+-	Hand Calculator
+-	Pegging Strategy?
+
+Simple Stable Diffusion
+
+Generative w/ Credit Assignment?
