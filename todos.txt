@@ -1,0 +1,12 @@
+# Todos
+
+1. Add Ted Talk(s)
+2. Curate Feature List of Talks on cv
+3. Decide on Blog vs. Portfolio
+4. Add talk to NAIAC
+5. Add teaching experiences
+    - Data Oyate
+    - Code Camps
+    - Adjunct Soon?
+6. Fix Links in Talks
+7. Create one Portfolio/Blog Entry
