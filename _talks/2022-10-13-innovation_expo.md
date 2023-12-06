@@ -8,4 +8,4 @@ date: 2022-10-13
 location: "Rapid City, South Dakota"
 ---
 
-[More information here](Rapid City | Innovation Expo (sdinnovationexpo.com))
+[More information here](https://sdinnovationexpo.com/rapid-city)
