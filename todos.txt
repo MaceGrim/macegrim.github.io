@@ -10,3 +10,9 @@
     - Adjunct Soon?
 6. Fix Links in Talks
 7. Create one Portfolio/Blog Entry
+8. Add Publications
+    - https://www.westrivereagle.com/articles/training-lakota-youth-to-be-the-future-of-ai-coding/
+    - NYT IndigiData
+    - NYT Nuclear
+    - Forbes
+    Others
