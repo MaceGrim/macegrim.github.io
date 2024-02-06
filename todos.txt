@@ -3,6 +3,12 @@
 1. Add Ted Talk(s)
 2. Curate Feature List of Talks on cv
 3. Decide on Blog vs. Portfolio
+    - Farkle Analysis
+    - Cribbage Analysis
+    - SatGan
+    - NBA Heatmaps
+    - NBA Game Generation
+    - Code Generator
 4. Add talk to NAIAC
 5. Add teaching experiences
     - Data Oyate
