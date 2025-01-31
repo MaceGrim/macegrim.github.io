@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason Grimshaw</title>
+    <style>
+        :root {
+            --burnt-orange: #D35400;
+            --off-white: #F8F9F9;
+            --black: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            background-color: var(--off-white);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .neo-box {
+            background: white;
+            border: 3px solid var(--black);
+            box-shadow: 5px 5px 0px var(--black);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .neo-box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        .header {
+            background-color: var(--burnt-orange);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 3px solid var(--black);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--black);
+            box-shadow: 5px 5px 0px var(--black);
+            object-fit: cover;
+            object-position: center 15%;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0px var(--black);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--burnt-orange);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--black);
+            padding-bottom: 0.5rem;
+        }
+
+        .talks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .talks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .talk {
+            padding: 1.5rem;
+            background: white;
+            border: 2px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            transition: transform 0.2s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .talk:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border: 2px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            transition: transform 0.2s;
+        }
+
+        .education-item:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+
+        .education-item h3 {
+            color: var(--burnt-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            margin-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        .work-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border: 2px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            transition: transform 0.2s;
+        }
+
+        .work-item:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+
+        .work-item h3 {
+            color: var(--burnt-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-meta {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .work-details {
+            margin-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        .talk h3 {
+            color: var(--burnt-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .talk-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--burnt-orange);
+            color: white;
+            text-decoration: none;
+            border: 3px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            transition: transform 0.2s;
+            margin: 0.5rem 0;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .talk-link {
+            color: var(--burnt-orange);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .talk-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="images/profile.png" alt="Mason Grimshaw" class="profile-image">
+                <div>
+                    <h1>Mason Grimshaw</h1>
+                    <p style="font-size: 1.2rem;">Husband | Dad to 4 | Sicangu Lakota | Data Scientist | Educator</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="neo-box">
+            <h2 class="section-title">About Me</h2>
+            <p>Welcome, my relative! I'm Mason Grimshaw. I'm a husband, father of 4, and a citizen of the Rosebud Sioux Tribe (Sicangu Lakota).</p>
+            <p>At the core of my work is a belief in the power of community. I hope to inspire Indigenous youth through my work, showing them the transformative impact of technology on both personal growth and cultural preservation. Through our initiatives, we see students' confidence soar as they explore new skills, opening doors to opportunities that allow them to engage with the global economy while preserving their unique cultural heritage through that same technology.</p>
+        </section>
+
+        <section class="neo-box">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>MIT Sloan School of Management, Operations Research Center</h3>
+                <div class="education-meta">Master of Business Analytics, GPA 4.9/5.0 | August 2018 – August 2019</div>
+                <ul class="education-details">
+                    <li>Dean's Fellowship Recipient: Awarded for outstanding academic records, personal achievements, and professional promise</li>
+                    <li>Relevant Coursework: Machine Learning, Optimization Methods, Statistics, Interactive Data Visualization</li>
+                </ul>
+            </div>
+
+            <div class="education-item">
+                <h3>Massachusetts Institute of Technology</h3>
+                <div class="education-meta">Bachelor of Business Analytics, GPA: 4.4/5.0 | August 2014 - June 2018</div>
+                <ul class="education-details">
+                    <li>Relevant Coursework: Artificial Intelligence, Software Construction, Laboratory in Investments, Stochastic Models, Discrete Mathematics, Communicating with Data, Organizational Processes, Computation Structures</li>
+                    <li>MIT Chapter of Sigma Nu (Governance Chair, Vice President, Community Service Chairman): Improved chapter performance in 9/10 areas according to a yearly evaluation; Tripled total community service hours</li>
+                    <li>MIT American Indian Science and Engineering Society (Vice President): Facilitated outreach to American Indian freshmen and high school students through online meetups; Coordinated with campus organizations to improve opportunities for the Native American community</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="neo-box">
+            <h2 class="section-title">Professional Roles</h2>
+            <ul>
+                <li>Co-founder of the <a href="http://lakota.aicode.camp" class="btn">Lakota AI Code Camp</a></li>
+                <li>Data Scientist at <a href="http://ode.partners" class="btn">Ode Partners</a> - Creating digital products and data solutions for environmental impact</li>
+                <li>Vice President of IndigiGenius - Empowering Indigenous communities in computer science and machine learning</li>
+            </ul>
+        </section>
+
+        <section class="neo-box">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="work-grid">
+            <div class="work-item">
+                <h3>Ode Partners</h3>
+                <div class="work-meta">Partner, Data Science | July 2023 - Present | Remote (Rapid City, SD)</div>
+                <ul class="work-details">
+                    <li>Creating digital products and solutions for environmental impact</li>
+                    <li>"Full Stack" Data Scientist: Sourcing, Joining, Preparing, Visualizing, and Modeling Data</li>
+                    <li>Bringing our environment to life through story and data</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>Indigigenius</h3>
+                <div class="work-meta">Vice President | April 2021 - Present | Remote (Rapid City, SD)</div>
+                <ul class="work-details">
+                    <li>Building and delivering the "Introduction to Python and Data Science" curriculum for the Lakota AI Code Camp</li>
+                    <li>Organizing and MCing the Indigenous in AI Workshops for NeurIPS</li>
+                    <li>Engaging in thought leadership with a focus on increasing Indigenous participation and perspectives in AI/ML</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>The Earth Genome</h3>
+                <div class="work-meta">Data Science, Product | July 2022 – July 2023 | Remote (Rapid City, SD)</div>
+                <ul class="work-details">
+                    <li>Delivering value through various technical avenues including linear optimization, data processing, and advanced cartographical techniques</li>
+                    <li>Designing community-driven solutions by demonstrating the art-of-the-possible and implementing these solutions alongside our engineering team</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>MFS Investment Management</h3>
+                <div class="work-meta">Senior Data Science Analyst | October 2019 – July 2022 | Boston, MA</div>
+                <ul class="work-details">
+                    <li>Worked with cross-functional stakeholders and senior leaders to gather and synthesize data while performing analysis, delivering recommendations and designing and tracking key performance indicators</li>
+                    <li>Built models to describe the past and suggest optimal actions for our salespeople</li>
+                    <li>Furthering the data-driven culture of MFS by demonstrating proof of concepts for new ideas and areas of analytics</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>MIT SLOAN / Massachusetts Bay Transportation Authority</h3>
+                <div class="work-meta">Data Science Intern | February 2019 – August 2019 | Boston, MA</div>
+                <ul class="work-details">
+                    <li>Optimized garage placement to minimize dead-head for drivers for leaving and returning to garages with an estimated 3-5% improvement and $3M-$5M in total yearly savings</li>
+                    <li>Predicted trip cancellations to better understand realized, daily trip demand</li>
+                    <li>Combined linear programming, optimization, and machine learning for near-instant rerouting of The RIDE system</li>
+                    <li>Augmented a small dataset with clustering and generative models to train data-hungry algorithms</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>MIT Crypto-Economics Lab</h3>
+                <div class="work-meta">Research Assistant | September 2017 – January 2019 | Cambridge, MA</div>
+                <ul class="work-details">
+                    <li>Applied natural language processing algorithms (Topic Modeling, Sentiment Analysis) to massive amounts of text data</li>
+                    <li>Wrote scraping software (Python) to improve and expand the overall data set and the pipeline used to process the data</li>
+                </ul>
+            </div>
+
+            <div class="work-item">
+                <h3>Intel Corporation, Intel Federal</h3>
+                <div class="work-meta">Systems Architecture Team - Graduate Technical Intern | Summer 2018 | Hudson, MA</div>
+                <ul class="work-details">
+                    <li>Created a simulation for High Performance Linpack on cutting edge computer systems to inform design decisions for new computer architectures</li>
+                    <li>Performed workload analysis on biologically inspired computing paradigms and presented recommendations to the senior architect for performance optimizations on commercial hardware and computer systems currently in development</li>
+                </ul>
+            </div>
+            </div>
+        </section>
+
+        <section class="neo-box">
+            <h2 class="section-title">Talks & Presentations</h2>
+            <div class="talks-grid">
+            <div class="talk">
+                <h3>TEDx Boston: Planetary Stewardship</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> November 12, 2023<br>
+                    <strong>Venue:</strong> MIT Media Lab, Cambridge, Massachusetts
+                </div>
+                <p>This talk was a surprise! A little bonus content for the audience. I talked about the important of listening to Indigenous partners when working in their ancestral lands and how our stories contain rich information about our environment.</p>
+            </div>
+
+            <div class="talk">
+                <h3>Data Science in Marketing and Sales</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> November 16, 2023<br>
+                    <strong>Venue:</strong> SD School of Mines, Marketing Innovations
+                </div>
+                <p>I talked about uses of Machine Learning in marketing. The students and I worked through examples of formulating marketing use-cases as machine learning problems and did a deep dive in client engagement analytics.</p>
+            </div>
+
+            <div class="talk">
+                <h3>It's not just about understanding data…</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> September 27, 2023<br>
+                    <strong>Venue:</strong> Compile Black Hills, Hay Camp, Rapid City, SD
+                </div>
+                <p>It's not just about data, it's about making decisions! We talked about machine learning and its applications across a broad set of topics. We did a deep dive in daily fantasy baseball.</p>
+                <a href="https://compileblackhills.org/posts/event_2023_09_27" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Introduction to Data Science</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> April 18, 2023<br>
+                    <strong>Venue:</strong> University of Alaska Fairbanks
+                </div>
+                <p>I gave an introduction to machine learning across a broad set of topics (language learning apps, language pronunciation, embeddings). We also did a live example of exploring word embeddings.</p>
+            </div>
+
+            <div class="talk">
+                <h3>Bringing AI from Silicon Valley to the Black Hills</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> March 6, 2023<br>
+                    <strong>Venue:</strong> TEDx Boston: Countdown to AGI
+                </div>
+                <p>Our Indigenous communities have so much to gain from AI, but we don't have our own practitioners. We need to inspire our youth to reach for these careers.</p>
+                <a href="https://www.youtube.com/watch?v=kRqjTGQ0qkU&t=14s" class="talk-link">Watch the Video →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Indigenous AI</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> February 7, 2023<br>
+                    <strong>Venue:</strong> Fuller Seminar - Artificial Intelligence and Conservation
+                </div>
+                <p>A tag-team presentation with Michael Running Wolf on Indigenous AI and its focus on "landscape and language".</p>
+                <a href="https://vimeo.com/796754410" class="talk-link">Watch the Video →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Indigenous in AI Workshop</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> November 28, 2022<br>
+                    <strong>Venue:</strong> NeurIPS 2022, New Orleans
+                </div>
+                <p>As the director of Indigenous in AI/ML, I organized this workshop at NeurIPS and presented on learned representations of geospatial data.</p>
+                <a href="https://neurips.cc/virtual/2022/affinity-workshop/50035" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Designing Data Tools for Community</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> November 10, 2022<br>
+                    <strong>Venue:</strong> Pritzker Genius Award Gathering, UCLA
+                </div>
+                <p>Panel discussion on making data tools useful for indigenous communities and the importance of relationship-building in Indian Country.</p>
+                <a href="https://www.ioes.ucla.edu/event/2022-pritzker-genius-award-conference/" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Demystifying AI/ML/DS</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> October 13, 2022<br>
+                    <strong>Venue:</strong> South Dakota Innovation Expo
+                </div>
+                <p>Presented on the basics of data science projects and machine learning applications in language learning and geospatial embeddings.</p>
+                <a href="https://sdinnovationexpo.com/rapid-city" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Artificial Intelligence for Tribal Communities</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> June 17, 2022<br>
+                    <strong>Venue:</strong> IndigiData, Mobridge, South Dakota
+                </div>
+                <p>Discussed applications of machine learning in language revitalization and geospatial embeddings for environmental justice.</p>
+                <a href="https://indigidata.org/" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Talk Data to Me</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> April 6, 2022<br>
+                    <strong>Venue:</strong> Compile Black Hills, Rapid City, SD
+                </div>
+                <p>Panel discussion with technical professionals in the Black Hills area about data science.</p>
+                <a href="https://compileblackhills.org/posts/event_2022_04_06" class="talk-link">More information →</a>
+            </div>
+
+            <div class="talk">
+                <h3>Data Science Career Panel</h3>
+                <div class="talk-meta">
+                    <strong>Date:</strong> June 16, 2021<br>
+                    <strong>Venue:</strong> IndigiData
+                </div>
+                <p>Made the case for a career in data science as an Indigenous person to other aspiring Indigenous nerds.</p>
+                <a href="https://indigidata.org/" class="talk-link">More information →</a>
+            </div>
+            </div>
+        </section>
+
+
+        <section class="neo-box">
+            <h2 class="section-title">Contact</h2>
+            <p>Feel free to reach out for collaborations, speaking engagements, or to learn more about our initiatives in Indigenous tech education.</p>
+            <a href="https://github.com/MaceGrim" class="btn">GitHub</a>
+        </section>
+    </main>
+</body>
+</html>
