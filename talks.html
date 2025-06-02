@@ -1,0 +1,45 @@
+---
+layout: default
+title: Talks
+---
+
+<div class="talks-index">
+    <header class="page-header">
+        <h1>Talks & Presentations</h1>
+        <p>Speaking engagements on AI, data science, and Indigenous technology</p>
+    </header>
+    
+    <div class="container">
+        {% if site.talks.size > 0 %}
+            <div class="talks-list">
+                {% assign all_talks = site.talks | sort: 'date' | reverse %}
+                {% for talk in all_talks %}
+                <article class="talk-preview">
+                    <header class="talk-preview-header">
+                        <h2><a href="{{ talk.url | relative_url }}">{{ talk.title }}</a></h2>
+                        <p class="talk-meta">
+                            <span class="talk-venue">{{ talk.venue }}</span>
+                            <time datetime="{{ talk.date | date_to_xmlschema }}">{{ talk.date | date: "%B %d, %Y" }}</time>
+                        </p>
+                    </header>
+                    <div class="talk-preview-content">
+                        {% if talk.excerpt %}
+                            {{ talk.excerpt }}
+                        {% endif %}
+                        <div class="talk-links">
+                            {% if talk.slides %}<a href="{{ talk.slides }}" class="talk-link" target="_blank">[Slides]</a>{% endif %}
+                            {% if talk.video %}<a href="{{ talk.video }}" class="talk-link" target="_blank">[Video]</a>{% endif %}
+                            <a href="{{ talk.url | relative_url }}" class="talk-link">[Details]</a>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-talks">
+                <h2>Speaking Engagements</h2>
+                <p>I regularly speak at conferences and events about AI, data science, and Indigenous technology. Check back for updates on upcoming talks!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>

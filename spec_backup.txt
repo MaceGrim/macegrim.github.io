@@ -1,0 +1,67 @@
+# Project Brief: Personal Website
+
+## User Information
+- Name: Mason Grimshaw
+
+## Core Requirements
+- Platform: GitHub Pages
+- Structure: Hybrid model (single-page homepage + multi-page blog)
+- Primary Goal: Create a professional, modern, and personal online presence.
+
+## Site Architecture
+
+### Homepage (`index.html`)
+- Type: Single, long-scrolling page.
+- Navigation: Header navigation should link to corresponding homepage sections (smooth scroll).
+- Section Order:
+    1. **Hero Section**
+        - content: "Mason Grimshaw", Professional Tagline
+        - cta: "View My Work" button (scrolls to Projects section)
+    2. **About Me Section**
+        - content: Bio, skills, professional philosophy.
+        - asset: Professional headshot.
+    3. **Portfolio / Projects Section**
+        - layout: Card-based grid.
+        - card_content: Project image/icon, title, description, link to live project, link to source code.
+    4. **Recent Talks Section**
+        - layout: Chronological list (most recent first).
+        - item_content: Talk Title, Event Name, Date.
+        - item_links: Optional links for [Slides] and [Video].
+    5. **Blog Highlights Section**
+        - functionality: Dynamically display the 3 most recent posts from the `/blog/` directory.
+        - layout: 3-column card grid.
+        - card_content: Featured image, post title, short excerpt.
+        - card_cta: "Read More" link to the full post URL.
+    6. **Contact Section**
+        - content: `mailto:` email link, links to professional profiles (e.g., LinkedIn, GitHub).
+        - feature: Optional contact form integration (e.g., using Formspree).
+
+### Blog (`/blog/`)
+- Type: Multi-page section in a dedicated subdirectory.
+- Index (`/blog/index.html`): List of all blog posts, reverse chronological order.
+- Posts: Each post must have its own unique page and URL (e.g., `/blog/my-post-title/`).
+
+## Design System
+
+### Color Palette ("Fireside Chat")
+- Primary Anchor: `name: Deep Navy, hex: #0A2240`
+- Primary Accent: `name: Burnt Orange, hex: #D36135` (Use for all CTAs and links)
+- Main Background: `name: Warm Off-White, hex: #F4F1ED`
+- Body Text: `name: Dark Slate, hex: #3B4A60`
+- Subtle Accent: `name: Sandy Beige, hex: #E8D6C9` (Use for dividers, blockquotes)
+
+### Typography
+- Headings: Clean, slightly stylized sans-serif (e.g., Montserrat, Raleway).
+- Body: Highly readable sans-serif (e.g., Lato, Open Sans).
+
+### Layout Principles
+- Responsive: Mobile-first design.
+- Spacing: Generous use of white space.
+- Style: Modern, clean.
+
+## Technical Requirements
+
+### Data Visualization
+- Library: D3.js
+- Rationale: Required for full creative control over custom visualizations.
+- Use Case: To be used within blog posts or dedicated pages to illustrate data related to projects or talks.

@@ -1,0 +1,191 @@
+---
+layout: default
+title: Home
+---
+
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">Mason Grimshaw</h1>
+        <p class="hero-tagline">Husband, Dad, Data Scientist, Educator</p>
+        <a href="#portfolio" class="cta-button">View My Work</a>
+    </div>
+</section>
+
+<!-- About Me Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a Sicangu Lakota data scientist and educator passionate about using technology to serve Indigenous communities. Based in Rapid City, South Dakota, I work at the intersection of AI, education, and cultural preservation.</p>
+                <p>My work focuses on developing AI solutions for tribal communities, teaching data science to Indigenous students, and ensuring that technological advancement includes Indigenous perspectives and values.</p>
+                <div class="skills">
+                    <h3>Skills & Expertise</h3>
+                    <ul>
+                        <li>AI for Indigenous Communities</li>
+                        <li>Data Science Education</li>
+                        <li>Machine Learning & Statistical Analysis</li>
+                        <li>Python, R, JavaScript</li>
+                        <li>Research & Public Speaking</li>
+                        <li>Cultural Technology Integration</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="/images/profile.png" alt="Mason Grimshaw" class="profile-photo">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio / Projects Section -->
+<section id="portfolio" class="portfolio-section">
+    <div class="container">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">📊</div>
+                </div>
+                <h3>Data Visualization Dashboard</h3>
+                <p>Interactive dashboard built with D3.js for exploring complex datasets and generating insights.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo</a>
+                    <a href="#" class="project-link">Source Code</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">🤖</div>
+                </div>
+                <h3>ML Model Pipeline</h3>
+                <p>End-to-end machine learning pipeline for predictive modeling with automated feature engineering.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo</a>
+                    <a href="#" class="project-link">Source Code</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="project-icon">🌐</div>
+                </div>
+                <h3>Web Scraping Tool</h3>
+                <p>Automated data collection system for gathering and processing information from multiple sources.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link">Live Demo</a>
+                    <a href="#" class="project-link">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Talks Section -->
+<section id="talks" class="talks-section">
+    <div class="container">
+        <h2>Recent Talks</h2>
+        <div class="talks-list">
+            {% assign recent_talks = site.talks | sort: 'date' | reverse | limit: 3 %}
+            {% for talk in recent_talks %}
+            <div class="talk-item">
+                <h3><a href="{{ talk.url | relative_url }}">{{ talk.title }}</a></h3>
+                <p class="talk-event">{{ talk.venue }}</p>
+                <p class="talk-date">{{ talk.date | date: "%B %Y" }}</p>
+                <div class="talk-links">
+                    {% if talk.slides %}<a href="{{ talk.slides }}" class="talk-link" target="_blank">[Slides]</a>{% endif %}
+                    {% if talk.video %}<a href="{{ talk.video }}" class="talk-link" target="_blank">[Video]</a>{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if site.talks.size == 0 %}
+            <div class="talk-item">
+                <h3>AI in Indigenous Communities</h3>
+                <p class="talk-event">TEDx Boston</p>
+                <p class="talk-date">March 2023</p>
+                <div class="talk-links">
+                    <a href="/talks/" class="talk-link">[View All Talks]</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="talks-cta">
+            <a href="/talks/" class="view-all-posts">View All Talks</a>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Highlights Section -->
+<section id="blog" class="blog-section">
+    <div class="container">
+        <h2>Latest Blog Posts</h2>
+        <div class="blog-grid">
+            {% assign recent_posts = site.posts | limit: 3 %}
+            {% for post in recent_posts %}
+            <div class="blog-card">
+                <div class="blog-image">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image }}" alt="{{ post.title }}">
+                    {% else %}
+                        <div class="blog-placeholder">📝</div>
+                    {% endif %}
+                </div>
+                <div class="blog-content">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+                    <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if site.posts.size == 0 %}
+            <div class="blog-card">
+                <div class="blog-image">
+                    <div class="blog-placeholder">📝</div>
+                </div>
+                <div class="blog-content">
+                    <h3>Welcome to My Blog</h3>
+                    <p>I'll be sharing insights about data science, AI research, and technology here. Stay tuned for upcoming posts!</p>
+                    <a href="/blog/" class="read-more">View All Posts</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="blog-cta">
+            <a href="/blog/" class="view-all-posts">View All Posts</a>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm always interested in discussing new opportunities, collaborations, or just chatting about data science and AI.</p>
+            
+            <div class="contact-links">
+                <a href="mailto:mason.grimshaw@example.com" class="contact-link">
+                    <span class="contact-icon">📧</span>
+                    Email Me
+                </a>
+                <a href="https://linkedin.com/in/masongrimshaw" class="contact-link" target="_blank">
+                    <span class="contact-icon">💼</span>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/Mace_Grim" class="contact-link" target="_blank">
+                    <span class="contact-icon">🐙</span>
+                    GitHub
+                </a>
+            </div>
+            
+            <!-- Optional contact form placeholder -->
+            <div class="contact-form-placeholder">
+                <p><em>Contact form integration available via Formspree or similar service</em></p>
+            </div>
+        </div>
+    </div>
+</section>
