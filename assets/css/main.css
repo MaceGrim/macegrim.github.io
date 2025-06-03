@@ -506,7 +506,7 @@ section {
 
 /* Talk Pages */
 .talk {
-  padding-top: 6rem;
+  padding-top: 8rem;
 }
 
 .talk-header {
@@ -635,7 +635,7 @@ section {
 
 /* Single Pages & Archive Pages */
 .single-page, .archive-page {
-  padding-top: 6rem;
+  padding-top: 8rem;
 }
 
 .page-header {
