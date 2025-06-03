@@ -633,6 +633,117 @@ section {
   color: var(--deep-navy) !important;
 }
 
+/* Single Pages & Archive Pages */
+.single-page, .archive-page {
+  padding-top: 6rem;
+}
+
+.page-header {
+  background-color: var(--sandy-beige);
+  padding: 3rem 0;
+  text-align: center;
+  border-bottom: 4px solid var(--burnt-orange);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-description {
+  font-size: 1.2rem;
+  color: var(--dark-slate);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-content {
+  padding: 3rem 0;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--sandy-beige);
+  padding-bottom: 0.5rem;
+}
+
+.page-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--burnt-orange);
+}
+
+.page-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.page-content ul, .page-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.collection-item {
+  background-color: var(--warm-off-white);
+  border: 1px solid var(--sandy-beige);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(10, 34, 64, 0.1);
+}
+
+.collection-item h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.collection-item h3 a {
+  color: var(--deep-navy);
+  text-decoration: none;
+}
+
+.collection-item h3 a:hover {
+  color: var(--burnt-orange);
+}
+
+.item-venue {
+  font-weight: 600;
+  color: var(--burnt-orange);
+  margin-bottom: 0.5rem;
+}
+
+.item-date {
+  font-size: 0.9rem;
+  color: var(--dark-slate);
+  margin-bottom: 1rem;
+}
+
+.item-excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--dark-slate);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section {
@@ -687,5 +798,18 @@ section {
   .talk-nav {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .page-content {
+    padding: 2rem 0;
   }
 }
