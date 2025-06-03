@@ -101,26 +101,27 @@ section {
 
 /* Hero Section */
 .hero-section {
-  min-height: 100vh;
+  min-height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: linear-gradient(135deg, var(--deep-navy) 0%, var(--dark-slate) 100%);
   color: var(--warm-off-white);
+  padding: 3rem 0;
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--warm-off-white);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .hero-tagline {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   opacity: 0.9;
 }
 
@@ -505,12 +506,17 @@ section {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 30vh;
+    padding: 2rem 0;
+  }
+  
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .hero-tagline {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .about-content {
