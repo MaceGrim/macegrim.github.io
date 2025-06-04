@@ -406,7 +406,7 @@ section {
 
 /* Blog Pages */
 .blog-index {
-  padding-top: 6rem;
+  padding-top: 10rem;
 }
 
 .page-header {
@@ -449,7 +449,7 @@ section {
 .post {
   max-width: 800px;
   margin: 0 auto;
-  padding: 6rem 2rem 2rem;
+  padding: 10rem 2rem 2rem;
 }
 
 .post-header {
@@ -506,7 +506,7 @@ section {
 
 /* Talk Pages */
 .talk {
-  padding-top: 8rem;
+  padding-top: 10rem;
 }
 
 .talk-header {
@@ -635,7 +635,7 @@ section {
 
 /* Single Pages & Archive Pages */
 .single-page, .archive-page {
-  padding-top: 8rem;
+  padding-top: 10rem;
 }
 
 .page-header {
