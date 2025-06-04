@@ -404,15 +404,11 @@ section {
   padding: 2rem 0;
 }
 
-/* Blog Pages */
-.blog-index {
+/* Blog Pages & Talks Index */
+.blog-index, .talks-index {
   padding-top: 10rem;
 }
 
-.page-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
 
 .posts-list {
   max-width: 800px;
@@ -640,9 +636,11 @@ section {
 
 .page-header {
   background-color: var(--sandy-beige);
-  padding: 3rem 0;
+  padding: 1.5rem 0;
   text-align: center;
   border-bottom: 4px solid var(--burnt-orange);
+  margin-top: 0;
+  margin-bottom: 3rem;
 }
 
 .page-title {
