@@ -1,191 +1,67 @@
----
-layout: default
-title: Home
----
-
-<!-- Hero Section -->
-<section id="hero" class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">Mason Grimshaw</h1>
-        <p class="hero-tagline">Husband, Dad, Data Scientist, Educator</p>
-        <a href="#portfolio" class="cta-button">View My Work</a>
-    </div>
-</section>
-
-<!-- About Me Section -->
-<section id="about" class="about-section">
-    <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I'm a Sicangu Lakota data scientist and educator passionate about using technology to serve Indigenous communities. Based in Rapid City, South Dakota, I work at the intersection of AI, education, and cultural preservation.</p>
-                <p>My work focuses on developing AI solutions for tribal communities, teaching data science to Indigenous students, and ensuring that technological advancement includes Indigenous perspectives and values.</p>
-                <div class="skills">
-                    <h3>Skills & Expertise</h3>
-                    <ul>
-                        <li>AI for Indigenous Communities</li>
-                        <li>Data Science Education</li>
-                        <li>Machine Learning & Statistical Analysis</li>
-                        <li>Python, R, JavaScript</li>
-                        <li>Research & Public Speaking</li>
-                        <li>Cultural Technology Integration</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="/images/profile.png" alt="Mason Grimshaw" class="profile-photo">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Portfolio / Projects Section -->
-<section id="portfolio" class="portfolio-section">
-    <div class="container">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-icon">📊</div>
-                </div>
-                <h3>Data Visualization Dashboard</h3>
-                <p>Interactive dashboard built with D3.js for exploring complex datasets and generating insights.</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">Source Code</a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-icon">🤖</div>
-                </div>
-                <h3>ML Model Pipeline</h3>
-                <p>End-to-end machine learning pipeline for predictive modeling with automated feature engineering.</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">Source Code</a>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-image">
-                    <div class="project-icon">🌐</div>
-                </div>
-                <h3>Web Scraping Tool</h3>
-                <p>Automated data collection system for gathering and processing information from multiple sources.</p>
-                <div class="project-links">
-                    <a href="#" class="project-link">Live Demo</a>
-                    <a href="#" class="project-link">Source Code</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Recent Talks Section -->
-<section id="talks" class="talks-section">
-    <div class="container">
-        <h2>Recent Talks</h2>
-        <div class="talks-list">
-            {% assign recent_talks = site.talks | sort: 'date' | reverse | limit: 3 %}
-            {% for talk in recent_talks %}
-            <div class="talk-item">
-                <h3><a href="{{ talk.url | relative_url }}">{{ talk.title }}</a></h3>
-                <p class="talk-event">{{ talk.venue }}</p>
-                <p class="talk-date">{{ talk.date | date: "%B %Y" }}</p>
-                <div class="talk-links">
-                    {% if talk.slides %}<a href="{{ talk.slides }}" class="talk-link" target="_blank">[Slides]</a>{% endif %}
-                    {% if talk.video %}<a href="{{ talk.video }}" class="talk-link" target="_blank">[Video]</a>{% endif %}
-                </div>
-            </div>
-            {% endfor %}
-            
-            {% if site.talks.size == 0 %}
-            <div class="talk-item">
-                <h3>AI in Indigenous Communities</h3>
-                <p class="talk-event">TEDx Boston</p>
-                <p class="talk-date">March 2023</p>
-                <div class="talk-links">
-                    <a href="/talks/" class="talk-link">[View All Talks]</a>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-        <div class="talks-cta">
-            <a href="/talks/" class="view-all-posts">View All Talks</a>
-        </div>
-    </div>
-</section>
-
-<!-- Blog Highlights Section -->
-<section id="blog" class="blog-section">
-    <div class="container">
-        <h2>Latest Blog Posts</h2>
-        <div class="blog-grid">
-            {% assign recent_posts = site.posts | limit: 3 %}
-            {% for post in recent_posts %}
-            <div class="blog-card">
-                <div class="blog-image">
-                    {% if post.featured_image %}
-                        <img src="{{ post.featured_image }}" alt="{{ post.title }}">
-                    {% else %}
-                        <div class="blog-placeholder">📝</div>
-                    {% endif %}
-                </div>
-                <div class="blog-content">
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                    <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
-                </div>
-            </div>
-            {% endfor %}
-            
-            {% if site.posts.size == 0 %}
-            <div class="blog-card">
-                <div class="blog-image">
-                    <div class="blog-placeholder">📝</div>
-                </div>
-                <div class="blog-content">
-                    <h3>Welcome to My Blog</h3>
-                    <p>I'll be sharing insights about data science, AI research, and technology here. Stay tuned for upcoming posts!</p>
-                    <a href="/blog/" class="read-more">View All Posts</a>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-        <div class="blog-cta">
-            <a href="/blog/" class="view-all-posts">View All Posts</a>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="contact-section">
-    <div class="container">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <p>I'm always interested in discussing new opportunities, collaborations, or just chatting about data science and AI.</p>
-            
-            <div class="contact-links">
-                <a href="mailto:mason.grimshaw@example.com" class="contact-link">
-                    <span class="contact-icon">📧</span>
-                    Email Me
-                </a>
-                <a href="https://linkedin.com/in/masongrimshaw" class="contact-link" target="_blank">
-                    <span class="contact-icon">💼</span>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/Mace_Grim" class="contact-link" target="_blank">
-                    <span class="contact-icon">🐙</span>
-                    GitHub
-                </a>
-            </div>
-            
-            <!-- Optional contact form placeholder -->
-            <div class="contact-form-placeholder">
-                <p><em>Contact form integration available via Formspree or similar service</em></p>
-            </div>
-        </div>
-    </div>
-</section>
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="utf-8"><link rel="icon" type="image/png" href="/favicon.png"><link rel="icon" href="/favicon.ico"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Mason Grimshaw - AI Strategy &#38; Implementation"><meta name="generator" content="Astro v5.17.1"><title>Grimshaw Studio | AI Strategy &amp; Implementation</title><link rel="stylesheet" href="/_astro/_slug_.BMO7rL-l.css"></head> <body class="bg-cream text-navy min-h-screen font-sans antialiased"> <!-- Navigation --> <nav class="sticky top-0 z-50 bg-navy text-cream shadow-lg"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="text-xl font-bold tracking-tight text-cream hover:text-burnt-orange transition-colors">
+Grimshaw Studio
+</a> <div class="hidden sm:flex items-center space-x-8"> <a href="/" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Home</a> <a href="/experience" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Experience</a> <a href="/indigigenius" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">IndigiGenius</a> <a href="/talks" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Talks</a> <!-- <a href="/publications" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Publications</a> --> <a href="/blog" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Blog</a> <a href="/#contact" class="text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Contact</a> </div> <!-- Mobile menu button --> <button id="mobile-menu-btn" class="sm:hidden text-cream hover:text-burnt-orange transition-colors" aria-label="Toggle menu"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> <!-- Mobile menu --> <div id="mobile-menu" class="hidden sm:hidden pb-4"> <a href="/" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Home</a> <a href="/experience" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Experience</a> <a href="/indigigenius" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">IndigiGenius</a> <a href="/talks" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Talks</a> <!-- <a href="/publications" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Publications</a> --> <a href="/blog" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Blog</a> <a href="/#contact" class="block py-2 text-cream/80 hover:text-burnt-orange transition-colors text-sm font-medium">Contact</a> </div> </div> </nav> <!-- Main Content --> <main>   <section class="relative bg-navy text-cream py-24 sm:py-32"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="max-w-3xl"> <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">AI Strategy & Implementation</p> <p class="text-cream/60 text-lg mb-4">Husband. Dad. Sicangu Lakota. Data Scientist. Educator.</p> <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+Building AI that
+<span class="text-burnt-orange">actually works</span>
+in production.
+</h1> <p class="text-lg sm:text-xl text-cream/80 leading-relaxed mb-8">
+Practical AI consulting for organizations that need results, not slide decks.
+          From strategy to deployment, focused on what ships.
+</p> <div class="flex flex-col sm:flex-row gap-4"> <a href="#work" class="inline-flex items-center justify-center px-6 py-3 bg-burnt-orange text-cream font-semibold rounded-lg hover:bg-burnt-orange-light transition-colors">
+See the Work
+</a> <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border-2 border-cream/30 text-cream font-semibold rounded-lg hover:border-burnt-orange hover:text-burnt-orange transition-colors">
+Get in Touch
+</a> </div> </div> </div> <!-- Decorative accent --> <div class="absolute bottom-0 left-0 right-0 h-1 bg-burnt-orange"></div> </section>  <section id="about" class="py-20 sm:py-24 bg-cream"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10"> <div class="flex-shrink-0"> <img src="/images/profile.png" alt="Mason Grimshaw" class="w-48 h-48 rounded-full object-cover border-4 border-burnt-orange shadow-lg"> </div> <div class="text-center md:text-left"> <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">About</p> <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-6">
+AI that serves people, not the other way around.
+</h2> <p class="text-lg text-navy/70 leading-relaxed mb-4">
+I'm Mason Grimshaw -- husband, dad to 4, Sicangu Lakota from the Rosebud Reservation, and a Data Scientist/AI Engineer at
+<a href="https://ode.partners" class="text-burnt-orange hover:underline">Ode Partners</a>.
+</p> <p class="text-lg text-navy/70 leading-relaxed mb-4">
+I'm the Vice President of <a href="https://www.indigi-genius.com" class="text-burnt-orange hover:underline">IndigiGenius</a>,
+            where we empower Indigenous communities in computer science and machine learning,
+            and a co-founder of the <a href="https://lakota.aicode.camp" class="text-burnt-orange hover:underline">Lakota AI Code Camp</a>.
+</p> <p class="text-lg text-navy/70 leading-relaxed">
+I work at the intersection of enterprise AI systems and community-centered technology.
+            Every project starts with the same question: what problem are we actually solving?
+</p> </div> </div> <div class="grid md:grid-cols-3 gap-8 mt-16"> <div class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark"> <div class="w-12 h-12 bg-burnt-orange/10 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-burnt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"></path> </svg> </div> <h3 class="text-xl font-bold text-navy mb-2">Enterprise AI</h3> <p class="text-navy/60 leading-relaxed">
+Production-grade AI systems that deliver measurable value. Strategy, architecture, and implementation.
+</p> </div> <div class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark"> <div class="w-12 h-12 bg-burnt-orange/10 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-burnt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path> </svg> </div> <h3 class="text-xl font-bold text-navy mb-2">Tribal AI</h3> <p class="text-navy/60 leading-relaxed">
+Community-led technology for Indigenous nations. Sovereignty-first, capacity building, practical tools.
+</p> </div> <div class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark"> <div class="w-12 h-12 bg-burnt-orange/10 rounded-lg flex items-center justify-center mb-4"> <svg class="w-6 h-6 text-burnt-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path> </svg> </div> <h3 class="text-xl font-bold text-navy mb-2">Deep Dives</h3> <p class="text-navy/60 leading-relaxed">
+Technical explorations and experiments. Building things from scratch to understand how they work.
+</p> </div> </div> </div> </section>  <section id="projects" class="py-20 sm:py-24 bg-cream-dark"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="max-w-3xl"> <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Projects</p> <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-6">
+Things I've built.
+</h2> <p class="text-lg text-navy/70 leading-relaxed mb-12">
+A mix of production tools, community platforms, and experiments.
+</p> </div> <div class="grid md:grid-cols-3 gap-8"> <div class="group bg-white rounded-xl p-8 shadow-sm border border-cream-dark transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-burnt-orange/30"> <div class="text-center mb-6"> <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-burnt-orange/10 text-5xl"> 🌐 </div> </div> <h3 class="text-xl font-bold text-navy mb-2">Lakota AI Code Camp</h3> <p class="text-navy/60 leading-relaxed mb-4">Curriculum and platform for teaching AI and data science to Indigenous youth on the Rosebud Reservation.</p> <div class="flex gap-3"> <a href="https://lakota.aicode.camp" class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors">
+Live Demo
+</a>  </div> </div><div class="group bg-white rounded-xl p-8 shadow-sm border border-cream-dark transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-burnt-orange/30"> <div class="text-center mb-6"> <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-burnt-orange/10 text-5xl"> 🤖 </div> </div> <h3 class="text-xl font-bold text-navy mb-2">ML Model Pipeline</h3> <p class="text-navy/60 leading-relaxed mb-4">End-to-end machine learning pipeline for predictive modeling with automated feature engineering.</p> <div class="flex gap-3"> <a href="#" class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors">
+Live Demo
+</a> <a href="#" class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors">
+Source Code
+</a> </div> </div><div class="group bg-white rounded-xl p-8 shadow-sm border border-cream-dark transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-burnt-orange/30"> <div class="text-center mb-6"> <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-burnt-orange/10 text-5xl"> 📊 </div> </div> <h3 class="text-xl font-bold text-navy mb-2">Data Visualization Dashboard</h3> <p class="text-navy/60 leading-relaxed mb-4">Interactive dashboard built with D3.js for exploring complex datasets and generating insights.</p> <div class="flex gap-3"> <a href="#" class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors">
+Live Demo
+</a> <a href="#" class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors">
+Source Code
+</a> </div> </div> </div> </div> </section>  <section id="work" class="py-20 sm:py-24 bg-cream"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="max-w-3xl"> <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Work</p> <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-6">
+Recent projects and writing.
+</h2> <p class="text-lg text-navy/70 leading-relaxed mb-12">
+A selection of work spanning enterprise AI, Indigenous technology, and technical deep dives.
+</p> </div> <div class="grid md:grid-cols-2 gap-6"> <a href="/talks" class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all block"> <span class="inline-block px-3 py-1 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-4">Speaking</span> <h3 class="text-xl font-bold text-navy mb-2">Talks & Panels</h3> <p class="text-navy/60 leading-relaxed">
+Presentations on Indigenous data sovereignty, AI in enterprise, and community tech.
+</p> <span class="inline-block mt-4 text-burnt-orange font-medium text-sm">View talks &rarr;</span> </a> <!-- <a href="/publications" class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all block">
+          <span class="inline-block px-3 py-1 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-4">Research</span>
+          <h3 class="text-xl font-bold text-navy mb-2">Publications</h3>
+          <p class="text-navy/60 leading-relaxed">
+            Academic papers and research at the intersection of data science and community impact.
+          </p>
+          <span class="inline-block mt-4 text-burnt-orange font-medium text-sm">View papers &rarr;</span>
+        </a> --> <a href="/blog" class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all block"> <span class="inline-block px-3 py-1 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-4">Writing</span> <h3 class="text-xl font-bold text-navy mb-2">Blog</h3> <p class="text-navy/60 leading-relaxed">
+Posts on AI strategy, tribal tech, technical deep dives, and experiments.
+</p> <span class="inline-block mt-4 text-burnt-orange font-medium text-sm">Read latest &rarr;</span> </a> </div> </div> </section>  <section id="contact" class="py-20 sm:py-24 bg-navy text-cream"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="max-w-2xl mx-auto text-center"> <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Contact</p> <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+Let's build something that matters.
+</h2> <p class="text-lg text-cream/70 leading-relaxed mb-8">
+Whether you need AI strategy, implementation support, or want to collaborate on something interesting, reach out.
+</p> <a href="mailto:hello@grimshaw.studio" class="inline-flex items-center justify-center px-8 py-4 bg-burnt-orange text-cream font-semibold rounded-lg hover:bg-burnt-orange-light transition-colors text-lg">
+Get in Touch
+</a> </div> </div> </section>  </main> <!-- Footer --> <footer class="bg-navy-dark text-cream/70 py-12"> <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex flex-col md:flex-row justify-between items-center gap-4"> <p class="text-sm">&copy; 2026 Grimshaw Studio. All rights reserved.</p> <div class="flex space-x-6"> <a href="https://github.com/Mace_Grim" class="text-cream/50 hover:text-burnt-orange transition-colors text-sm">GitHub</a> <a href="https://twitter.com/MaceGrim" class="text-cream/50 hover:text-burnt-orange transition-colors text-sm">X / Twitter</a> </div> </div> </div> </footer> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{n?.classList.toggle("hidden")});</script> </body> </html>
