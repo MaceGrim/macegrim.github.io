@@ -1,6 +1,6 @@
 ---
 title: "Oceans Futures"
-description: "Translated complex fisheries, conflict, and climate datasets into web-ready formats and prototyped interactive visualizations for WWF's ocean conflict early-warning platform. Built at Ode Partners for COP28."
+description: "Fisheries conflict data from a dozen sources, shaped for the web and prototyped into interactive maps through close iteration with WWF's science team. The back-and-forth between data, prototype, and client feedback is where this project found its form. Built at Ode Partners for COP28."
 image: "/images/projects/oceans-futures.png"
 image_fit: "cover"
 demo_url: "https://oceansfutures.org"
