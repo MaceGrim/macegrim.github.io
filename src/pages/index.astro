@@ -4,7 +4,6 @@ import { getCollection } from 'astro:content';
 
 // Sorted by date descending. Lakota AI Code Camp (portfolio-3) should always be first —
 // give it the newest date to keep it at the top.
-// TODO: Cards look off-center when there aren't enough to fill the viewport. Fix when more projects are added.
 const projects = (await getCollection('portfolio')).sort(
   (a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
 );
@@ -61,10 +60,9 @@ const projects = (await getCollection('portfolio')).sort(
 
     <div
       id="projects-carousel"
-      class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 cursor-grab"
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 cursor-grab justify-center"
       style="scrollbar-width: thin; scrollbar-color: #CC5500 transparent; -webkit-overflow-scrolling: touch;"
     >
-      <div class="shrink-0 w-[max(1rem,calc((100vw-72rem)/2))] sm:w-[max(1.5rem,calc((100vw-72rem)/2))] lg:w-[max(2rem,calc((100vw-72rem)/2))]" aria-hidden="true"></div>
       {projects.map((project) => (
         <div class="snap-start shrink-0 w-[340px] sm:w-[400px] bg-white rounded-xl shadow-sm border border-cream-dark transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-burnt-orange/30 flex flex-col overflow-hidden">
           {project.data.image ? (
@@ -112,7 +110,6 @@ const projects = (await getCollection('portfolio')).sort(
           </div>
         </div>
       ))}
-      <div class="shrink-0 w-4 sm:w-6 lg:w-8" aria-hidden="true"></div>
     </div>
   </section>
 
