@@ -1,6 +1,6 @@
 ---
 title: "How Machines See California"
-description: "Interactive scrollytelling visualization exploring how AI embeddings organize 94,000+ satellite tiles of California by land cover — without being told what to look for."
+description: "An interactive scrollytelling piece I built at Ode to explain geospatial foundation models and their embeddings. We explore how Clay, a geospatial foundation model, categorizes and aligns different land cover types across California and how it can help us find specific kinds of terrain."
 icon: "🛰️"
 image: "/images/projects/cali-embeddings.png"
 image_fit: "cover"
