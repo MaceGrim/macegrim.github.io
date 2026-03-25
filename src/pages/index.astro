@@ -57,7 +57,8 @@ const projects = (await getCollection('portfolio')).sort(
     </div>
 
     <div
-      class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6"
+      id="projects-carousel"
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 cursor-grab"
       style="scrollbar-width: thin; scrollbar-color: #CC5500 transparent; -webkit-overflow-scrolling: touch;"
     >
       <div class="shrink-0 w-[max(1rem,calc((100vw-72rem)/2))] sm:w-[max(1.5rem,calc((100vw-72rem)/2))] lg:w-[max(2rem,calc((100vw-72rem)/2))]" aria-hidden="true"></div>
@@ -335,6 +336,10 @@ const projects = (await getCollection('portfolio')).sort(
             width: calc(25% - 18px);
           }
         }
+        #projects-carousel {
+          user-select: none;
+          -webkit-user-select: none;
+        }
       </style>
 
       <div class="mt-10">
@@ -382,6 +387,61 @@ const projects = (await getCollection('portfolio')).sort(
     </div>
   </section>
   -->
+
+  <script>
+    // Drag-to-scroll for projects carousel
+    (() => {
+      const el = document.getElementById('projects-carousel');
+      if (!el) return;
+
+      let isDown = false;
+      let startX: number;
+      let scrollLeft: number;
+      let dragged = false;
+
+      el.addEventListener('mousedown', (e) => {
+        isDown = true;
+        dragged = false;
+        el.classList.add('cursor-grabbing');
+        el.classList.remove('cursor-grab');
+        el.style.scrollBehavior = 'auto';
+        el.style.scrollSnapType = 'none';
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        isDown = false;
+        el.classList.remove('cursor-grabbing');
+        el.classList.add('cursor-grab');
+        el.style.scrollSnapType = '';
+      });
+
+      el.addEventListener('mouseup', () => {
+        isDown = false;
+        el.classList.remove('cursor-grabbing');
+        el.classList.add('cursor-grab');
+        el.style.scrollSnapType = '';
+      });
+
+      el.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - el.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(walk) > 5) dragged = true;
+        el.scrollLeft = scrollLeft - walk;
+      });
+
+      // Prevent click on links if user was dragging
+      el.addEventListener('click', (e) => {
+        if (dragged) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }, true);
+    })();
+  </script>
 
   <script>
     import Masonry from 'masonry-layout';
