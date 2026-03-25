@@ -1,0 +1,413 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('portfolio')).sort(
+  (a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
+);
+---
+
+<BaseLayout title="Mason Grimshaw | Data Scientist, Educator, Builder">
+  <!-- Hero Section -->
+  <section class="relative bg-navy text-cream py-24 sm:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-shrink-0">
+          <img
+            src="/images/profile.png"
+            alt="Mason Grimshaw"
+            class="w-full max-w-[280px] rounded-xl object-cover shadow-lg"
+          />
+        </div>
+        <div class="text-center md:text-left">
+          <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Approachable Excellence</p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Mason Grimshaw
+          </h1>
+          <p class="text-lg sm:text-xl text-cream/80 leading-relaxed mb-6">
+            Data Scientist at <a href="https://ode.partners" class="text-burnt-orange hover:underline">Ode Partners</a>.
+            VP of <a href="https://www.indigi-genius.com" class="text-burnt-orange hover:underline">IndigiGenius</a>.
+            Co-founder of the <a href="https://lakota.aicode.camp" class="text-burnt-orange hover:underline">Lakota AI Code Camp</a>.
+            Sicangu Lakota. Husband. Dad to 4.
+          </p>
+          <p class="text-lg text-cream/60 leading-relaxed">
+            I build AI systems that work in production and teach data science to Indigenous youth.
+            Most of my time goes to figuring out what a tool actually does for people
+            — and whether it should exist at all.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Decorative accent -->
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-burnt-orange"></div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 sm:py-24 bg-cream-dark overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+      <div class="max-w-3xl">
+        <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Projects</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-4">
+          Things I've helped build.
+        </h2>
+        <p class="text-lg text-navy/70 leading-relaxed">
+          A mix of production tools, community platforms, and experiments.
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-6"
+      style="scrollbar-width: thin; scrollbar-color: #CC5500 transparent; -webkit-overflow-scrolling: touch;"
+    >
+      <div class="shrink-0 w-[max(1rem,calc((100vw-72rem)/2))] sm:w-[max(1.5rem,calc((100vw-72rem)/2))] lg:w-[max(2rem,calc((100vw-72rem)/2))]" aria-hidden="true"></div>
+      {projects.map((project) => (
+        <div class="snap-start shrink-0 w-[340px] sm:w-[400px] bg-white rounded-xl shadow-sm border border-cream-dark transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-burnt-orange/30 flex flex-col overflow-hidden">
+          {project.data.image ? (
+            project.data.image_fit === 'contain' ? (
+              <div class="h-48 overflow-hidden bg-cream-dark flex items-center justify-center p-4">
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+            ) : (
+              <div class="h-48 overflow-hidden">
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            )
+          ) : (
+            <div class="h-3 bg-burnt-orange/20"></div>
+          )}
+          <div class="p-8 flex flex-col flex-1">
+            <h3 class="text-xl font-bold text-navy mb-2">{project.data.title}</h3>
+            <p class="text-navy/60 leading-relaxed mb-6 flex-1">{project.data.description}</p>
+            <div class="flex gap-3">
+              {project.data.demo_url && (
+                <a
+                  href={project.data.demo_url}
+                  class="px-4 py-2 border-2 border-burnt-orange text-burnt-orange text-sm font-semibold rounded-md hover:bg-burnt-orange hover:text-cream transition-colors"
+                >
+                  View Project
+                </a>
+              )}
+              {project.data.source_url && (
+                <a
+                  href={project.data.source_url}
+                  class="px-4 py-2 border-2 border-navy/20 text-navy/60 text-sm font-semibold rounded-md hover:border-navy/40 hover:text-navy transition-colors"
+                >
+                  Source
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+      <div class="shrink-0 w-4 sm:w-6 lg:w-8" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- Featured Section -->
+  <section id="featured" class="py-20 sm:py-24 bg-cream-dark">
+    <div class="mx-auto px-6 sm:px-10 lg:px-16 xl:px-24">
+      <div class="max-w-3xl mb-12">
+        <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Featured</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-4">
+          Highlights.
+        </h2>
+      </div>
+
+      <!-- Gallery wall: masonry layout -->
+      <div id="masonry-grid">
+
+        <!-- TEDx Talk — wide -->
+        <div class="masonry-item masonry-item--wide mb-6 bg-white rounded-xl border border-navy/10 shadow-md overflow-hidden">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe
+              src="https://www.youtube.com/embed/kRqjTGQ0qkU"
+              title="Bringing AI from Silicon Valley to the Black Hills — TEDx Boston"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Talk</span>
+            <h3 class="text-lg font-bold text-navy mb-1">Bringing AI from Silicon Valley to the Black Hills</h3>
+            <p class="text-sm text-navy/50">TEDx Boston — March 2023</p>
+          </div>
+        </div>
+
+        <!-- Elevate Magazine cover -->
+        <a
+          href="https://issuu.com/elevaterapidcity/docs/elevate_rapid_city_magazine_october_2022_innovatio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group mb-6 bg-white rounded-xl border border-navy/10 shadow-md overflow-hidden hover:shadow-lg hover:border-burnt-orange/30 transition-all"
+        >
+          <div class="overflow-hidden">
+            <img
+              src="/images/featured/elevate-cover.png"
+              alt="Elevate Magazine October 2022 — Innovation in the Black Hills"
+              class="w-full h-auto group-hover:scale-[1.02] transition-transform duration-300"
+            />
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Press</span>
+            <h3 class="text-lg font-bold text-navy mb-1 group-hover:text-burnt-orange transition-colors">Elevate Magazine: Innovation in the Black Hills</h3>
+            <p class="text-sm text-navy/50">Cover story on Lakota AI Code Camp — October 2022</p>
+          </div>
+        </a>
+
+        <!-- Teen Vogue -->
+        <a
+          href="https://www.teenvogue.com/story/these-coding-camps-are-teaching-indigenous-youth-to-save-native-language-through-ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group bg-white rounded-xl p-6 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all mb-6"
+        >
+          <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-3">Press</span>
+          <h3 class="text-lg font-bold text-navy mb-2 group-hover:text-burnt-orange transition-colors">Indigenous Youth Are Using Coding and AI to Save Native Language</h3>
+          <p class="text-sm text-navy/50 mb-3">Teen Vogue — January 2024</p>
+          <p class="text-sm text-navy/60 leading-relaxed">Feature on the Lakota AI Code Camp and how Indigenous students are using AI to preserve endangered languages.</p>
+        </a>
+
+        <!-- Forbes -->
+        <a
+          href="https://www.forbes.com/sites/johnwerner/2023/11/20/lakota-code-camp-bringing-it-to-native-communities/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group bg-white rounded-xl p-6 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all mb-6"
+        >
+          <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-3">Press</span>
+          <h3 class="text-lg font-bold text-navy mb-2 group-hover:text-burnt-orange transition-colors">Lakota Code Camp: Bringing It to Native Communities</h3>
+          <p class="text-sm text-navy/50 mb-3">Forbes — November 2023</p>
+          <p class="text-sm text-navy/60 leading-relaxed">Coverage of the Lakota AI Code Camp and the mission to bring AI education to Native communities.</p>
+        </a>
+
+        <!-- Pritzker Environmental Genius Award -->
+        <a
+          href="https://www.ioes.ucla.edu/person/mason-grimshaw/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group bg-white rounded-xl p-6 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all mb-6"
+        >
+          <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-3">Award</span>
+          <h3 class="text-lg font-bold text-navy mb-2 group-hover:text-burnt-orange transition-colors">Pritzker Environmental Genius Award Nominee</h3>
+          <p class="text-sm text-navy/50 mb-3">UCLA Institute of the Environment & Sustainability — 2025</p>
+          <p class="text-sm text-navy/60 leading-relaxed">Nominated for work at the intersection of AI, Indigenous knowledge, and environmental stewardship.</p>
+        </a>
+
+        <!-- Podcast — wide on md, single on xl -->
+        <div class="masonry-item masonry-item--wide masonry-item--wide-md-only bg-white rounded-xl p-6 shadow-sm border border-cream-dark mb-6">
+          <div class="rounded-lg overflow-hidden mb-4">
+            <iframe
+              src="https://share.transistor.fm/e/1231e2ef"
+              width="100%"
+              height="180"
+              frameborder="0"
+              scrolling="no"
+              seamless
+              style="width:100%; height:180px;"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Podcast</span>
+          <h3 class="text-lg font-bold text-navy mb-1">AI Literacy and Data Sovereignty for Indigenous Communities</h3>
+          <p class="text-sm text-navy/50">In AI We Trust? — EqualAI — March 2025</p>
+        </div>
+
+        <!-- Axios +AI Summit -->
+        <div class="masonry-item mb-6 bg-white rounded-xl border border-navy/10 shadow-md overflow-hidden">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe
+              src="https://www.youtube.com/embed/K2nAQktoMng"
+              title="Axios +AI Summit — Mason Grimshaw"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Talk</span>
+            <h3 class="text-lg font-bold text-navy mb-1">Axios +AI Summit</h3>
+            <p class="text-sm text-navy/50">Axios — 2024</p>
+          </div>
+        </div>
+
+        <!-- NBC News -->
+        <div class="masonry-item masonry-item--wide mb-6 bg-white rounded-xl border border-navy/10 shadow-md overflow-hidden">
+          <div class="relative w-full" style="padding-bottom:56.25%">
+            <iframe
+              src="https://www.youtube.com/embed/RDAa8WbuZaU"
+              title="AI camp teaches Native teens to preserve Lakota culture — NBC News"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="absolute inset-0 w-full h-full"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Press</span>
+            <h3 class="text-lg font-bold text-navy mb-1">AI Camp Teaches Native Teens to Preserve Lakota Culture</h3>
+            <p class="text-sm text-navy/50">NBC News</p>
+          </div>
+        </div>
+
+        <!-- Probabilistic Living Podcast -->
+        <a
+          href="https://podcasts.apple.com/us/podcast/mason-grimshaw-probabilistic-living-indigenous-data/id1770235223?i=1000752991985"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group bg-white rounded-xl p-6 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all mb-6"
+        >
+          <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-3">Podcast</span>
+          <h3 class="text-lg font-bold text-navy mb-2 group-hover:text-burnt-orange transition-colors">Probabilistic Living: Indigenous Data Sovereignty</h3>
+          <p class="text-sm text-navy/50 mb-3">Apple Podcasts — 2025</p>
+          <p class="text-sm text-navy/60 leading-relaxed">Conversation on probabilistic thinking, Indigenous data sovereignty, and building AI systems that serve communities.</p>
+        </a>
+
+        <!-- TODO: Re-add Trinity Nuclear Test Data Viz card with correct copy.
+             Mason did the visualizations with the research team; NYT featured the work.
+             Link: https://www.nytimes.com/2023/07/20/science/trinity-nuclear-test-atomic-bomb-oppenheimer.html -->
+
+        <!-- Indigenous AI - Vimeo -->
+        <a
+          href="https://vimeo.com/796754410"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="masonry-item block group mb-6 bg-white rounded-xl border border-navy/10 shadow-md overflow-hidden hover:shadow-lg hover:border-burnt-orange/30 transition-all"
+        >
+          <div class="aspect-video relative overflow-hidden">
+            <img
+              src="/images/featured/fuller-seminar.png"
+              alt="Indigenous AI — Fuller Seminar"
+              class="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+            />
+            <div class="absolute inset-0 bg-navy/40 flex flex-col items-center justify-center text-cream group-hover:bg-navy/30 transition-colors">
+              <div class="w-14 h-14 bg-burnt-orange/90 rounded-full flex items-center justify-center group-hover:bg-burnt-orange transition-colors mb-3">
+                <svg class="w-6 h-6 text-cream ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Watch on Vimeo</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <span class="inline-block px-2 py-0.5 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2">Talk</span>
+            <h3 class="text-lg font-bold text-navy mb-1 group-hover:text-burnt-orange transition-colors">Indigenous AI</h3>
+            <p class="text-sm text-navy/50">Fuller Seminar: AI and Conservation — February 2023</p>
+          </div>
+        </a>
+
+      </div>
+
+      <style>
+        #masonry-grid {
+          width: 100%;
+        }
+        .masonry-item {
+          width: 100%;
+        }
+        @media (min-width: 768px) {
+          .masonry-item {
+            width: calc(33.333% - 16px);
+          }
+          .masonry-item--wide {
+            width: calc(66.666% - 8px);
+          }
+        }
+        @media (min-width: 1536px) {
+          .masonry-item {
+            width: calc(25% - 18px);
+          }
+          .masonry-item--wide {
+            width: calc(50% - 12px);
+          }
+          .masonry-item--wide-md-only {
+            width: calc(25% - 18px);
+          }
+        }
+      </style>
+
+      <div class="mt-10">
+        <a href="/talks" class="text-burnt-orange font-medium hover:underline">View all talks &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Section (hidden until blog is ready)
+  <section id="writing" class="py-20 sm:py-24 bg-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Writing</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy mb-4">
+          Thinking out loud.
+        </h2>
+        <p class="text-lg text-navy/70 leading-relaxed mb-8">
+          Notes on building AI systems, teaching data science, and the occasional experiment that got out of hand.
+        </p>
+        <a href="/blog" class="inline-flex items-center justify-center px-6 py-3 bg-burnt-orange text-cream font-semibold rounded-lg hover:bg-burnt-orange-light transition-colors">
+          Read the Blog
+        </a>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- Contact Section (hidden until contact email/form is set up)
+  <section id="contact" class="py-16 sm:py-20 bg-navy text-cream">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+          Want to connect?
+        </h2>
+        <p class="text-lg text-cream/60 leading-relaxed mb-6">
+          I'm always up for a good conversation about data, AI, or Indigenous tech.
+        </p>
+        <a
+          href="mailto:hello@grimshaw.studio"
+          class="inline-flex items-center justify-center px-6 py-3 bg-burnt-orange text-cream font-semibold rounded-lg hover:bg-burnt-orange-light transition-colors"
+        >
+          hello@grimshaw.studio
+        </a>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <script>
+    import Masonry from 'masonry-layout';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('masonry-grid');
+      if (!grid) return;
+
+      const msnry = new Masonry(grid, {
+        itemSelector: '.masonry-item',
+        columnWidth: '.masonry-item:not(.masonry-item--wide)',
+        percentPosition: true,
+        gutter: 24,
+      });
+
+      // Re-layout after iframes and images load
+      const iframes = grid.querySelectorAll('iframe');
+      iframes.forEach((iframe) => {
+        iframe.addEventListener('load', () => msnry.layout());
+      });
+
+      const images = grid.querySelectorAll('img');
+      images.forEach((img) => {
+        if (img.complete) return;
+        img.addEventListener('load', () => msnry.layout());
+      });
+    });
+  </script>
+</BaseLayout>

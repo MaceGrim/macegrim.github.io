@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const talks = (await getCollection('talks')).sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return dateB - dateA;
+});
+---
+
+<BaseLayout title="Talks | Mason Grimshaw">
+  <!-- Header -->
+  <section class="relative bg-navy text-cream py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Speaking</p>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-6">Talks & Panels</h1>
+      <p class="text-lg text-cream/70 leading-relaxed max-w-2xl">
+        I talk about what I know — building AI systems that work, teaching data science to Indigenous youth,
+        and why the people closest to a problem should be the ones building the tools.
+        TEDx, NeurIPS, Axios, and a lot of classrooms in between.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-burnt-orange"></div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-6">
+        {talks.map((talk) => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-cream-dark">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+              <div>
+                <h2 class="text-xl font-bold text-navy">{talk.data.title}</h2>
+                <div class="flex flex-wrap gap-3 mt-2 text-sm text-navy/60">
+                  {talk.data.venue && <span class="font-medium text-burnt-orange">{talk.data.venue}</span>}
+                  {talk.data.type && <span class="bg-navy/5 px-2 py-0.5 rounded">{talk.data.type}</span>}
+                  {talk.data.location && <span>{talk.data.location}</span>}
+                </div>
+              </div>
+              {talk.data.date && (
+                <time class="text-sm text-navy/50 whitespace-nowrap" datetime={new Date(talk.data.date).toISOString()}>
+                  {new Date(talk.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+                </time>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-navy/10">
+        <a href="/" class="text-burnt-orange hover:underline font-medium">&larr; Back to Home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

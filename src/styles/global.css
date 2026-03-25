@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-burnt-orange: #CC5500;
+  --color-burnt-orange-light: #E06B1A;
+  --color-burnt-orange-dark: #A34400;
+  --color-navy: #1B2A4A;
+  --color-navy-light: #2A3D66;
+  --color-navy-dark: #111D33;
+  --color-cream: #FFF8F0;
+  --color-cream-dark: #F5EDE0;
+
+  --font-family-sans: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif';
+  --font-family-heading: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif';
+}

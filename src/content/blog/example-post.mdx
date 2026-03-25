@@ -1,0 +1,86 @@
+---
+title: "The Honest Cost of AI Prototypes"
+date: 2026-02-09
+tags: ["enterprise-ai", "prototyping", "consulting", "ai-strategy"]
+category: "Enterprise AI"
+description: "What it actually takes to build AI prototypes for enterprise clients -- time, iteration, managing expectations, and the gap between a polished demo and a useful tool."
+excerpt: "Every vendor demo looks flawless. Then you plug in your own data and the accuracy drops 30 points. Here's what AI prototypes actually cost."
+---
+
+Last quarter, a client called me two days after a vendor demo. The CEO had seen an AI tool process their documents in real time -- clean extraction, perfect formatting, instant results. "How fast can we get this?" he asked. The answer nobody wanted to hear: what they watched took two hours to build. What they actually needed would take three months, minimum.
+
+This is the conversation I have more than any other. Not because the technology is bad, but because the distance between "impressive demo" and "useful tool" is longer than anyone wants it to be.
+
+## The Demo Is Not the Prototype
+
+Every vendor demo looks flawless. That's the job of a demo. The data is curated, the environment is controlled, the outputs are cherry-picked. I'm not saying vendors are lying -- most of the demos I've seen are genuinely showing real capability. But there's a gap between "this model can do the thing" and "this model can do the thing with your data, your edge cases, your workflows, your security requirements, and your users who definitely won't use it the way you expect."
+
+On a recent engagement, we plugged a client's actual documents into a system very similar to what the demo showed. Accuracy dropped about 30 points. Not because the model was bad -- it was the same underlying technology. But the client's documents had inconsistent formatting, handwritten annotations, scanned PDFs from 2003, and a naming convention that I'm fairly sure was designed by someone who actively hated future-them.
+
+That's not a failure. That's the starting point. The real work begins when the idealized version meets the messy reality.
+
+## Where the Time Actually Goes
+
+When I scope a prototype engagement, I typically plan for 8-12 weeks. Here's where that time goes, roughly:
+
+**Weeks 1-3: Data work.** Getting access to the actual data, understanding its structure (or lack thereof), cleaning it into something a model can use, and negotiating the security and compliance requirements for handling it. This phase takes longer than anyone expects and is never as simple as "just give us a sample dataset."
+
+**Weeks 3-5: Model work.** This is the part everyone thinks is the entire project. Selecting the right approach, fine-tuning or configuring the model, building the evaluation framework to measure whether it's actually working. In terms of effort, this is maybe 20% of the total project.
+
+**Weeks 5-7: Integration.** Connecting the model to the systems people actually use. APIs, authentication, error handling, edge cases, logging, monitoring. The model doesn't live in a Jupyter notebook in production.
+
+**Weeks 7-10: Iteration.** What happens when real users touch the thing. This is where the first version usually dies and the real product starts to emerge. Users find edge cases you never imagined. Workflows don't match your assumptions. The thing that seemed most important turns out to be table stakes, and the feature nobody asked for becomes the reason people actually use it.
+
+The model -- the part that gets all the attention -- is consistently the smallest slice.
+
+## The Iteration Tax
+
+Here's something I've learned from building prototypes for clients over the past several years: the first version almost never survives contact with real users. Not because it's bad, but because you can't fully understand the problem until you've built something wrong.
+
+I think of it as the iteration tax. You're going to pay it no matter what, so you might as well budget for it.
+
+There are three types of pivots that happen during prototype iteration:
+
+**Data pivots.** You discover the data you planned to use doesn't actually contain what you need. Or it does, but the quality is too inconsistent. Or the data that would make the model great is locked in a system nobody has API access to. So you adjust your approach to work with what's actually available.
+
+**UX pivots.** Users interact with the tool in ways you didn't predict. A document processing tool we built was designed around full-document analysis. Turns out, users mostly needed triage -- "tell me which of these 200 documents need my attention and why." Same underlying capability, completely different interface. We rebuilt the front end in week 8. That happens.
+
+**Scope pivots.** The original problem turns out to be less valuable than an adjacent problem you discovered along the way. A client wanted automated report generation. During the prototype, we realized the real bottleneck wasn't writing reports -- it was finding the data to put in them. The prototype became a data retrieval tool instead. Delivered more value than the original ask.
+
+These pivots aren't waste. They're learning. But they cost time and money, and if you haven't budgeted for them, they feel like failure.
+
+## Managing Expectations Without Killing Momentum
+
+The hardest part of building AI prototypes isn't the technology. It's the conversation with leadership after the demo.
+
+The CEO saw the demo. The board is asking about AI strategy. There's pressure to show results by next quarter. And you're standing there saying "we need three months just for the prototype, and then we'll know whether it's worth building for real."
+
+I've found one framework that works consistently: milestone-based communication instead of feature-based promises.
+
+Don't say "we'll have automated document processing by Q3." Say "by the end of month one, we'll know whether our data is clean enough to support this. By month two, we'll have a working prototype tested against your best human performers. By month three, we'll have a clear picture of what production would cost and whether the ROI justifies it."
+
+This does two things. First, it sets honest expectations. Second, it builds in decision points. After each milestone, leadership can decide to continue, pivot, or stop. Nobody's locked into a year-long initiative based on a two-hour demo.
+
+The other tool I use constantly is what I call the trusted performer test. Before you deploy any AI system, put its outputs alongside the work of your best human performers. Not average performers -- your best ones. If the AI can match or beat them consistently, you've got something. If it can't, you've learned something valuable without betting the farm.
+
+## What Good Looks Like
+
+A healthy prototype process has four stages:
+
+**Stage 1: Prove it works on your data.** Not benchmark data, not sample data -- your actual, messy, inconsistent, real-world data. This stage kills a lot of projects early, which is a feature, not a bug. Better to learn now than after six months of development.
+
+**Stage 2: Put it alongside your best people.** The trusted performer test. Run the AI and your best humans on the same tasks for two weeks. Compare the outputs. Where does the AI match? Where does it fall apart? The answers tell you exactly where the value is.
+
+**Stage 3: Let users break it.** Give it to the people who will actually use it and watch what happens. Don't coach them, don't hover. Just watch. They'll find every edge case, every assumption you got wrong, every workflow gap. This is the most valuable phase and the one most organizations skip because they're afraid of bad results.
+
+**Stage 4: Make the production decision with real data.** You now know what it costs to build the prototype, how it performs on real data, what users actually need, and where the gaps are. You can make an informed decision about production investment. Most organizations skip straight from demo to production decision. This framework puts evidence between enthusiasm and commitment.
+
+## The Honest Number
+
+Building AI prototypes is expensive. It's slow. The outcome is uncertain. I'm not going to pretend otherwise.
+
+But here's what I've also seen: the organizations that succeed with AI are the ones that budget for reality. They plan for the data work, the integration, the iteration, and the change management. They don't expect the demo to be the product. They treat the prototype as a learning investment, not a production shortcut.
+
+Before your next AI initiative, do the honest math. Not just the model cost -- the full picture. Data preparation. Integration engineering. User testing. Iteration cycles. Stakeholder communication. Change management. If the total number still makes sense, you've got a real project. If it doesn't, you just saved yourself six months and a lot of money.
+
+That's not pessimism. That's how you build things that actually work.
