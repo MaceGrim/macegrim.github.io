@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+// Sorted by date descending. Lakota AI Code Camp (portfolio-3) should always be first —
+// give it the newest date to keep it at the top.
+// TODO: Cards look off-center when there aren't enough to fill the viewport. Fix when more projects are added.
 const projects = (await getCollection('portfolio')).sort(
   (a, b) => new Date(b.data.date ?? 0).getTime() - new Date(a.data.date ?? 0).getTime()
 );
