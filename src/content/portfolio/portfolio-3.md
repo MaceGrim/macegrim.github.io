@@ -4,7 +4,8 @@ description: "A summer camp I co-founded to teach Python, data science, and AI t
 icon: "🌐"
 image: "/images/projects/laicc-logo.png"
 image_fit: "contain"
-demo_url: "https://lakota.aicode.camp"
+# demo_url: "https://lakota.aicode.camp"
+demo_url: "https://www.indigigenius.org/lakota-ai-code-camp"
 collection: portfolio
 date: 2026-01-01
 ---
