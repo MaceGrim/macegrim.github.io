@@ -6,6 +6,7 @@ permalink: /talks/2022-10-13-innovation_expo
 venue: "South Dakota Innovation Expo"
 date: 2022-10-13
 location: "Rapid City, South Dakota"
+url: "https://sdinnovationexpo.com/rapid-city"
 ---
 
 [More information here](https://sdinnovationexpo.com/rapid-city)

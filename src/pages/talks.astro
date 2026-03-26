@@ -44,6 +44,11 @@ const talks = (await getCollection('talks')).sort((a, b) => {
                 </time>
               )}
             </div>
+            {talk.data.url && (
+              <a href={talk.data.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 mt-3 text-sm text-burnt-orange hover:underline font-medium">
+                View &rarr;
+              </a>
+            )}
           </div>
         ))}
       </div>

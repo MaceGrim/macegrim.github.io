@@ -9,6 +9,7 @@ const talks = defineCollection({
     type: z.string().optional(),
     venue: z.string().optional(),
     location: z.string().optional(),
+    url: z.string().optional(),
     collection: z.string().optional(),
     permalink: z.string().optional(),
     excerpt: z.string().optional(),
