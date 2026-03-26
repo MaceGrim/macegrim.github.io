@@ -18,6 +18,13 @@ const { title, description = 'Mason Grimshaw - AI Strategy & Implementation' } =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://macegrim.github.io/favicon.png" />
+    <meta property="og:url" content="https://macegrim.github.io" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://macegrim.github.io/favicon.png" />
     <title>{title}</title>
   </head>
   <body class="bg-cream text-navy min-h-screen font-sans antialiased">
