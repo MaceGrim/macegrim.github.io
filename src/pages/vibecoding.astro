@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Vibe Coding 101 | Mason Grimshaw"
+  description="Vibe Coding 101 presentation and resources."
+>
+  <section class="relative bg-navy text-cream py-16 sm:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Workshop</p>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-6">Vibe Coding 101</h1>
+      <p class="text-lg text-cream/70 leading-relaxed max-w-2xl">
+        A short resource page for the Vibe Coding 101 deck.
+      </p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-1 bg-burnt-orange"></div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-xl p-8 shadow-sm border border-cream-dark">
+        <h2 class="text-2xl font-bold text-navy mb-4">Download the Slides</h2>
+        <p class="text-base text-navy/70 leading-relaxed mb-6">
+          Use the link below to download the PowerPoint presentation for Vibe Coding 101.
+        </p>
+        <a
+          href="/downloads/vibe-coding-101.pptx"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-md bg-burnt-orange text-cream font-semibold hover:bg-burnt-orange-dark transition-colors"
+        >
+          Download vibe-coding-101.pptx
+        </a>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-navy/10">
+        <a href="/" class="text-burnt-orange hover:underline font-medium">&larr; Back to Home</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
