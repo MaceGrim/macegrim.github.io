@@ -30,6 +30,7 @@ const portfolio = defineCollection({
     demo_url: z.string().optional(),
     source_url: z.string().optional(),
     image_fit: z.enum(['cover', 'contain']).optional(),
+    webby: z.array(z.object({ label: z.string(), year: z.string(), url: z.string() })).optional(),
   }).passthrough(),
 });
 

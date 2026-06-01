@@ -4,5 +4,9 @@ description: "31 years of whale tracking data from 50+ research groups, brought 
 image: "/images/projects/blue-corridors.png"
 image_fit: "cover"
 demo_url: "https://bluecorridors.org"
+webby:
+  - label: "Webby Winner"
+    year: "2026"
+    url: "https://winners.webbyawards.com/2026/websites-and-mobile-sites/features-design/best-data-visualization/364937/wwf--blue-corridors"
 date: 2025-01-15
 ---
