@@ -7,39 +7,44 @@ const publications = (await getCollection('publications')).sort((a, b) => {
   const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
   return dateB - dateA;
 });
+
+const fmt = (d: Date) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
 ---
 
 <BaseLayout title="Publications | Mason Grimshaw">
-  <section class="py-16 sm:py-20 bg-cream">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Research</p>
-      <h1 class="text-3xl sm:text-4xl font-bold text-navy mb-8">Publications</h1>
+  <section class="page-intro wrap">
+    <span class="eyebrow reveal"><span class="tick">◆</span> Research</span>
+    <h1 class="reveal"><em>Publications.</em></h1>
+  </section>
 
-      <div class="space-y-6">
-        {publications.map((pub) => (
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-cream-dark">
-            <h2 class="text-xl font-bold text-navy">{pub.data.title}</h2>
-            <div class="flex flex-wrap gap-3 mt-2 text-sm text-navy/60">
-              {pub.data.venue && <span class="font-medium text-burnt-orange">{pub.data.venue}</span>}
-              {pub.data.date && (
-                <time datetime={new Date(pub.data.date).toISOString()}>
-                  {new Date(pub.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-                </time>
-              )}
-            </div>
-            {pub.data.excerpt && <p class="mt-3 text-navy/70 leading-relaxed">{pub.data.excerpt}</p>}
-            {pub.data.paperurl && (
-              <a href={pub.data.paperurl} class="inline-block mt-3 text-burnt-orange hover:underline font-medium text-sm">
-                View Paper &rarr;
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
+  <section class="wrap" style="padding-bottom: clamp(40px, 7vw, 80px);">
+    <ul class="entry-list">
+      {publications.map((pub) => {
+        const Tag = pub.data.paperurl ? 'a' : 'div';
+        return (
+          <li>
+            <Tag
+              class="entry reveal"
+              {...(pub.data.paperurl ? { href: pub.data.paperurl, target: '_blank', rel: 'noopener' } : {})}
+            >
+              <span class="entry-date">{pub.data.date ? fmt(pub.data.date) : ''}</span>
+              <div class="entry-main">
+                <h2>{pub.data.title}</h2>
+                {pub.data.excerpt && <p>{pub.data.excerpt}</p>}
+              </div>
+              <span class="entry-meta">
+                {pub.data.venue && <span class="type">{pub.data.venue}</span>}
+                {pub.data.paperurl && <span> ↗</span>}
+              </span>
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
 
-      <div class="mt-12 pt-8 border-t border-navy/10">
-        <a href="/" class="text-burnt-orange hover:underline font-medium">&larr; Back to Home</a>
-      </div>
+    <div class="page-foot">
+      <a class="back-link" href="/"><span>←</span> Back to home</a>
     </div>
   </section>
 </BaseLayout>

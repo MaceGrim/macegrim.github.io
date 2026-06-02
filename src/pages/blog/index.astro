@@ -7,49 +7,64 @@ const posts = (await getCollection('blog')).sort((a, b) => {
   const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
   return dateB - dateA;
 });
+
+const fmt = (d: Date) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+
+const [featured, ...rest] = posts;
 ---
 
 <BaseLayout title="Blog | Mason Grimshaw">
-  <section class="py-16 sm:py-20 bg-cream">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Writing</p>
-      <h1 class="text-3xl sm:text-4xl font-bold text-navy mb-8">Blog</h1>
+  <section class="blog-masthead wrap">
+    <div class="index reveal">WRITING / NOTES</div>
+    <h1 class="reveal">Thinking <em>out loud.</em></h1>
+    <p class="reveal">Notes on building AI systems, teaching data science, and the occasional experiment that got out of hand.</p>
+  </section>
 
-      <div class="space-y-6">
-        {posts.map((post) => (
-          <a href={`/blog/${post.id}`} class="bg-white rounded-xl p-6 shadow-sm border border-cream-dark hover:shadow-md hover:border-burnt-orange/30 transition-all block">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-              <div>
-                {post.data.category && (
-                  <span class="inline-block px-3 py-1 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-2 uppercase tracking-wider">
-                    {post.data.category}
-                  </span>
-                )}
-                <h2 class="text-xl font-bold text-navy">{post.data.title}</h2>
-                {post.data.description && (
-                  <p class="text-navy/60 mt-2 leading-relaxed">{post.data.description}</p>
+  <div class="wrap" style="padding-bottom: clamp(40px, 7vw, 80px);">
+    {featured && (
+      <a class="featured no-thumb reveal" href={`/blog/${featured.id}`}>
+        <div class="feat-body">
+          <div class="feat-kicker">
+            {featured.data.category && <span>{featured.data.category}</span>}
+            {featured.data.category && featured.data.date && <span class="dot">·</span>}
+            {featured.data.date && <span>{fmt(featured.data.date)}</span>}
+          </div>
+          <h2>{featured.data.title}</h2>
+          {(featured.data.description || featured.data.excerpt) && (
+            <p class="feat-excerpt">{featured.data.description ?? featured.data.excerpt}</p>
+          )}
+          <span class="arrow">Read <span>→</span></span>
+        </div>
+      </a>
+    )}
+
+    {rest.length > 0 && (
+      <ul class="post-list">
+        {rest.map((post) => (
+          <li>
+            <a class="post-row reveal" href={`/blog/${post.id}`}>
+              <span class="post-date">{post.data.date ? fmt(post.data.date) : ''}</span>
+              <div class="post-main">
+                <h3>{post.data.title}</h3>
+                {(post.data.description || post.data.excerpt) && (
+                  <p>{post.data.description ?? post.data.excerpt}</p>
                 )}
                 {post.data.tags && (
-                  <div class="flex flex-wrap gap-2 mt-3">
-                    {post.data.tags.map((tag: string) => (
-                      <span class="text-xs bg-navy/5 text-navy/60 px-2 py-1 rounded">{tag}</span>
-                    ))}
+                  <div class="post-tags">
+                    {post.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
                   </div>
                 )}
               </div>
-              {post.data.date && (
-                <time class="text-sm text-navy/50 whitespace-nowrap" datetime={new Date(post.data.date).toISOString()}>
-                  {new Date(post.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                </time>
-              )}
-            </div>
-          </a>
+              <span class="post-meta">{post.data.category}</span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
+    )}
 
-      <div class="mt-12 pt-8 border-t border-navy/10">
-        <a href="/" class="text-burnt-orange hover:underline font-medium">&larr; Back to Home</a>
-      </div>
+    <div class="page-foot">
+      <a class="back-link" href="/"><span>←</span> Back to home</a>
     </div>
-  </section>
+  </div>
 </BaseLayout>

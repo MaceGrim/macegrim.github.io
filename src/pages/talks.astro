@@ -7,53 +7,51 @@ const talks = (await getCollection('talks')).sort((a, b) => {
   const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
   return dateB - dateA;
 });
+
+const fmt = (d: Date) =>
+  new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
 ---
 
 <BaseLayout title="Talks | Mason Grimshaw">
-  <!-- Header -->
-  <section class="relative bg-navy text-cream py-16 sm:py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-burnt-orange font-semibold text-sm uppercase tracking-widest mb-4">Speaking</p>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-6">Talks & Panels</h1>
-      <p class="text-lg text-cream/70 leading-relaxed max-w-2xl">
-        I talk about building AI tools for the people who need them, teaching data science to Indigenous youth, and why the people closest to a problem should be the ones building the tools. TEDx, NeurIPS, Axios, and a lot of classrooms in between.
-      </p>
-    </div>
-    <div class="absolute bottom-0 left-0 right-0 h-1 bg-burnt-orange"></div>
+  <section class="page-intro wrap">
+    <span class="eyebrow reveal"><span class="tick">◆</span> Speaking</span>
+    <h1 class="reveal">Talks &amp; <em>panels.</em></h1>
+    <p class="page-lead reveal">
+      I talk about building AI tools for the people who need them, teaching data science to Indigenous youth, and why the people closest to a problem should be the ones building the tools — TEDx, NeurIPS, Axios, and a lot of classrooms in between.
+    </p>
   </section>
 
-  <section class="py-16 sm:py-20 bg-cream">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-6">
-        {talks.map((talk) => (
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-cream-dark">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-              <div>
-                <h2 class="text-xl font-bold text-navy">{talk.data.title}</h2>
-                <div class="flex flex-wrap gap-3 mt-2 text-sm text-navy/60">
-                  {talk.data.venue && <span class="font-medium text-burnt-orange">{talk.data.venue}</span>}
-                  {talk.data.type && <span class="bg-navy/5 px-2 py-0.5 rounded">{talk.data.type}</span>}
-                  {talk.data.location && <span>{talk.data.location}</span>}
-                </div>
+  <section class="wrap" style="padding-bottom: clamp(40px, 7vw, 80px);">
+    <ul class="entry-list">
+      {talks.map((talk) => {
+        const Tag = talk.data.url ? 'a' : 'div';
+        return (
+          <li>
+            <Tag
+              class="entry reveal"
+              {...(talk.data.url ? { href: talk.data.url, target: '_blank', rel: 'noopener' } : {})}
+            >
+              <span class="entry-date">{talk.data.date ? fmt(talk.data.date) : ''}</span>
+              <div class="entry-main">
+                <h2>{talk.data.title}</h2>
+                {(talk.data.venue || talk.data.location) && (
+                  <p>
+                    {talk.data.venue}{talk.data.venue && talk.data.location ? ' · ' : ''}{talk.data.location}
+                  </p>
+                )}
               </div>
-              {talk.data.date && (
-                <time class="text-sm text-navy/50 whitespace-nowrap" datetime={new Date(talk.data.date).toISOString()}>
-                  {new Date(talk.data.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-                </time>
-              )}
-            </div>
-            {talk.data.url && (
-              <a href={talk.data.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 mt-3 text-sm text-burnt-orange hover:underline font-medium">
-                View &rarr;
-              </a>
-            )}
-          </div>
-        ))}
-      </div>
+              <span class="entry-meta">
+                {talk.data.type && <span class="type">{talk.data.type}</span>}
+                {talk.data.url && <span> ↗</span>}
+              </span>
+            </Tag>
+          </li>
+        );
+      })}
+    </ul>
 
-      <div class="mt-12 pt-8 border-t border-navy/10">
-        <a href="/" class="text-burnt-orange hover:underline font-medium">&larr; Back to Home</a>
-      </div>
+    <div class="page-foot">
+      <a class="back-link" href="/"><span>←</span> Back to home</a>
     </div>
   </section>
 </BaseLayout>

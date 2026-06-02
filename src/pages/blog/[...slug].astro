@@ -15,51 +15,43 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="py-16 sm:py-20 bg-cream">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <header class="mb-12">
-        {post.data.category && (
-          <span class="inline-block px-3 py-1 bg-burnt-orange/10 text-burnt-orange text-xs font-semibold rounded-full mb-4 uppercase tracking-wider">
-            {post.data.category}
-          </span>
-        )}
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy leading-tight mb-4">
-          {post.data.title}
-        </h1>
-        {post.data.description && (
-          <p class="text-lg text-navy/70 leading-relaxed mb-4">{post.data.description}</p>
-        )}
+  <article class="article wrap">
+    <header class="article-head">
+      <div class="article-kicker">
+        {post.data.category && <span>{post.data.category}</span>}
+        {post.data.category && post.data.date && <span class="dot">·</span>}
         {post.data.date && (
-          <time class="text-sm text-navy/50" datetime={post.data.date.toISOString()}>
+          <time datetime={post.data.date.toISOString()}>
             {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         )}
-        {post.data.tags && (
-          <div class="flex flex-wrap gap-2 mt-4">
-            {post.data.tags.map((tag: string) => (
-              <span class="text-xs bg-navy/5 text-navy/60 px-2 py-1 rounded">{tag}</span>
-            ))}
+      </div>
+      <h1 class="article-title">{post.data.title}</h1>
+      {post.data.description && (
+        <p class="article-standfirst">{post.data.description}</p>
+      )}
+      <div class="byline">
+        <img src="/images/profile.png" alt="Mason Grimshaw" />
+        <div>
+          <div class="who">Mason Grimshaw</div>
+          <div class="when">
+            {post.data.date && (
+              <span>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+            )}
+            {post.data.tags && post.data.tags.length > 0 && (
+              <span><span class="sep">/</span>{post.data.tags.join(' · ')}</span>
+            )}
           </div>
-        )}
-      </header>
-
-      <!-- Content -->
-      <div class="prose prose-lg prose-navy max-w-none
-        prose-headings:text-navy prose-headings:font-bold
-        prose-a:text-burnt-orange prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-navy
-        prose-code:text-burnt-orange prose-code:bg-navy/5 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
-        prose-pre:bg-navy prose-pre:text-cream
-        prose-blockquote:border-burnt-orange prose-blockquote:text-navy/80
-        prose-img:rounded-xl prose-img:shadow-md">
-        <Content />
+        </div>
       </div>
+    </header>
 
-      <!-- Back link -->
-      <div class="mt-16 pt-8 border-t border-navy/10">
-        <a href="/blog" class="text-burnt-orange hover:underline font-medium">&larr; Back to Blog</a>
-      </div>
+    <div class="prose">
+      <Content />
+    </div>
+
+    <div class="article-foot">
+      <a class="back-link" href="/blog"><span>←</span> Back to writing</a>
     </div>
   </article>
 </BaseLayout>
