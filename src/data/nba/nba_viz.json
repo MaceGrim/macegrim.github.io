@@ -1,0 +1,4867 @@
+{
+  "models": [
+    "gemma3:12b",
+    "llama3.1:8b",
+    "mistral:7b",
+    "phi4:14b",
+    "qwen2.5:7b"
+  ],
+  "players": [
+    "Kareem Abdul-Jabbar",
+    "Ray Allen",
+    "Giannis Antetokounmpo",
+    "Carmelo Anthony",
+    "Nate Archibald",
+    "Paul Arizin",
+    "Charles Barkley",
+    "Rick Barry",
+    "Elgin Baylor",
+    "Dave Bing",
+    "Larry Bird",
+    "Kobe Bryant",
+    "Wilt Chamberlain",
+    "Bob Cousy",
+    "Dave Cowens",
+    "Billy Cunningham",
+    "Stephen Curry",
+    "Anthony Davis",
+    "Dave DeBusschere",
+    "Clyde Drexler",
+    "Tim Duncan",
+    "Kevin Durant",
+    "Julius Erving",
+    "Patrick Ewing",
+    "Walt Frazier",
+    "Kevin Garnett",
+    "George Gervin",
+    "Hal Greer",
+    "James Harden",
+    "John Havlicek",
+    "Elvin Hayes",
+    "Allen Iverson",
+    "LeBron James",
+    "Magic Johnson",
+    "Sam Jones",
+    "Michael Jordan",
+    "Jason Kidd",
+    "Kawhi Leonard",
+    "Damian Lillard",
+    "Jerry Lucas",
+    "Karl Malone",
+    "Moses Malone",
+    "Pete Maravich",
+    "Bob McAdoo",
+    "Kevin McHale",
+    "George Mikan",
+    "Reggie Miller",
+    "Earl Monroe",
+    "Steve Nash",
+    "Dirk Nowitzki",
+    "Hakeem Olajuwon",
+    "Shaquille O'Neal",
+    "Robert Parish",
+    "Chris Paul",
+    "Gary Payton",
+    "Bob Pettit",
+    "Paul Pierce",
+    "Scottie Pippen",
+    "Willis Reed",
+    "Oscar Robertson",
+    "David Robinson",
+    "Dennis Rodman",
+    "Bill Russell",
+    "Dolph Schayes",
+    "Bill Sharman",
+    "John Stockton",
+    "Isiah Thomas",
+    "Nate Thurmond",
+    "Wes Unseld",
+    "Dwyane Wade",
+    "Bill Walton",
+    "Jerry West",
+    "Russell Westbrook",
+    "Lenny Wilkens",
+    "Dominique Wilkins",
+    "James Worthy",
+    "Chris Bosh",
+    "Dwight Howard",
+    "Yao Ming",
+    "Tracy McGrady",
+    "Vince Carter",
+    "Alonzo Mourning",
+    "Dikembe Mutombo",
+    "Grant Hill",
+    "LaMarcus Aldridge",
+    "Alex English",
+    "Adrian Dantley",
+    "Bob Lanier",
+    "Bernard King",
+    "Tony Parker",
+    "Manu Ginobili",
+    "Pau Gasol",
+    "Ben Wallace",
+    "Chauncey Billups",
+    "Dennis Johnson",
+    "Joe Dumars",
+    "Penny Hardaway",
+    "Tim Hardaway",
+    "Mitch Richmond",
+    "Chris Mullin",
+    "Chris Webber",
+    "Shawn Kemp",
+    "Rasheed Wallace",
+    "Nikola Jokic",
+    "Luka Doncic",
+    "Joel Embiid",
+    "Jayson Tatum",
+    "Jimmy Butler",
+    "Kyrie Irving",
+    "Devin Booker",
+    "Ja Morant",
+    "Shai Gilgeous-Alexander",
+    "Trae Young",
+    "Donovan Mitchell",
+    "Anthony Edwards",
+    "DeMar DeRozan",
+    "Klay Thompson",
+    "Draymond Green",
+    "Rudy Gobert",
+    "Bam Adebayo",
+    "Pascal Siakam",
+    "Jrue Holiday",
+    "Jaylen Brown",
+    "Paul George",
+    "Artis Gilmore",
+    "Sidney Moncrief",
+    "Jack Sikma",
+    "World B. Free",
+    "Connie Hawkins",
+    "Spencer Haywood",
+    "Marques Johnson",
+    "Tom Heinsohn",
+    "Gail Goodrich",
+    "Paul Westphal",
+    "Marc Gasol",
+    "Al Horford",
+    "Kyle Lowry",
+    "John Wall",
+    "Gilbert Arenas",
+    "Baron Davis",
+    "Amar'e Stoudemire",
+    "Shawn Marion",
+    "Lamar Odom",
+    "Andre Iguodala"
+  ],
+  "counts": {
+    "total_votes": 51480,
+    "valid_votes": 51473,
+    "failed": 7
+  },
+  "combined_ranking": [
+    {
+      "name": "Michael Jordan",
+      "rank": 1,
+      "elo": 2677.7
+    },
+    {
+      "name": "Kareem Abdul-Jabbar",
+      "rank": 2,
+      "elo": 2631.2
+    },
+    {
+      "name": "LeBron James",
+      "rank": 3,
+      "elo": 2584.9
+    },
+    {
+      "name": "Bill Russell",
+      "rank": 4,
+      "elo": 2494.4
+    },
+    {
+      "name": "Kevin Durant",
+      "rank": 5,
+      "elo": 2405.9
+    },
+    {
+      "name": "Tim Duncan",
+      "rank": 6,
+      "elo": 2360.0
+    },
+    {
+      "name": "Hakeem Olajuwon",
+      "rank": 7,
+      "elo": 2355.7
+    },
+    {
+      "name": "Larry Bird",
+      "rank": 8,
+      "elo": 2293.5
+    },
+    {
+      "name": "Stephen Curry",
+      "rank": 9,
+      "elo": 2275.7
+    },
+    {
+      "name": "Kobe Bryant",
+      "rank": 10,
+      "elo": 2274.5
+    },
+    {
+      "name": "Kawhi Leonard",
+      "rank": 11,
+      "elo": 2233.8
+    },
+    {
+      "name": "Nikola Jokic",
+      "rank": 12,
+      "elo": 2190.5
+    },
+    {
+      "name": "Giannis Antetokounmpo",
+      "rank": 13,
+      "elo": 2169.7
+    },
+    {
+      "name": "Magic Johnson",
+      "rank": 14,
+      "elo": 2154.4
+    },
+    {
+      "name": "Shaquille O'Neal",
+      "rank": 15,
+      "elo": 2149.7
+    },
+    {
+      "name": "Joel Embiid",
+      "rank": 16,
+      "elo": 2130.9
+    },
+    {
+      "name": "Oscar Robertson",
+      "rank": 17,
+      "elo": 2110.0
+    },
+    {
+      "name": "Karl Malone",
+      "rank": 18,
+      "elo": 2094.5
+    },
+    {
+      "name": "Steve Nash",
+      "rank": 19,
+      "elo": 2055.9
+    },
+    {
+      "name": "Chris Paul",
+      "rank": 20,
+      "elo": 1994.1
+    },
+    {
+      "name": "Scottie Pippen",
+      "rank": 21,
+      "elo": 1956.2
+    },
+    {
+      "name": "James Worthy",
+      "rank": 22,
+      "elo": 1951.0
+    },
+    {
+      "name": "Bob Cousy",
+      "rank": 23,
+      "elo": 1933.7
+    },
+    {
+      "name": "Julius Erving",
+      "rank": 24,
+      "elo": 1903.5
+    },
+    {
+      "name": "Moses Malone",
+      "rank": 25,
+      "elo": 1879.5
+    },
+    {
+      "name": "Gary Payton",
+      "rank": 26,
+      "elo": 1876.4
+    },
+    {
+      "name": "Dirk Nowitzki",
+      "rank": 27,
+      "elo": 1874.2
+    },
+    {
+      "name": "Bam Adebayo",
+      "rank": 28,
+      "elo": 1872.9
+    },
+    {
+      "name": "Ray Allen",
+      "rank": 29,
+      "elo": 1870.2
+    },
+    {
+      "name": "Devin Booker",
+      "rank": 30,
+      "elo": 1864.8
+    },
+    {
+      "name": "Chauncey Billups",
+      "rank": 31,
+      "elo": 1862.9
+    },
+    {
+      "name": "Kevin Garnett",
+      "rank": 32,
+      "elo": 1796.6
+    },
+    {
+      "name": "Bob Pettit",
+      "rank": 33,
+      "elo": 1782.3
+    },
+    {
+      "name": "Shai Gilgeous-Alexander",
+      "rank": 34,
+      "elo": 1773.3
+    },
+    {
+      "name": "Wilt Chamberlain",
+      "rank": 35,
+      "elo": 1770.9
+    },
+    {
+      "name": "Allen Iverson",
+      "rank": 36,
+      "elo": 1767.0
+    },
+    {
+      "name": "Dwyane Wade",
+      "rank": 37,
+      "elo": 1766.0
+    },
+    {
+      "name": "Paul George",
+      "rank": 38,
+      "elo": 1763.8
+    },
+    {
+      "name": "Klay Thompson",
+      "rank": 39,
+      "elo": 1757.7
+    },
+    {
+      "name": "Donovan Mitchell",
+      "rank": 40,
+      "elo": 1756.5
+    },
+    {
+      "name": "Russell Westbrook",
+      "rank": 41,
+      "elo": 1745.6
+    },
+    {
+      "name": "Damian Lillard",
+      "rank": 42,
+      "elo": 1719.3
+    },
+    {
+      "name": "Trae Young",
+      "rank": 43,
+      "elo": 1716.7
+    },
+    {
+      "name": "James Harden",
+      "rank": 44,
+      "elo": 1712.3
+    },
+    {
+      "name": "Anthony Davis",
+      "rank": 45,
+      "elo": 1710.2
+    },
+    {
+      "name": "Jerry West",
+      "rank": 46,
+      "elo": 1705.5
+    },
+    {
+      "name": "John Stockton",
+      "rank": 47,
+      "elo": 1703.4
+    },
+    {
+      "name": "Paul Pierce",
+      "rank": 48,
+      "elo": 1703.2
+    },
+    {
+      "name": "Luka Doncic",
+      "rank": 49,
+      "elo": 1693.1
+    },
+    {
+      "name": "Clyde Drexler",
+      "rank": 50,
+      "elo": 1685.8
+    },
+    {
+      "name": "Jason Kidd",
+      "rank": 51,
+      "elo": 1627.2
+    },
+    {
+      "name": "Nate Archibald",
+      "rank": 52,
+      "elo": 1613.3
+    },
+    {
+      "name": "Reggie Miller",
+      "rank": 53,
+      "elo": 1610.1
+    },
+    {
+      "name": "George Gervin",
+      "rank": 54,
+      "elo": 1609.3
+    },
+    {
+      "name": "Kyrie Irving",
+      "rank": 55,
+      "elo": 1596.6
+    },
+    {
+      "name": "Dave Cowens",
+      "rank": 56,
+      "elo": 1580.6
+    },
+    {
+      "name": "Hal Greer",
+      "rank": 57,
+      "elo": 1573.5
+    },
+    {
+      "name": "Tony Parker",
+      "rank": 58,
+      "elo": 1571.3
+    },
+    {
+      "name": "Jimmy Butler",
+      "rank": 59,
+      "elo": 1566.1
+    },
+    {
+      "name": "Rudy Gobert",
+      "rank": 60,
+      "elo": 1556.4
+    },
+    {
+      "name": "Tracy McGrady",
+      "rank": 61,
+      "elo": 1552.3
+    },
+    {
+      "name": "John Havlicek",
+      "rank": 62,
+      "elo": 1551.7
+    },
+    {
+      "name": "Bob Lanier",
+      "rank": 63,
+      "elo": 1547.8
+    },
+    {
+      "name": "Ja Morant",
+      "rank": 64,
+      "elo": 1542.3
+    },
+    {
+      "name": "Jayson Tatum",
+      "rank": 65,
+      "elo": 1535.8
+    },
+    {
+      "name": "Jaylen Brown",
+      "rank": 66,
+      "elo": 1530.1
+    },
+    {
+      "name": "Robert Parish",
+      "rank": 67,
+      "elo": 1518.2
+    },
+    {
+      "name": "Elgin Baylor",
+      "rank": 68,
+      "elo": 1515.4
+    },
+    {
+      "name": "Isiah Thomas",
+      "rank": 69,
+      "elo": 1513.6
+    },
+    {
+      "name": "Patrick Ewing",
+      "rank": 70,
+      "elo": 1513.6
+    },
+    {
+      "name": "Draymond Green",
+      "rank": 71,
+      "elo": 1503.0
+    },
+    {
+      "name": "Grant Hill",
+      "rank": 72,
+      "elo": 1499.1
+    },
+    {
+      "name": "Kyle Lowry",
+      "rank": 73,
+      "elo": 1493.9
+    },
+    {
+      "name": "Ben Wallace",
+      "rank": 74,
+      "elo": 1479.9
+    },
+    {
+      "name": "Pascal Siakam",
+      "rank": 75,
+      "elo": 1478.1
+    },
+    {
+      "name": "Dennis Johnson",
+      "rank": 76,
+      "elo": 1465.3
+    },
+    {
+      "name": "David Robinson",
+      "rank": 77,
+      "elo": 1432.7
+    },
+    {
+      "name": "Walt Frazier",
+      "rank": 78,
+      "elo": 1430.9
+    },
+    {
+      "name": "Elvin Hayes",
+      "rank": 79,
+      "elo": 1425.6
+    },
+    {
+      "name": "Earl Monroe",
+      "rank": 80,
+      "elo": 1417.3
+    },
+    {
+      "name": "Manu Ginobili",
+      "rank": 81,
+      "elo": 1408.8
+    },
+    {
+      "name": "Al Horford",
+      "rank": 82,
+      "elo": 1396.4
+    },
+    {
+      "name": "Dominique Wilkins",
+      "rank": 83,
+      "elo": 1394.2
+    },
+    {
+      "name": "Artis Gilmore",
+      "rank": 84,
+      "elo": 1380.1
+    },
+    {
+      "name": "Kevin McHale",
+      "rank": 85,
+      "elo": 1378.0
+    },
+    {
+      "name": "Jrue Holiday",
+      "rank": 86,
+      "elo": 1372.9
+    },
+    {
+      "name": "Jerry Lucas",
+      "rank": 87,
+      "elo": 1354.4
+    },
+    {
+      "name": "Shawn Kemp",
+      "rank": 88,
+      "elo": 1345.5
+    },
+    {
+      "name": "Charles Barkley",
+      "rank": 89,
+      "elo": 1336.7
+    },
+    {
+      "name": "Adrian Dantley",
+      "rank": 90,
+      "elo": 1334.0
+    },
+    {
+      "name": "Pete Maravich",
+      "rank": 91,
+      "elo": 1330.3
+    },
+    {
+      "name": "Carmelo Anthony",
+      "rank": 92,
+      "elo": 1320.8
+    },
+    {
+      "name": "Wes Unseld",
+      "rank": 93,
+      "elo": 1317.6
+    },
+    {
+      "name": "Pau Gasol",
+      "rank": 94,
+      "elo": 1309.3
+    },
+    {
+      "name": "Nate Thurmond",
+      "rank": 95,
+      "elo": 1307.9
+    },
+    {
+      "name": "Vince Carter",
+      "rank": 96,
+      "elo": 1297.5
+    },
+    {
+      "name": "Rasheed Wallace",
+      "rank": 97,
+      "elo": 1297.1
+    },
+    {
+      "name": "Andre Iguodala",
+      "rank": 98,
+      "elo": 1294.4
+    },
+    {
+      "name": "Amar'e Stoudemire",
+      "rank": 99,
+      "elo": 1292.8
+    },
+    {
+      "name": "Willis Reed",
+      "rank": 100,
+      "elo": 1288.7
+    },
+    {
+      "name": "Tim Hardaway",
+      "rank": 101,
+      "elo": 1281.5
+    },
+    {
+      "name": "Chris Mullin",
+      "rank": 102,
+      "elo": 1276.4
+    },
+    {
+      "name": "Alonzo Mourning",
+      "rank": 103,
+      "elo": 1260.6
+    },
+    {
+      "name": "DeMar DeRozan",
+      "rank": 104,
+      "elo": 1257.7
+    },
+    {
+      "name": "Tom Heinsohn",
+      "rank": 105,
+      "elo": 1256.0
+    },
+    {
+      "name": "Bill Walton",
+      "rank": 106,
+      "elo": 1243.2
+    },
+    {
+      "name": "Sam Jones",
+      "rank": 107,
+      "elo": 1217.7
+    },
+    {
+      "name": "Chris Bosh",
+      "rank": 108,
+      "elo": 1216.6
+    },
+    {
+      "name": "Mitch Richmond",
+      "rank": 109,
+      "elo": 1210.6
+    },
+    {
+      "name": "Marc Gasol",
+      "rank": 110,
+      "elo": 1209.9
+    },
+    {
+      "name": "Shawn Marion",
+      "rank": 111,
+      "elo": 1197.6
+    },
+    {
+      "name": "Dwight Howard",
+      "rank": 112,
+      "elo": 1183.0
+    },
+    {
+      "name": "LaMarcus Aldridge",
+      "rank": 113,
+      "elo": 1155.7
+    },
+    {
+      "name": "Penny Hardaway",
+      "rank": 114,
+      "elo": 1135.4
+    },
+    {
+      "name": "George Mikan",
+      "rank": 115,
+      "elo": 1134.0
+    },
+    {
+      "name": "Paul Westphal",
+      "rank": 116,
+      "elo": 1129.3
+    },
+    {
+      "name": "Spencer Haywood",
+      "rank": 117,
+      "elo": 1113.5
+    },
+    {
+      "name": "Baron Davis",
+      "rank": 118,
+      "elo": 1063.5
+    },
+    {
+      "name": "Bill Sharman",
+      "rank": 119,
+      "elo": 1022.4
+    },
+    {
+      "name": "Dennis Rodman",
+      "rank": 120,
+      "elo": 1019.6
+    },
+    {
+      "name": "Yao Ming",
+      "rank": 121,
+      "elo": 1013.3
+    },
+    {
+      "name": "Anthony Edwards",
+      "rank": 122,
+      "elo": 1003.0
+    },
+    {
+      "name": "Rick Barry",
+      "rank": 123,
+      "elo": 991.7
+    },
+    {
+      "name": "Dikembe Mutombo",
+      "rank": 124,
+      "elo": 969.3
+    },
+    {
+      "name": "Joe Dumars",
+      "rank": 125,
+      "elo": 958.1
+    },
+    {
+      "name": "Gail Goodrich",
+      "rank": 126,
+      "elo": 946.5
+    },
+    {
+      "name": "Bob McAdoo",
+      "rank": 127,
+      "elo": 930.6
+    },
+    {
+      "name": "Sidney Moncrief",
+      "rank": 128,
+      "elo": 915.0
+    },
+    {
+      "name": "Dave DeBusschere",
+      "rank": 129,
+      "elo": 904.8
+    },
+    {
+      "name": "John Wall",
+      "rank": 130,
+      "elo": 894.6
+    },
+    {
+      "name": "Gilbert Arenas",
+      "rank": 131,
+      "elo": 890.9
+    },
+    {
+      "name": "Alex English",
+      "rank": 132,
+      "elo": 889.2
+    },
+    {
+      "name": "Marques Johnson",
+      "rank": 133,
+      "elo": 884.7
+    },
+    {
+      "name": "Billy Cunningham",
+      "rank": 134,
+      "elo": 881.8
+    },
+    {
+      "name": "Chris Webber",
+      "rank": 135,
+      "elo": 881.0
+    },
+    {
+      "name": "Lamar Odom",
+      "rank": 136,
+      "elo": 863.6
+    },
+    {
+      "name": "Bernard King",
+      "rank": 137,
+      "elo": 836.0
+    },
+    {
+      "name": "Dolph Schayes",
+      "rank": 138,
+      "elo": 785.2
+    },
+    {
+      "name": "Paul Arizin",
+      "rank": 139,
+      "elo": 723.5
+    },
+    {
+      "name": "Connie Hawkins",
+      "rank": 140,
+      "elo": 699.7
+    },
+    {
+      "name": "Lenny Wilkens",
+      "rank": 141,
+      "elo": 660.4
+    },
+    {
+      "name": "World B. Free",
+      "rank": 142,
+      "elo": 655.0
+    },
+    {
+      "name": "Jack Sikma",
+      "rank": 143,
+      "elo": 573.4
+    },
+    {
+      "name": "Dave Bing",
+      "rank": 144,
+      "elo": 544.7
+    }
+  ],
+  "model_rankings": {
+    "gemma3:12b": [
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "rank": 1,
+        "elo": 2046.8
+      },
+      {
+        "name": "Larry Bird",
+        "rank": 2,
+        "elo": 2024.0
+      },
+      {
+        "name": "Michael Jordan",
+        "rank": 3,
+        "elo": 2018.9
+      },
+      {
+        "name": "Wilt Chamberlain",
+        "rank": 4,
+        "elo": 2012.8
+      },
+      {
+        "name": "LeBron James",
+        "rank": 5,
+        "elo": 2010.0
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "rank": 6,
+        "elo": 1994.0
+      },
+      {
+        "name": "Tim Duncan",
+        "rank": 7,
+        "elo": 1988.1
+      },
+      {
+        "name": "Kobe Bryant",
+        "rank": 8,
+        "elo": 1978.6
+      },
+      {
+        "name": "Bill Russell",
+        "rank": 9,
+        "elo": 1959.3
+      },
+      {
+        "name": "Magic Johnson",
+        "rank": 10,
+        "elo": 1955.8
+      },
+      {
+        "name": "Stephen Curry",
+        "rank": 11,
+        "elo": 1948.4
+      },
+      {
+        "name": "Kevin Durant",
+        "rank": 12,
+        "elo": 1945.9
+      },
+      {
+        "name": "Charles Barkley",
+        "rank": 13,
+        "elo": 1945.0
+      },
+      {
+        "name": "Hakeem Olajuwon",
+        "rank": 14,
+        "elo": 1934.1
+      },
+      {
+        "name": "Elgin Baylor",
+        "rank": 15,
+        "elo": 1921.3
+      },
+      {
+        "name": "Nikola Jokic",
+        "rank": 16,
+        "elo": 1918.1
+      },
+      {
+        "name": "Julius Erving",
+        "rank": 17,
+        "elo": 1914.3
+      },
+      {
+        "name": "George Mikan",
+        "rank": 18,
+        "elo": 1912.4
+      },
+      {
+        "name": "Karl Malone",
+        "rank": 19,
+        "elo": 1906.2
+      },
+      {
+        "name": "Elvin Hayes",
+        "rank": 20,
+        "elo": 1900.8
+      },
+      {
+        "name": "Bob Cousy",
+        "rank": 21,
+        "elo": 1895.4
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "rank": 22,
+        "elo": 1888.0
+      },
+      {
+        "name": "Walt Frazier",
+        "rank": 23,
+        "elo": 1879.2
+      },
+      {
+        "name": "Ray Allen",
+        "rank": 24,
+        "elo": 1877.0
+      },
+      {
+        "name": "Sam Jones",
+        "rank": 25,
+        "elo": 1867.9
+      },
+      {
+        "name": "Kevin Garnett",
+        "rank": 26,
+        "elo": 1850.8
+      },
+      {
+        "name": "Patrick Ewing",
+        "rank": 27,
+        "elo": 1826.7
+      },
+      {
+        "name": "Anthony Davis",
+        "rank": 28,
+        "elo": 1823.7
+      },
+      {
+        "name": "Oscar Robertson",
+        "rank": 29,
+        "elo": 1823.4
+      },
+      {
+        "name": "John Havlicek",
+        "rank": 30,
+        "elo": 1822.8
+      },
+      {
+        "name": "Dirk Nowitzki",
+        "rank": 31,
+        "elo": 1810.3
+      },
+      {
+        "name": "David Robinson",
+        "rank": 32,
+        "elo": 1807.8
+      },
+      {
+        "name": "Moses Malone",
+        "rank": 33,
+        "elo": 1795.0
+      },
+      {
+        "name": "Kevin McHale",
+        "rank": 34,
+        "elo": 1794.8
+      },
+      {
+        "name": "Hal Greer",
+        "rank": 35,
+        "elo": 1793.9
+      },
+      {
+        "name": "Kawhi Leonard",
+        "rank": 36,
+        "elo": 1791.7
+      },
+      {
+        "name": "Allen Iverson",
+        "rank": 37,
+        "elo": 1788.5
+      },
+      {
+        "name": "Scottie Pippen",
+        "rank": 38,
+        "elo": 1782.7
+      },
+      {
+        "name": "James Harden",
+        "rank": 39,
+        "elo": 1781.7
+      },
+      {
+        "name": "Clyde Drexler",
+        "rank": 40,
+        "elo": 1781.5
+      },
+      {
+        "name": "Rick Barry",
+        "rank": 41,
+        "elo": 1770.2
+      },
+      {
+        "name": "Gary Payton",
+        "rank": 42,
+        "elo": 1769.2
+      },
+      {
+        "name": "Dave DeBusschere",
+        "rank": 43,
+        "elo": 1768.6
+      },
+      {
+        "name": "Jason Kidd",
+        "rank": 44,
+        "elo": 1765.0
+      },
+      {
+        "name": "John Stockton",
+        "rank": 45,
+        "elo": 1758.6
+      },
+      {
+        "name": "Reggie Miller",
+        "rank": 46,
+        "elo": 1755.1
+      },
+      {
+        "name": "Jerry West",
+        "rank": 47,
+        "elo": 1754.4
+      },
+      {
+        "name": "George Gervin",
+        "rank": 48,
+        "elo": 1748.9
+      },
+      {
+        "name": "Dwyane Wade",
+        "rank": 49,
+        "elo": 1748.3
+      },
+      {
+        "name": "Dave Bing",
+        "rank": 50,
+        "elo": 1737.6
+      },
+      {
+        "name": "Carmelo Anthony",
+        "rank": 51,
+        "elo": 1736.3
+      },
+      {
+        "name": "Paul Pierce",
+        "rank": 52,
+        "elo": 1735.6
+      },
+      {
+        "name": "Bob McAdoo",
+        "rank": 53,
+        "elo": 1730.0
+      },
+      {
+        "name": "Steve Nash",
+        "rank": 54,
+        "elo": 1729.3
+      },
+      {
+        "name": "Damian Lillard",
+        "rank": 55,
+        "elo": 1726.2
+      },
+      {
+        "name": "Isiah Thomas",
+        "rank": 56,
+        "elo": 1714.6
+      },
+      {
+        "name": "Robert Parish",
+        "rank": 57,
+        "elo": 1713.7
+      },
+      {
+        "name": "Luka Doncic",
+        "rank": 58,
+        "elo": 1712.2
+      },
+      {
+        "name": "Chris Paul",
+        "rank": 59,
+        "elo": 1692.8
+      },
+      {
+        "name": "Jerry Lucas",
+        "rank": 60,
+        "elo": 1664.4
+      },
+      {
+        "name": "Dave Cowens",
+        "rank": 61,
+        "elo": 1664.3
+      },
+      {
+        "name": "Bob Pettit",
+        "rank": 62,
+        "elo": 1663.5
+      },
+      {
+        "name": "Lenny Wilkens",
+        "rank": 63,
+        "elo": 1655.9
+      },
+      {
+        "name": "Earl Monroe",
+        "rank": 64,
+        "elo": 1652.6
+      },
+      {
+        "name": "Willis Reed",
+        "rank": 65,
+        "elo": 1641.5
+      },
+      {
+        "name": "Paul Arizin",
+        "rank": 66,
+        "elo": 1621.8
+      },
+      {
+        "name": "Dominique Wilkins",
+        "rank": 67,
+        "elo": 1617.3
+      },
+      {
+        "name": "Jayson Tatum",
+        "rank": 68,
+        "elo": 1615.8
+      },
+      {
+        "name": "Joel Embiid",
+        "rank": 69,
+        "elo": 1614.1
+      },
+      {
+        "name": "Dennis Rodman",
+        "rank": 70,
+        "elo": 1606.9
+      },
+      {
+        "name": "Dolph Schayes",
+        "rank": 71,
+        "elo": 1597.1
+      },
+      {
+        "name": "Alonzo Mourning",
+        "rank": 72,
+        "elo": 1585.7
+      },
+      {
+        "name": "Russell Westbrook",
+        "rank": 73,
+        "elo": 1576.0
+      },
+      {
+        "name": "James Worthy",
+        "rank": 74,
+        "elo": 1567.4
+      },
+      {
+        "name": "Bill Sharman",
+        "rank": 75,
+        "elo": 1548.0
+      },
+      {
+        "name": "Alex English",
+        "rank": 76,
+        "elo": 1535.7
+      },
+      {
+        "name": "Adrian Dantley",
+        "rank": 77,
+        "elo": 1514.9
+      },
+      {
+        "name": "Billy Cunningham",
+        "rank": 78,
+        "elo": 1511.6
+      },
+      {
+        "name": "Bernard King",
+        "rank": 79,
+        "elo": 1499.5
+      },
+      {
+        "name": "Dikembe Mutombo",
+        "rank": 80,
+        "elo": 1496.6
+      },
+      {
+        "name": "Dwight Howard",
+        "rank": 81,
+        "elo": 1495.7
+      },
+      {
+        "name": "Chris Bosh",
+        "rank": 82,
+        "elo": 1495.2
+      },
+      {
+        "name": "Wes Unseld",
+        "rank": 83,
+        "elo": 1490.9
+      },
+      {
+        "name": "Yao Ming",
+        "rank": 84,
+        "elo": 1483.2
+      },
+      {
+        "name": "Jimmy Butler",
+        "rank": 85,
+        "elo": 1471.2
+      },
+      {
+        "name": "Pau Gasol",
+        "rank": 86,
+        "elo": 1469.6
+      },
+      {
+        "name": "Tony Parker",
+        "rank": 87,
+        "elo": 1461.4
+      },
+      {
+        "name": "Grant Hill",
+        "rank": 88,
+        "elo": 1454.8
+      },
+      {
+        "name": "Vince Carter",
+        "rank": 89,
+        "elo": 1407.2
+      },
+      {
+        "name": "Chauncey Billups",
+        "rank": 90,
+        "elo": 1393.3
+      },
+      {
+        "name": "Nate Thurmond",
+        "rank": 91,
+        "elo": 1386.1
+      },
+      {
+        "name": "Joe Dumars",
+        "rank": 92,
+        "elo": 1384.8
+      },
+      {
+        "name": "Dennis Johnson",
+        "rank": 93,
+        "elo": 1383.8
+      },
+      {
+        "name": "Ben Wallace",
+        "rank": 94,
+        "elo": 1378.4
+      },
+      {
+        "name": "Sidney Moncrief",
+        "rank": 95,
+        "elo": 1373.4
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "rank": 96,
+        "elo": 1361.0
+      },
+      {
+        "name": "Tracy McGrady",
+        "rank": 97,
+        "elo": 1360.4
+      },
+      {
+        "name": "Bob Lanier",
+        "rank": 98,
+        "elo": 1355.0
+      },
+      {
+        "name": "Chris Webber",
+        "rank": 99,
+        "elo": 1349.4
+      },
+      {
+        "name": "Manu Ginobili",
+        "rank": 100,
+        "elo": 1346.8
+      },
+      {
+        "name": "Bill Walton",
+        "rank": 101,
+        "elo": 1314.5
+      },
+      {
+        "name": "Rasheed Wallace",
+        "rank": 102,
+        "elo": 1305.7
+      },
+      {
+        "name": "Penny Hardaway",
+        "rank": 103,
+        "elo": 1304.3
+      },
+      {
+        "name": "Anthony Edwards",
+        "rank": 104,
+        "elo": 1283.1
+      },
+      {
+        "name": "Kyrie Irving",
+        "rank": 105,
+        "elo": 1267.8
+      },
+      {
+        "name": "Paul George",
+        "rank": 106,
+        "elo": 1267.5
+      },
+      {
+        "name": "Klay Thompson",
+        "rank": 107,
+        "elo": 1265.2
+      },
+      {
+        "name": "Pete Maravich",
+        "rank": 108,
+        "elo": 1239.2
+      },
+      {
+        "name": "Devin Booker",
+        "rank": 109,
+        "elo": 1224.0
+      },
+      {
+        "name": "Shawn Kemp",
+        "rank": 110,
+        "elo": 1208.1
+      },
+      {
+        "name": "Artis Gilmore",
+        "rank": 111,
+        "elo": 1196.9
+      },
+      {
+        "name": "Jrue Holiday",
+        "rank": 112,
+        "elo": 1183.5
+      },
+      {
+        "name": "LaMarcus Aldridge",
+        "rank": 113,
+        "elo": 1177.0
+      },
+      {
+        "name": "Draymond Green",
+        "rank": 114,
+        "elo": 1163.7
+      },
+      {
+        "name": "Tim Hardaway",
+        "rank": 115,
+        "elo": 1154.6
+      },
+      {
+        "name": "Trae Young",
+        "rank": 116,
+        "elo": 1143.1
+      },
+      {
+        "name": "Jaylen Brown",
+        "rank": 117,
+        "elo": 1130.0
+      },
+      {
+        "name": "Shawn Marion",
+        "rank": 118,
+        "elo": 1069.6
+      },
+      {
+        "name": "Chris Mullin",
+        "rank": 119,
+        "elo": 1069.1
+      },
+      {
+        "name": "Nate Archibald",
+        "rank": 120,
+        "elo": 1064.6
+      },
+      {
+        "name": "Marc Gasol",
+        "rank": 121,
+        "elo": 1059.7
+      },
+      {
+        "name": "Andre Iguodala",
+        "rank": 122,
+        "elo": 1051.3
+      },
+      {
+        "name": "Donovan Mitchell",
+        "rank": 123,
+        "elo": 1045.8
+      },
+      {
+        "name": "Kyle Lowry",
+        "rank": 124,
+        "elo": 1021.3
+      },
+      {
+        "name": "Paul Westphal",
+        "rank": 125,
+        "elo": 1012.5
+      },
+      {
+        "name": "Tom Heinsohn",
+        "rank": 126,
+        "elo": 1006.0
+      },
+      {
+        "name": "Marques Johnson",
+        "rank": 127,
+        "elo": 997.9
+      },
+      {
+        "name": "Gail Goodrich",
+        "rank": 128,
+        "elo": 987.3
+      },
+      {
+        "name": "Bam Adebayo",
+        "rank": 129,
+        "elo": 980.0
+      },
+      {
+        "name": "Pascal Siakam",
+        "rank": 130,
+        "elo": 966.0
+      },
+      {
+        "name": "DeMar DeRozan",
+        "rank": 131,
+        "elo": 959.6
+      },
+      {
+        "name": "Connie Hawkins",
+        "rank": 132,
+        "elo": 921.0
+      },
+      {
+        "name": "Al Horford",
+        "rank": 133,
+        "elo": 898.4
+      },
+      {
+        "name": "Gilbert Arenas",
+        "rank": 134,
+        "elo": 881.1
+      },
+      {
+        "name": "Rudy Gobert",
+        "rank": 135,
+        "elo": 870.1
+      },
+      {
+        "name": "Ja Morant",
+        "rank": 136,
+        "elo": 819.7
+      },
+      {
+        "name": "Baron Davis",
+        "rank": 137,
+        "elo": 803.7
+      },
+      {
+        "name": "Jack Sikma",
+        "rank": 138,
+        "elo": 792.9
+      },
+      {
+        "name": "Mitch Richmond",
+        "rank": 139,
+        "elo": 767.1
+      },
+      {
+        "name": "Amar'e Stoudemire",
+        "rank": 140,
+        "elo": 766.5
+      },
+      {
+        "name": "John Wall",
+        "rank": 141,
+        "elo": 736.1
+      },
+      {
+        "name": "Lamar Odom",
+        "rank": 142,
+        "elo": 728.8
+      },
+      {
+        "name": "Spencer Haywood",
+        "rank": 143,
+        "elo": 710.4
+      },
+      {
+        "name": "World B. Free",
+        "rank": 144,
+        "elo": 649.3
+      }
+    ],
+    "llama3.1:8b": [
+      {
+        "name": "Nikola Jokic",
+        "rank": 1,
+        "elo": 2124.1
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "rank": 2,
+        "elo": 2049.5
+      },
+      {
+        "name": "Michael Jordan",
+        "rank": 3,
+        "elo": 2048.8
+      },
+      {
+        "name": "Luka Doncic",
+        "rank": 4,
+        "elo": 2030.1
+      },
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "rank": 5,
+        "elo": 2016.3
+      },
+      {
+        "name": "Hakeem Olajuwon",
+        "rank": 6,
+        "elo": 2014.9
+      },
+      {
+        "name": "LeBron James",
+        "rank": 7,
+        "elo": 2001.6
+      },
+      {
+        "name": "Magic Johnson",
+        "rank": 8,
+        "elo": 1982.7
+      },
+      {
+        "name": "Bill Russell",
+        "rank": 9,
+        "elo": 1965.8
+      },
+      {
+        "name": "Oscar Robertson",
+        "rank": 10,
+        "elo": 1964.5
+      },
+      {
+        "name": "Wilt Chamberlain",
+        "rank": 11,
+        "elo": 1964.2
+      },
+      {
+        "name": "Larry Bird",
+        "rank": 12,
+        "elo": 1959.4
+      },
+      {
+        "name": "Kobe Bryant",
+        "rank": 13,
+        "elo": 1939.7
+      },
+      {
+        "name": "Stephen Curry",
+        "rank": 14,
+        "elo": 1934.1
+      },
+      {
+        "name": "Kawhi Leonard",
+        "rank": 15,
+        "elo": 1930.0
+      },
+      {
+        "name": "Clyde Drexler",
+        "rank": 16,
+        "elo": 1927.8
+      },
+      {
+        "name": "Walt Frazier",
+        "rank": 17,
+        "elo": 1925.6
+      },
+      {
+        "name": "Tim Duncan",
+        "rank": 18,
+        "elo": 1923.0
+      },
+      {
+        "name": "Elgin Baylor",
+        "rank": 19,
+        "elo": 1916.0
+      },
+      {
+        "name": "Donovan Mitchell",
+        "rank": 20,
+        "elo": 1906.2
+      },
+      {
+        "name": "David Robinson",
+        "rank": 21,
+        "elo": 1902.0
+      },
+      {
+        "name": "Ray Allen",
+        "rank": 22,
+        "elo": 1890.2
+      },
+      {
+        "name": "Dwyane Wade",
+        "rank": 23,
+        "elo": 1890.1
+      },
+      {
+        "name": "Julius Erving",
+        "rank": 24,
+        "elo": 1865.2
+      },
+      {
+        "name": "Kevin Durant",
+        "rank": 25,
+        "elo": 1864.5
+      },
+      {
+        "name": "Anthony Davis",
+        "rank": 26,
+        "elo": 1839.7
+      },
+      {
+        "name": "Dirk Nowitzki",
+        "rank": 27,
+        "elo": 1819.8
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "rank": 28,
+        "elo": 1819.0
+      },
+      {
+        "name": "Allen Iverson",
+        "rank": 29,
+        "elo": 1810.6
+      },
+      {
+        "name": "Chris Paul",
+        "rank": 30,
+        "elo": 1808.8
+      },
+      {
+        "name": "Jerry West",
+        "rank": 31,
+        "elo": 1797.7
+      },
+      {
+        "name": "Reggie Miller",
+        "rank": 32,
+        "elo": 1797.3
+      },
+      {
+        "name": "George Gervin",
+        "rank": 33,
+        "elo": 1796.5
+      },
+      {
+        "name": "Bob Pettit",
+        "rank": 34,
+        "elo": 1783.4
+      },
+      {
+        "name": "Scottie Pippen",
+        "rank": 35,
+        "elo": 1782.5
+      },
+      {
+        "name": "Kevin Garnett",
+        "rank": 36,
+        "elo": 1766.9
+      },
+      {
+        "name": "Jayson Tatum",
+        "rank": 37,
+        "elo": 1763.3
+      },
+      {
+        "name": "Sam Jones",
+        "rank": 38,
+        "elo": 1759.5
+      },
+      {
+        "name": "Moses Malone",
+        "rank": 39,
+        "elo": 1740.7
+      },
+      {
+        "name": "John Stockton",
+        "rank": 40,
+        "elo": 1728.1
+      },
+      {
+        "name": "Chauncey Billups",
+        "rank": 41,
+        "elo": 1721.9
+      },
+      {
+        "name": "Joel Embiid",
+        "rank": 42,
+        "elo": 1719.6
+      },
+      {
+        "name": "John Havlicek",
+        "rank": 43,
+        "elo": 1719.0
+      },
+      {
+        "name": "Willis Reed",
+        "rank": 44,
+        "elo": 1713.8
+      },
+      {
+        "name": "Billy Cunningham",
+        "rank": 45,
+        "elo": 1699.4
+      },
+      {
+        "name": "Earl Monroe",
+        "rank": 46,
+        "elo": 1697.9
+      },
+      {
+        "name": "Alonzo Mourning",
+        "rank": 47,
+        "elo": 1678.1
+      },
+      {
+        "name": "Steve Nash",
+        "rank": 48,
+        "elo": 1675.4
+      },
+      {
+        "name": "Jason Kidd",
+        "rank": 49,
+        "elo": 1666.3
+      },
+      {
+        "name": "Karl Malone",
+        "rank": 50,
+        "elo": 1661.2
+      },
+      {
+        "name": "Manu Ginobili",
+        "rank": 51,
+        "elo": 1659.6
+      },
+      {
+        "name": "Jimmy Butler",
+        "rank": 52,
+        "elo": 1652.1
+      },
+      {
+        "name": "Hal Greer",
+        "rank": 53,
+        "elo": 1636.3
+      },
+      {
+        "name": "Bob Cousy",
+        "rank": 54,
+        "elo": 1627.7
+      },
+      {
+        "name": "Damian Lillard",
+        "rank": 55,
+        "elo": 1626.9
+      },
+      {
+        "name": "Rick Barry",
+        "rank": 56,
+        "elo": 1624.9
+      },
+      {
+        "name": "Gary Payton",
+        "rank": 57,
+        "elo": 1624.2
+      },
+      {
+        "name": "Klay Thompson",
+        "rank": 58,
+        "elo": 1620.6
+      },
+      {
+        "name": "James Worthy",
+        "rank": 59,
+        "elo": 1617.7
+      },
+      {
+        "name": "Dikembe Mutombo",
+        "rank": 60,
+        "elo": 1616.8
+      },
+      {
+        "name": "Dennis Johnson",
+        "rank": 61,
+        "elo": 1596.5
+      },
+      {
+        "name": "Kyrie Irving",
+        "rank": 62,
+        "elo": 1594.4
+      },
+      {
+        "name": "Russell Westbrook",
+        "rank": 63,
+        "elo": 1585.6
+      },
+      {
+        "name": "Trae Young",
+        "rank": 64,
+        "elo": 1581.6
+      },
+      {
+        "name": "George Mikan",
+        "rank": 65,
+        "elo": 1574.9
+      },
+      {
+        "name": "Vince Carter",
+        "rank": 66,
+        "elo": 1562.1
+      },
+      {
+        "name": "Nate Thurmond",
+        "rank": 67,
+        "elo": 1561.7
+      },
+      {
+        "name": "Dominique Wilkins",
+        "rank": 68,
+        "elo": 1560.9
+      },
+      {
+        "name": "Elvin Hayes",
+        "rank": 69,
+        "elo": 1549.0
+      },
+      {
+        "name": "Paul George",
+        "rank": 70,
+        "elo": 1546.3
+      },
+      {
+        "name": "Carmelo Anthony",
+        "rank": 71,
+        "elo": 1543.3
+      },
+      {
+        "name": "Penny Hardaway",
+        "rank": 72,
+        "elo": 1508.2
+      },
+      {
+        "name": "Charles Barkley",
+        "rank": 73,
+        "elo": 1490.1
+      },
+      {
+        "name": "Andre Iguodala",
+        "rank": 74,
+        "elo": 1470.0
+      },
+      {
+        "name": "Sidney Moncrief",
+        "rank": 75,
+        "elo": 1466.9
+      },
+      {
+        "name": "Lenny Wilkens",
+        "rank": 76,
+        "elo": 1462.5
+      },
+      {
+        "name": "Jaylen Brown",
+        "rank": 77,
+        "elo": 1462.1
+      },
+      {
+        "name": "James Harden",
+        "rank": 78,
+        "elo": 1449.8
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "rank": 79,
+        "elo": 1435.6
+      },
+      {
+        "name": "Kevin McHale",
+        "rank": 80,
+        "elo": 1430.4
+      },
+      {
+        "name": "Draymond Green",
+        "rank": 81,
+        "elo": 1426.3
+      },
+      {
+        "name": "Rudy Gobert",
+        "rank": 82,
+        "elo": 1418.5
+      },
+      {
+        "name": "Bill Sharman",
+        "rank": 83,
+        "elo": 1411.5
+      },
+      {
+        "name": "Dennis Rodman",
+        "rank": 84,
+        "elo": 1406.2
+      },
+      {
+        "name": "Paul Arizin",
+        "rank": 85,
+        "elo": 1388.7
+      },
+      {
+        "name": "Pete Maravich",
+        "rank": 86,
+        "elo": 1387.4
+      },
+      {
+        "name": "Wes Unseld",
+        "rank": 87,
+        "elo": 1382.9
+      },
+      {
+        "name": "Chris Mullin",
+        "rank": 88,
+        "elo": 1377.7
+      },
+      {
+        "name": "Bam Adebayo",
+        "rank": 89,
+        "elo": 1366.7
+      },
+      {
+        "name": "Patrick Ewing",
+        "rank": 90,
+        "elo": 1359.6
+      },
+      {
+        "name": "Al Horford",
+        "rank": 91,
+        "elo": 1354.9
+      },
+      {
+        "name": "Lamar Odom",
+        "rank": 92,
+        "elo": 1346.5
+      },
+      {
+        "name": "Ja Morant",
+        "rank": 93,
+        "elo": 1345.8
+      },
+      {
+        "name": "Joe Dumars",
+        "rank": 94,
+        "elo": 1340.0
+      },
+      {
+        "name": "Dolph Schayes",
+        "rank": 95,
+        "elo": 1334.2
+      },
+      {
+        "name": "Shawn Kemp",
+        "rank": 96,
+        "elo": 1323.7
+      },
+      {
+        "name": "Bernard King",
+        "rank": 97,
+        "elo": 1320.5
+      },
+      {
+        "name": "Tracy McGrady",
+        "rank": 98,
+        "elo": 1319.7
+      },
+      {
+        "name": "Mitch Richmond",
+        "rank": 99,
+        "elo": 1311.5
+      },
+      {
+        "name": "Isiah Thomas",
+        "rank": 100,
+        "elo": 1305.0
+      },
+      {
+        "name": "Shawn Marion",
+        "rank": 101,
+        "elo": 1303.2
+      },
+      {
+        "name": "Nate Archibald",
+        "rank": 102,
+        "elo": 1297.1
+      },
+      {
+        "name": "Yao Ming",
+        "rank": 103,
+        "elo": 1290.3
+      },
+      {
+        "name": "John Wall",
+        "rank": 104,
+        "elo": 1289.3
+      },
+      {
+        "name": "Kyle Lowry",
+        "rank": 105,
+        "elo": 1288.2
+      },
+      {
+        "name": "Chris Bosh",
+        "rank": 106,
+        "elo": 1273.0
+      },
+      {
+        "name": "Devin Booker",
+        "rank": 107,
+        "elo": 1272.0
+      },
+      {
+        "name": "Chris Webber",
+        "rank": 108,
+        "elo": 1272.0
+      },
+      {
+        "name": "Tony Parker",
+        "rank": 109,
+        "elo": 1266.3
+      },
+      {
+        "name": "Artis Gilmore",
+        "rank": 110,
+        "elo": 1261.6
+      },
+      {
+        "name": "Pau Gasol",
+        "rank": 111,
+        "elo": 1251.2
+      },
+      {
+        "name": "Jrue Holiday",
+        "rank": 112,
+        "elo": 1249.3
+      },
+      {
+        "name": "Alex English",
+        "rank": 113,
+        "elo": 1247.5
+      },
+      {
+        "name": "Anthony Edwards",
+        "rank": 114,
+        "elo": 1237.5
+      },
+      {
+        "name": "Paul Pierce",
+        "rank": 115,
+        "elo": 1230.6
+      },
+      {
+        "name": "Tim Hardaway",
+        "rank": 116,
+        "elo": 1228.1
+      },
+      {
+        "name": "Amar'e Stoudemire",
+        "rank": 117,
+        "elo": 1211.4
+      },
+      {
+        "name": "Adrian Dantley",
+        "rank": 118,
+        "elo": 1203.9
+      },
+      {
+        "name": "Connie Hawkins",
+        "rank": 119,
+        "elo": 1176.4
+      },
+      {
+        "name": "Baron Davis",
+        "rank": 120,
+        "elo": 1175.4
+      },
+      {
+        "name": "Robert Parish",
+        "rank": 121,
+        "elo": 1165.5
+      },
+      {
+        "name": "Gilbert Arenas",
+        "rank": 122,
+        "elo": 1155.3
+      },
+      {
+        "name": "Marc Gasol",
+        "rank": 123,
+        "elo": 1129.8
+      },
+      {
+        "name": "Bill Walton",
+        "rank": 124,
+        "elo": 1099.0
+      },
+      {
+        "name": "Dwight Howard",
+        "rank": 125,
+        "elo": 1097.7
+      },
+      {
+        "name": "Marques Johnson",
+        "rank": 126,
+        "elo": 1085.8
+      },
+      {
+        "name": "DeMar DeRozan",
+        "rank": 127,
+        "elo": 1069.5
+      },
+      {
+        "name": "Grant Hill",
+        "rank": 128,
+        "elo": 1067.4
+      },
+      {
+        "name": "Dave Cowens",
+        "rank": 129,
+        "elo": 1062.1
+      },
+      {
+        "name": "LaMarcus Aldridge",
+        "rank": 130,
+        "elo": 1052.9
+      },
+      {
+        "name": "Gail Goodrich",
+        "rank": 131,
+        "elo": 1043.1
+      },
+      {
+        "name": "Ben Wallace",
+        "rank": 132,
+        "elo": 1033.2
+      },
+      {
+        "name": "Spencer Haywood",
+        "rank": 133,
+        "elo": 1024.5
+      },
+      {
+        "name": "Bob McAdoo",
+        "rank": 134,
+        "elo": 1024.2
+      },
+      {
+        "name": "Rasheed Wallace",
+        "rank": 135,
+        "elo": 1000.0
+      },
+      {
+        "name": "Dave Bing",
+        "rank": 136,
+        "elo": 983.0
+      },
+      {
+        "name": "Jerry Lucas",
+        "rank": 137,
+        "elo": 980.8
+      },
+      {
+        "name": "Jack Sikma",
+        "rank": 138,
+        "elo": 956.9
+      },
+      {
+        "name": "Bob Lanier",
+        "rank": 139,
+        "elo": 949.2
+      },
+      {
+        "name": "Dave DeBusschere",
+        "rank": 140,
+        "elo": 939.4
+      },
+      {
+        "name": "Pascal Siakam",
+        "rank": 141,
+        "elo": 935.3
+      },
+      {
+        "name": "Tom Heinsohn",
+        "rank": 142,
+        "elo": 842.9
+      },
+      {
+        "name": "Paul Westphal",
+        "rank": 143,
+        "elo": 824.8
+      },
+      {
+        "name": "World B. Free",
+        "rank": 144,
+        "elo": 785.4
+      }
+    ],
+    "mistral:7b": [
+      {
+        "name": "Bill Russell",
+        "rank": 1,
+        "elo": 2094.1
+      },
+      {
+        "name": "Michael Jordan",
+        "rank": 2,
+        "elo": 2074.3
+      },
+      {
+        "name": "Jerry West",
+        "rank": 3,
+        "elo": 2057.7
+      },
+      {
+        "name": "LeBron James",
+        "rank": 4,
+        "elo": 2042.1
+      },
+      {
+        "name": "Hakeem Olajuwon",
+        "rank": 5,
+        "elo": 2041.9
+      },
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "rank": 6,
+        "elo": 2022.4
+      },
+      {
+        "name": "James Worthy",
+        "rank": 7,
+        "elo": 2019.5
+      },
+      {
+        "name": "Nikola Jokic",
+        "rank": 8,
+        "elo": 2018.8
+      },
+      {
+        "name": "Kevin Durant",
+        "rank": 9,
+        "elo": 1980.4
+      },
+      {
+        "name": "Magic Johnson",
+        "rank": 10,
+        "elo": 1973.0
+      },
+      {
+        "name": "Wilt Chamberlain",
+        "rank": 11,
+        "elo": 1964.6
+      },
+      {
+        "name": "Oscar Robertson",
+        "rank": 12,
+        "elo": 1963.3
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "rank": 13,
+        "elo": 1956.8
+      },
+      {
+        "name": "Tim Duncan",
+        "rank": 14,
+        "elo": 1951.7
+      },
+      {
+        "name": "Kawhi Leonard",
+        "rank": 15,
+        "elo": 1947.7
+      },
+      {
+        "name": "Kobe Bryant",
+        "rank": 16,
+        "elo": 1944.8
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "rank": 17,
+        "elo": 1938.2
+      },
+      {
+        "name": "Larry Bird",
+        "rank": 18,
+        "elo": 1899.0
+      },
+      {
+        "name": "Artis Gilmore",
+        "rank": 19,
+        "elo": 1893.1
+      },
+      {
+        "name": "Stephen Curry",
+        "rank": 20,
+        "elo": 1892.7
+      },
+      {
+        "name": "Elgin Baylor",
+        "rank": 21,
+        "elo": 1892.5
+      },
+      {
+        "name": "Julius Erving",
+        "rank": 22,
+        "elo": 1881.7
+      },
+      {
+        "name": "Dirk Nowitzki",
+        "rank": 23,
+        "elo": 1841.6
+      },
+      {
+        "name": "Karl Malone",
+        "rank": 24,
+        "elo": 1841.5
+      },
+      {
+        "name": "Shawn Marion",
+        "rank": 25,
+        "elo": 1839.3
+      },
+      {
+        "name": "Lamar Odom",
+        "rank": 26,
+        "elo": 1835.9
+      },
+      {
+        "name": "Anthony Davis",
+        "rank": 27,
+        "elo": 1826.0
+      },
+      {
+        "name": "Luka Doncic",
+        "rank": 28,
+        "elo": 1789.1
+      },
+      {
+        "name": "Clyde Drexler",
+        "rank": 29,
+        "elo": 1788.6
+      },
+      {
+        "name": "Amar'e Stoudemire",
+        "rank": 30,
+        "elo": 1786.6
+      },
+      {
+        "name": "Scottie Pippen",
+        "rank": 31,
+        "elo": 1784.0
+      },
+      {
+        "name": "Andre Iguodala",
+        "rank": 32,
+        "elo": 1768.5
+      },
+      {
+        "name": "Kevin Garnett",
+        "rank": 33,
+        "elo": 1767.5
+      },
+      {
+        "name": "Chauncey Billups",
+        "rank": 34,
+        "elo": 1764.9
+      },
+      {
+        "name": "Paul George",
+        "rank": 35,
+        "elo": 1763.3
+      },
+      {
+        "name": "Moses Malone",
+        "rank": 36,
+        "elo": 1760.4
+      },
+      {
+        "name": "David Robinson",
+        "rank": 37,
+        "elo": 1752.9
+      },
+      {
+        "name": "Steve Nash",
+        "rank": 38,
+        "elo": 1748.3
+      },
+      {
+        "name": "Damian Lillard",
+        "rank": 39,
+        "elo": 1741.6
+      },
+      {
+        "name": "Chris Paul",
+        "rank": 40,
+        "elo": 1722.2
+      },
+      {
+        "name": "Ray Allen",
+        "rank": 41,
+        "elo": 1713.2
+      },
+      {
+        "name": "Dwyane Wade",
+        "rank": 42,
+        "elo": 1711.2
+      },
+      {
+        "name": "Allen Iverson",
+        "rank": 43,
+        "elo": 1693.2
+      },
+      {
+        "name": "James Harden",
+        "rank": 44,
+        "elo": 1690.1
+      },
+      {
+        "name": "Paul Pierce",
+        "rank": 45,
+        "elo": 1687.3
+      },
+      {
+        "name": "Kyrie Irving",
+        "rank": 46,
+        "elo": 1671.9
+      },
+      {
+        "name": "Klay Thompson",
+        "rank": 47,
+        "elo": 1668.4
+      },
+      {
+        "name": "Isiah Thomas",
+        "rank": 48,
+        "elo": 1665.2
+      },
+      {
+        "name": "John Havlicek",
+        "rank": 49,
+        "elo": 1663.8
+      },
+      {
+        "name": "Reggie Miller",
+        "rank": 50,
+        "elo": 1657.0
+      },
+      {
+        "name": "Gary Payton",
+        "rank": 51,
+        "elo": 1654.5
+      },
+      {
+        "name": "Jimmy Butler",
+        "rank": 52,
+        "elo": 1651.0
+      },
+      {
+        "name": "Charles Barkley",
+        "rank": 53,
+        "elo": 1640.7
+      },
+      {
+        "name": "Baron Davis",
+        "rank": 54,
+        "elo": 1623.5
+      },
+      {
+        "name": "Robert Parish",
+        "rank": 55,
+        "elo": 1622.0
+      },
+      {
+        "name": "Donovan Mitchell",
+        "rank": 56,
+        "elo": 1610.2
+      },
+      {
+        "name": "Tracy McGrady",
+        "rank": 57,
+        "elo": 1607.8
+      },
+      {
+        "name": "Willis Reed",
+        "rank": 58,
+        "elo": 1606.6
+      },
+      {
+        "name": "Paul Arizin",
+        "rank": 59,
+        "elo": 1604.0
+      },
+      {
+        "name": "Kyle Lowry",
+        "rank": 60,
+        "elo": 1597.8
+      },
+      {
+        "name": "George Gervin",
+        "rank": 61,
+        "elo": 1584.6
+      },
+      {
+        "name": "Nate Archibald",
+        "rank": 62,
+        "elo": 1568.6
+      },
+      {
+        "name": "Dominique Wilkins",
+        "rank": 63,
+        "elo": 1556.8
+      },
+      {
+        "name": "Dennis Johnson",
+        "rank": 64,
+        "elo": 1551.2
+      },
+      {
+        "name": "Alonzo Mourning",
+        "rank": 65,
+        "elo": 1550.5
+      },
+      {
+        "name": "Al Horford",
+        "rank": 66,
+        "elo": 1546.1
+      },
+      {
+        "name": "Elvin Hayes",
+        "rank": 67,
+        "elo": 1539.0
+      },
+      {
+        "name": "Paul Westphal",
+        "rank": 68,
+        "elo": 1530.8
+      },
+      {
+        "name": "John Wall",
+        "rank": 69,
+        "elo": 1526.2
+      },
+      {
+        "name": "Joel Embiid",
+        "rank": 70,
+        "elo": 1523.9
+      },
+      {
+        "name": "Tom Heinsohn",
+        "rank": 71,
+        "elo": 1517.1
+      },
+      {
+        "name": "Manu Ginobili",
+        "rank": 72,
+        "elo": 1516.4
+      },
+      {
+        "name": "Connie Hawkins",
+        "rank": 73,
+        "elo": 1495.0
+      },
+      {
+        "name": "Marques Johnson",
+        "rank": 74,
+        "elo": 1491.9
+      },
+      {
+        "name": "John Stockton",
+        "rank": 75,
+        "elo": 1491.9
+      },
+      {
+        "name": "Marc Gasol",
+        "rank": 76,
+        "elo": 1472.3
+      },
+      {
+        "name": "Adrian Dantley",
+        "rank": 77,
+        "elo": 1469.6
+      },
+      {
+        "name": "Ben Wallace",
+        "rank": 78,
+        "elo": 1469.2
+      },
+      {
+        "name": "Ja Morant",
+        "rank": 79,
+        "elo": 1448.6
+      },
+      {
+        "name": "Sidney Moncrief",
+        "rank": 80,
+        "elo": 1445.8
+      },
+      {
+        "name": "George Mikan",
+        "rank": 81,
+        "elo": 1440.8
+      },
+      {
+        "name": "Bob Cousy",
+        "rank": 82,
+        "elo": 1427.6
+      },
+      {
+        "name": "Gail Goodrich",
+        "rank": 83,
+        "elo": 1427.1
+      },
+      {
+        "name": "Pascal Siakam",
+        "rank": 84,
+        "elo": 1402.8
+      },
+      {
+        "name": "Jayson Tatum",
+        "rank": 85,
+        "elo": 1395.5
+      },
+      {
+        "name": "Rudy Gobert",
+        "rank": 86,
+        "elo": 1394.1
+      },
+      {
+        "name": "Kevin McHale",
+        "rank": 87,
+        "elo": 1393.4
+      },
+      {
+        "name": "Jrue Holiday",
+        "rank": 88,
+        "elo": 1389.9
+      },
+      {
+        "name": "Russell Westbrook",
+        "rank": 89,
+        "elo": 1387.8
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "rank": 90,
+        "elo": 1382.5
+      },
+      {
+        "name": "Spencer Haywood",
+        "rank": 91,
+        "elo": 1371.6
+      },
+      {
+        "name": "Tony Parker",
+        "rank": 92,
+        "elo": 1367.2
+      },
+      {
+        "name": "Earl Monroe",
+        "rank": 93,
+        "elo": 1366.3
+      },
+      {
+        "name": "Alex English",
+        "rank": 94,
+        "elo": 1352.4
+      },
+      {
+        "name": "Bob Pettit",
+        "rank": 95,
+        "elo": 1349.3
+      },
+      {
+        "name": "Dikembe Mutombo",
+        "rank": 96,
+        "elo": 1344.3
+      },
+      {
+        "name": "Pau Gasol",
+        "rank": 97,
+        "elo": 1318.7
+      },
+      {
+        "name": "DeMar DeRozan",
+        "rank": 98,
+        "elo": 1309.8
+      },
+      {
+        "name": "Gilbert Arenas",
+        "rank": 99,
+        "elo": 1306.6
+      },
+      {
+        "name": "Draymond Green",
+        "rank": 100,
+        "elo": 1293.1
+      },
+      {
+        "name": "Chris Webber",
+        "rank": 101,
+        "elo": 1291.3
+      },
+      {
+        "name": "Patrick Ewing",
+        "rank": 102,
+        "elo": 1287.8
+      },
+      {
+        "name": "Yao Ming",
+        "rank": 103,
+        "elo": 1279.5
+      },
+      {
+        "name": "Trae Young",
+        "rank": 104,
+        "elo": 1262.9
+      },
+      {
+        "name": "Rasheed Wallace",
+        "rank": 105,
+        "elo": 1258.8
+      },
+      {
+        "name": "Jaylen Brown",
+        "rank": 106,
+        "elo": 1258.3
+      },
+      {
+        "name": "Hal Greer",
+        "rank": 107,
+        "elo": 1254.7
+      },
+      {
+        "name": "Wes Unseld",
+        "rank": 108,
+        "elo": 1254.3
+      },
+      {
+        "name": "Chris Mullin",
+        "rank": 109,
+        "elo": 1244.2
+      },
+      {
+        "name": "Chris Bosh",
+        "rank": 110,
+        "elo": 1235.9
+      },
+      {
+        "name": "Bob McAdoo",
+        "rank": 111,
+        "elo": 1235.7
+      },
+      {
+        "name": "Mitch Richmond",
+        "rank": 112,
+        "elo": 1235.1
+      },
+      {
+        "name": "Devin Booker",
+        "rank": 113,
+        "elo": 1217.3
+      },
+      {
+        "name": "Carmelo Anthony",
+        "rank": 114,
+        "elo": 1216.4
+      },
+      {
+        "name": "Anthony Edwards",
+        "rank": 115,
+        "elo": 1199.2
+      },
+      {
+        "name": "Shawn Kemp",
+        "rank": 116,
+        "elo": 1191.3
+      },
+      {
+        "name": "Sam Jones",
+        "rank": 117,
+        "elo": 1181.6
+      },
+      {
+        "name": "Billy Cunningham",
+        "rank": 118,
+        "elo": 1181.0
+      },
+      {
+        "name": "Penny Hardaway",
+        "rank": 119,
+        "elo": 1177.0
+      },
+      {
+        "name": "Bill Walton",
+        "rank": 120,
+        "elo": 1176.6
+      },
+      {
+        "name": "LaMarcus Aldridge",
+        "rank": 121,
+        "elo": 1161.5
+      },
+      {
+        "name": "Walt Frazier",
+        "rank": 122,
+        "elo": 1152.7
+      },
+      {
+        "name": "Rick Barry",
+        "rank": 123,
+        "elo": 1148.7
+      },
+      {
+        "name": "Jason Kidd",
+        "rank": 124,
+        "elo": 1136.5
+      },
+      {
+        "name": "Tim Hardaway",
+        "rank": 125,
+        "elo": 1134.0
+      },
+      {
+        "name": "World B. Free",
+        "rank": 126,
+        "elo": 1125.4
+      },
+      {
+        "name": "Bob Lanier",
+        "rank": 127,
+        "elo": 1124.3
+      },
+      {
+        "name": "Grant Hill",
+        "rank": 128,
+        "elo": 1114.1
+      },
+      {
+        "name": "Bam Adebayo",
+        "rank": 129,
+        "elo": 1107.4
+      },
+      {
+        "name": "Vince Carter",
+        "rank": 130,
+        "elo": 1084.3
+      },
+      {
+        "name": "Bernard King",
+        "rank": 131,
+        "elo": 1079.3
+      },
+      {
+        "name": "Joe Dumars",
+        "rank": 132,
+        "elo": 1063.9
+      },
+      {
+        "name": "Jack Sikma",
+        "rank": 133,
+        "elo": 1049.7
+      },
+      {
+        "name": "Nate Thurmond",
+        "rank": 134,
+        "elo": 1042.7
+      },
+      {
+        "name": "Dave Cowens",
+        "rank": 135,
+        "elo": 1034.4
+      },
+      {
+        "name": "Bill Sharman",
+        "rank": 136,
+        "elo": 1033.4
+      },
+      {
+        "name": "Dwight Howard",
+        "rank": 137,
+        "elo": 983.8
+      },
+      {
+        "name": "Pete Maravich",
+        "rank": 138,
+        "elo": 978.3
+      },
+      {
+        "name": "Jerry Lucas",
+        "rank": 139,
+        "elo": 964.5
+      },
+      {
+        "name": "Dave Bing",
+        "rank": 140,
+        "elo": 936.6
+      },
+      {
+        "name": "Dave DeBusschere",
+        "rank": 141,
+        "elo": 914.5
+      },
+      {
+        "name": "Lenny Wilkens",
+        "rank": 142,
+        "elo": 907.4
+      },
+      {
+        "name": "Dolph Schayes",
+        "rank": 143,
+        "elo": 897.0
+      },
+      {
+        "name": "Dennis Rodman",
+        "rank": 144,
+        "elo": 858.3
+      }
+    ],
+    "phi4:14b": [
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "rank": 1,
+        "elo": 2046.8
+      },
+      {
+        "name": "Michael Jordan",
+        "rank": 2,
+        "elo": 2036.4
+      },
+      {
+        "name": "LeBron James",
+        "rank": 3,
+        "elo": 2029.1
+      },
+      {
+        "name": "Nikola Jokic",
+        "rank": 4,
+        "elo": 2025.1
+      },
+      {
+        "name": "Kevin Durant",
+        "rank": 5,
+        "elo": 2022.3
+      },
+      {
+        "name": "Larry Bird",
+        "rank": 6,
+        "elo": 2012.0
+      },
+      {
+        "name": "Hakeem Olajuwon",
+        "rank": 7,
+        "elo": 2004.9
+      },
+      {
+        "name": "Stephen Curry",
+        "rank": 8,
+        "elo": 2002.5
+      },
+      {
+        "name": "Magic Johnson",
+        "rank": 9,
+        "elo": 1997.3
+      },
+      {
+        "name": "Kobe Bryant",
+        "rank": 10,
+        "elo": 1981.3
+      },
+      {
+        "name": "Bill Russell",
+        "rank": 11,
+        "elo": 1975.7
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "rank": 12,
+        "elo": 1967.1
+      },
+      {
+        "name": "Wilt Chamberlain",
+        "rank": 13,
+        "elo": 1956.3
+      },
+      {
+        "name": "Tim Duncan",
+        "rank": 14,
+        "elo": 1934.6
+      },
+      {
+        "name": "James Harden",
+        "rank": 15,
+        "elo": 1932.4
+      },
+      {
+        "name": "Luka Doncic",
+        "rank": 16,
+        "elo": 1923.1
+      },
+      {
+        "name": "Elgin Baylor",
+        "rank": 17,
+        "elo": 1919.7
+      },
+      {
+        "name": "Kawhi Leonard",
+        "rank": 18,
+        "elo": 1916.7
+      },
+      {
+        "name": "Julius Erving",
+        "rank": 19,
+        "elo": 1913.5
+      },
+      {
+        "name": "Oscar Robertson",
+        "rank": 20,
+        "elo": 1902.4
+      },
+      {
+        "name": "Scottie Pippen",
+        "rank": 21,
+        "elo": 1899.8
+      },
+      {
+        "name": "Anthony Davis",
+        "rank": 22,
+        "elo": 1896.6
+      },
+      {
+        "name": "Kevin Garnett",
+        "rank": 23,
+        "elo": 1891.9
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "rank": 24,
+        "elo": 1884.3
+      },
+      {
+        "name": "Clyde Drexler",
+        "rank": 25,
+        "elo": 1881.6
+      },
+      {
+        "name": "Charles Barkley",
+        "rank": 26,
+        "elo": 1880.2
+      },
+      {
+        "name": "Ray Allen",
+        "rank": 27,
+        "elo": 1872.9
+      },
+      {
+        "name": "Dirk Nowitzki",
+        "rank": 28,
+        "elo": 1868.3
+      },
+      {
+        "name": "George Gervin",
+        "rank": 29,
+        "elo": 1867.2
+      },
+      {
+        "name": "Joel Embiid",
+        "rank": 30,
+        "elo": 1842.5
+      },
+      {
+        "name": "Damian Lillard",
+        "rank": 31,
+        "elo": 1839.2
+      },
+      {
+        "name": "Chris Paul",
+        "rank": 32,
+        "elo": 1838.1
+      },
+      {
+        "name": "Steve Nash",
+        "rank": 33,
+        "elo": 1826.9
+      },
+      {
+        "name": "Karl Malone",
+        "rank": 34,
+        "elo": 1826.2
+      },
+      {
+        "name": "John Havlicek",
+        "rank": 35,
+        "elo": 1825.0
+      },
+      {
+        "name": "Jerry West",
+        "rank": 36,
+        "elo": 1811.2
+      },
+      {
+        "name": "David Robinson",
+        "rank": 37,
+        "elo": 1805.2
+      },
+      {
+        "name": "John Stockton",
+        "rank": 38,
+        "elo": 1784.3
+      },
+      {
+        "name": "Moses Malone",
+        "rank": 39,
+        "elo": 1775.2
+      },
+      {
+        "name": "Dwyane Wade",
+        "rank": 40,
+        "elo": 1774.4
+      },
+      {
+        "name": "Patrick Ewing",
+        "rank": 41,
+        "elo": 1752.3
+      },
+      {
+        "name": "Allen Iverson",
+        "rank": 42,
+        "elo": 1718.2
+      },
+      {
+        "name": "Kevin McHale",
+        "rank": 43,
+        "elo": 1717.2
+      },
+      {
+        "name": "Russell Westbrook",
+        "rank": 44,
+        "elo": 1716.7
+      },
+      {
+        "name": "Bob Cousy",
+        "rank": 45,
+        "elo": 1711.3
+      },
+      {
+        "name": "Kyrie Irving",
+        "rank": 46,
+        "elo": 1699.6
+      },
+      {
+        "name": "Paul Pierce",
+        "rank": 47,
+        "elo": 1697.3
+      },
+      {
+        "name": "Dominique Wilkins",
+        "rank": 48,
+        "elo": 1686.3
+      },
+      {
+        "name": "Rick Barry",
+        "rank": 49,
+        "elo": 1680.0
+      },
+      {
+        "name": "Reggie Miller",
+        "rank": 50,
+        "elo": 1679.3
+      },
+      {
+        "name": "Bob Pettit",
+        "rank": 51,
+        "elo": 1678.0
+      },
+      {
+        "name": "Gary Payton",
+        "rank": 52,
+        "elo": 1677.3
+      },
+      {
+        "name": "Jason Kidd",
+        "rank": 53,
+        "elo": 1676.3
+      },
+      {
+        "name": "Manu Ginobili",
+        "rank": 54,
+        "elo": 1663.6
+      },
+      {
+        "name": "Walt Frazier",
+        "rank": 55,
+        "elo": 1661.0
+      },
+      {
+        "name": "Dave Cowens",
+        "rank": 56,
+        "elo": 1638.8
+      },
+      {
+        "name": "Carmelo Anthony",
+        "rank": 57,
+        "elo": 1638.3
+      },
+      {
+        "name": "Jayson Tatum",
+        "rank": 58,
+        "elo": 1638.0
+      },
+      {
+        "name": "Dave DeBusschere",
+        "rank": 59,
+        "elo": 1630.4
+      },
+      {
+        "name": "Donovan Mitchell",
+        "rank": 60,
+        "elo": 1627.0
+      },
+      {
+        "name": "Robert Parish",
+        "rank": 61,
+        "elo": 1614.4
+      },
+      {
+        "name": "Elvin Hayes",
+        "rank": 62,
+        "elo": 1614.2
+      },
+      {
+        "name": "Pete Maravich",
+        "rank": 63,
+        "elo": 1611.6
+      },
+      {
+        "name": "Hal Greer",
+        "rank": 64,
+        "elo": 1603.7
+      },
+      {
+        "name": "George Mikan",
+        "rank": 65,
+        "elo": 1589.9
+      },
+      {
+        "name": "Bob McAdoo",
+        "rank": 66,
+        "elo": 1579.4
+      },
+      {
+        "name": "Earl Monroe",
+        "rank": 67,
+        "elo": 1564.2
+      },
+      {
+        "name": "Willis Reed",
+        "rank": 68,
+        "elo": 1553.6
+      },
+      {
+        "name": "Paul George",
+        "rank": 69,
+        "elo": 1551.4
+      },
+      {
+        "name": "Isiah Thomas",
+        "rank": 70,
+        "elo": 1550.1
+      },
+      {
+        "name": "Devin Booker",
+        "rank": 71,
+        "elo": 1550.0
+      },
+      {
+        "name": "Billy Cunningham",
+        "rank": 72,
+        "elo": 1548.4
+      },
+      {
+        "name": "Tracy McGrady",
+        "rank": 73,
+        "elo": 1545.8
+      },
+      {
+        "name": "Paul Arizin",
+        "rank": 74,
+        "elo": 1525.4
+      },
+      {
+        "name": "Chauncey Billups",
+        "rank": 75,
+        "elo": 1518.3
+      },
+      {
+        "name": "Nate Archibald",
+        "rank": 76,
+        "elo": 1515.7
+      },
+      {
+        "name": "Pau Gasol",
+        "rank": 77,
+        "elo": 1499.6
+      },
+      {
+        "name": "Kyle Lowry",
+        "rank": 78,
+        "elo": 1487.5
+      },
+      {
+        "name": "James Worthy",
+        "rank": 79,
+        "elo": 1477.8
+      },
+      {
+        "name": "Dave Bing",
+        "rank": 80,
+        "elo": 1469.0
+      },
+      {
+        "name": "Chris Bosh",
+        "rank": 81,
+        "elo": 1447.9
+      },
+      {
+        "name": "Klay Thompson",
+        "rank": 82,
+        "elo": 1446.8
+      },
+      {
+        "name": "Jimmy Butler",
+        "rank": 83,
+        "elo": 1445.6
+      },
+      {
+        "name": "Wes Unseld",
+        "rank": 84,
+        "elo": 1443.4
+      },
+      {
+        "name": "Bill Walton",
+        "rank": 85,
+        "elo": 1440.5
+      },
+      {
+        "name": "Lenny Wilkens",
+        "rank": 86,
+        "elo": 1437.5
+      },
+      {
+        "name": "Bernard King",
+        "rank": 87,
+        "elo": 1426.7
+      },
+      {
+        "name": "Alonzo Mourning",
+        "rank": 88,
+        "elo": 1426.4
+      },
+      {
+        "name": "Dolph Schayes",
+        "rank": 89,
+        "elo": 1418.0
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "rank": 90,
+        "elo": 1407.0
+      },
+      {
+        "name": "Joe Dumars",
+        "rank": 91,
+        "elo": 1406.7
+      },
+      {
+        "name": "Dennis Rodman",
+        "rank": 92,
+        "elo": 1405.2
+      },
+      {
+        "name": "Sam Jones",
+        "rank": 93,
+        "elo": 1404.6
+      },
+      {
+        "name": "Dikembe Mutombo",
+        "rank": 94,
+        "elo": 1400.3
+      },
+      {
+        "name": "Chris Mullin",
+        "rank": 95,
+        "elo": 1386.3
+      },
+      {
+        "name": "Tony Parker",
+        "rank": 96,
+        "elo": 1380.6
+      },
+      {
+        "name": "Jrue Holiday",
+        "rank": 97,
+        "elo": 1372.7
+      },
+      {
+        "name": "Ja Morant",
+        "rank": 98,
+        "elo": 1358.8
+      },
+      {
+        "name": "Alex English",
+        "rank": 99,
+        "elo": 1357.5
+      },
+      {
+        "name": "Draymond Green",
+        "rank": 100,
+        "elo": 1352.5
+      },
+      {
+        "name": "Bill Sharman",
+        "rank": 101,
+        "elo": 1350.0
+      },
+      {
+        "name": "Vince Carter",
+        "rank": 102,
+        "elo": 1339.4
+      },
+      {
+        "name": "Nate Thurmond",
+        "rank": 103,
+        "elo": 1320.3
+      },
+      {
+        "name": "Dennis Johnson",
+        "rank": 104,
+        "elo": 1320.1
+      },
+      {
+        "name": "Adrian Dantley",
+        "rank": 105,
+        "elo": 1318.8
+      },
+      {
+        "name": "Chris Webber",
+        "rank": 106,
+        "elo": 1302.1
+      },
+      {
+        "name": "Bam Adebayo",
+        "rank": 107,
+        "elo": 1288.7
+      },
+      {
+        "name": "Jerry Lucas",
+        "rank": 108,
+        "elo": 1280.0
+      },
+      {
+        "name": "Grant Hill",
+        "rank": 109,
+        "elo": 1263.3
+      },
+      {
+        "name": "Trae Young",
+        "rank": 110,
+        "elo": 1257.1
+      },
+      {
+        "name": "Pascal Siakam",
+        "rank": 111,
+        "elo": 1244.4
+      },
+      {
+        "name": "DeMar DeRozan",
+        "rank": 112,
+        "elo": 1209.2
+      },
+      {
+        "name": "LaMarcus Aldridge",
+        "rank": 113,
+        "elo": 1202.5
+      },
+      {
+        "name": "Marc Gasol",
+        "rank": 114,
+        "elo": 1180.8
+      },
+      {
+        "name": "Anthony Edwards",
+        "rank": 115,
+        "elo": 1179.7
+      },
+      {
+        "name": "Dwight Howard",
+        "rank": 116,
+        "elo": 1178.6
+      },
+      {
+        "name": "Rudy Gobert",
+        "rank": 117,
+        "elo": 1167.7
+      },
+      {
+        "name": "Penny Hardaway",
+        "rank": 118,
+        "elo": 1145.1
+      },
+      {
+        "name": "Jaylen Brown",
+        "rank": 119,
+        "elo": 1137.0
+      },
+      {
+        "name": "Yao Ming",
+        "rank": 120,
+        "elo": 1136.2
+      },
+      {
+        "name": "Ben Wallace",
+        "rank": 121,
+        "elo": 1134.6
+      },
+      {
+        "name": "Mitch Richmond",
+        "rank": 122,
+        "elo": 1127.5
+      },
+      {
+        "name": "Bob Lanier",
+        "rank": 123,
+        "elo": 1104.4
+      },
+      {
+        "name": "Al Horford",
+        "rank": 124,
+        "elo": 1102.2
+      },
+      {
+        "name": "Tim Hardaway",
+        "rank": 125,
+        "elo": 1055.5
+      },
+      {
+        "name": "Andre Iguodala",
+        "rank": 126,
+        "elo": 1047.3
+      },
+      {
+        "name": "World B. Free",
+        "rank": 127,
+        "elo": 984.7
+      },
+      {
+        "name": "Artis Gilmore",
+        "rank": 128,
+        "elo": 983.7
+      },
+      {
+        "name": "Jack Sikma",
+        "rank": 129,
+        "elo": 982.6
+      },
+      {
+        "name": "Sidney Moncrief",
+        "rank": 130,
+        "elo": 981.8
+      },
+      {
+        "name": "Rasheed Wallace",
+        "rank": 131,
+        "elo": 963.7
+      },
+      {
+        "name": "Lamar Odom",
+        "rank": 132,
+        "elo": 947.2
+      },
+      {
+        "name": "Gail Goodrich",
+        "rank": 133,
+        "elo": 938.6
+      },
+      {
+        "name": "John Wall",
+        "rank": 134,
+        "elo": 933.9
+      },
+      {
+        "name": "Tom Heinsohn",
+        "rank": 135,
+        "elo": 905.2
+      },
+      {
+        "name": "Baron Davis",
+        "rank": 136,
+        "elo": 861.3
+      },
+      {
+        "name": "Shawn Kemp",
+        "rank": 137,
+        "elo": 849.3
+      },
+      {
+        "name": "Amar'e Stoudemire",
+        "rank": 138,
+        "elo": 845.1
+      },
+      {
+        "name": "Gilbert Arenas",
+        "rank": 139,
+        "elo": 776.7
+      },
+      {
+        "name": "Shawn Marion",
+        "rank": 140,
+        "elo": 754.6
+      },
+      {
+        "name": "Spencer Haywood",
+        "rank": 141,
+        "elo": 728.4
+      },
+      {
+        "name": "Connie Hawkins",
+        "rank": 142,
+        "elo": 722.4
+      },
+      {
+        "name": "Paul Westphal",
+        "rank": 143,
+        "elo": 673.3
+      },
+      {
+        "name": "Marques Johnson",
+        "rank": 144,
+        "elo": 662.2
+      }
+    ],
+    "qwen2.5:7b": [
+      {
+        "name": "Michael Jordan",
+        "rank": 1,
+        "elo": 2065.0
+      },
+      {
+        "name": "Joel Embiid",
+        "rank": 2,
+        "elo": 2062.8
+      },
+      {
+        "name": "LeBron James",
+        "rank": 3,
+        "elo": 2059.2
+      },
+      {
+        "name": "Kareem Abdul-Jabbar",
+        "rank": 4,
+        "elo": 2054.8
+      },
+      {
+        "name": "Bill Russell",
+        "rank": 5,
+        "elo": 2029.4
+      },
+      {
+        "name": "Nikola Jokic",
+        "rank": 6,
+        "elo": 2021.7
+      },
+      {
+        "name": "Tim Duncan",
+        "rank": 7,
+        "elo": 2018.0
+      },
+      {
+        "name": "Larry Bird",
+        "rank": 8,
+        "elo": 2014.2
+      },
+      {
+        "name": "Kevin Durant",
+        "rank": 9,
+        "elo": 2006.9
+      },
+      {
+        "name": "Hakeem Olajuwon",
+        "rank": 10,
+        "elo": 2006.8
+      },
+      {
+        "name": "Stephen Curry",
+        "rank": 11,
+        "elo": 1995.3
+      },
+      {
+        "name": "Kawhi Leonard",
+        "rank": 12,
+        "elo": 1965.7
+      },
+      {
+        "name": "Kobe Bryant",
+        "rank": 13,
+        "elo": 1956.1
+      },
+      {
+        "name": "Steve Nash",
+        "rank": 14,
+        "elo": 1942.3
+      },
+      {
+        "name": "Shaquille O'Neal",
+        "rank": 15,
+        "elo": 1933.9
+      },
+      {
+        "name": "Giannis Antetokounmpo",
+        "rank": 16,
+        "elo": 1932.0
+      },
+      {
+        "name": "Karl Malone",
+        "rank": 17,
+        "elo": 1930.0
+      },
+      {
+        "name": "Chris Paul",
+        "rank": 18,
+        "elo": 1917.9
+      },
+      {
+        "name": "Oscar Robertson",
+        "rank": 19,
+        "elo": 1904.2
+      },
+      {
+        "name": "Bob Cousy",
+        "rank": 20,
+        "elo": 1898.6
+      },
+      {
+        "name": "Magic Johnson",
+        "rank": 21,
+        "elo": 1897.8
+      },
+      {
+        "name": "Bam Adebayo",
+        "rank": 22,
+        "elo": 1893.4
+      },
+      {
+        "name": "Devin Booker",
+        "rank": 23,
+        "elo": 1860.5
+      },
+      {
+        "name": "Chauncey Billups",
+        "rank": 24,
+        "elo": 1852.5
+      },
+      {
+        "name": "Scottie Pippen",
+        "rank": 25,
+        "elo": 1851.3
+      },
+      {
+        "name": "Gary Payton",
+        "rank": 26,
+        "elo": 1833.6
+      },
+      {
+        "name": "Moses Malone",
+        "rank": 27,
+        "elo": 1829.6
+      },
+      {
+        "name": "Julius Erving",
+        "rank": 28,
+        "elo": 1805.1
+      },
+      {
+        "name": "James Worthy",
+        "rank": 29,
+        "elo": 1804.2
+      },
+      {
+        "name": "Ray Allen",
+        "rank": 30,
+        "elo": 1794.0
+      },
+      {
+        "name": "Dirk Nowitzki",
+        "rank": 31,
+        "elo": 1791.1
+      },
+      {
+        "name": "Bob Pettit",
+        "rank": 32,
+        "elo": 1784.6
+      },
+      {
+        "name": "Klay Thompson",
+        "rank": 33,
+        "elo": 1779.1
+      },
+      {
+        "name": "Shai Gilgeous-Alexander",
+        "rank": 34,
+        "elo": 1778.5
+      },
+      {
+        "name": "Paul George",
+        "rank": 35,
+        "elo": 1765.8
+      },
+      {
+        "name": "Kevin Garnett",
+        "rank": 36,
+        "elo": 1760.7
+      },
+      {
+        "name": "Allen Iverson",
+        "rank": 37,
+        "elo": 1760.3
+      },
+      {
+        "name": "Donovan Mitchell",
+        "rank": 38,
+        "elo": 1753.1
+      },
+      {
+        "name": "Russell Westbrook",
+        "rank": 39,
+        "elo": 1744.4
+      },
+      {
+        "name": "Dwyane Wade",
+        "rank": 40,
+        "elo": 1742.1
+      },
+      {
+        "name": "Trae Young",
+        "rank": 41,
+        "elo": 1736.1
+      },
+      {
+        "name": "Wilt Chamberlain",
+        "rank": 42,
+        "elo": 1720.5
+      },
+      {
+        "name": "Damian Lillard",
+        "rank": 43,
+        "elo": 1710.7
+      },
+      {
+        "name": "James Harden",
+        "rank": 44,
+        "elo": 1706.3
+      },
+      {
+        "name": "John Stockton",
+        "rank": 45,
+        "elo": 1704.5
+      },
+      {
+        "name": "Anthony Davis",
+        "rank": 46,
+        "elo": 1687.1
+      },
+      {
+        "name": "Paul Pierce",
+        "rank": 47,
+        "elo": 1684.9
+      },
+      {
+        "name": "Clyde Drexler",
+        "rank": 48,
+        "elo": 1682.6
+      },
+      {
+        "name": "Jason Kidd",
+        "rank": 49,
+        "elo": 1655.9
+      },
+      {
+        "name": "Jerry West",
+        "rank": 50,
+        "elo": 1655.1
+      },
+      {
+        "name": "Luka Doncic",
+        "rank": 51,
+        "elo": 1644.5
+      },
+      {
+        "name": "Reggie Miller",
+        "rank": 52,
+        "elo": 1629.8
+      },
+      {
+        "name": "George Gervin",
+        "rank": 53,
+        "elo": 1628.4
+      },
+      {
+        "name": "Nate Archibald",
+        "rank": 54,
+        "elo": 1626.5
+      },
+      {
+        "name": "Hal Greer",
+        "rank": 55,
+        "elo": 1619.0
+      },
+      {
+        "name": "Kyrie Irving",
+        "rank": 56,
+        "elo": 1614.0
+      },
+      {
+        "name": "Dave Cowens",
+        "rank": 57,
+        "elo": 1609.7
+      },
+      {
+        "name": "Tony Parker",
+        "rank": 58,
+        "elo": 1598.1
+      },
+      {
+        "name": "Rudy Gobert",
+        "rank": 59,
+        "elo": 1595.6
+      },
+      {
+        "name": "Bob Lanier",
+        "rank": 60,
+        "elo": 1595.3
+      },
+      {
+        "name": "Jimmy Butler",
+        "rank": 61,
+        "elo": 1590.9
+      },
+      {
+        "name": "John Havlicek",
+        "rank": 62,
+        "elo": 1579.6
+      },
+      {
+        "name": "Jaylen Brown",
+        "rank": 63,
+        "elo": 1577.8
+      },
+      {
+        "name": "Jayson Tatum",
+        "rank": 64,
+        "elo": 1561.6
+      },
+      {
+        "name": "Tracy McGrady",
+        "rank": 65,
+        "elo": 1559.4
+      },
+      {
+        "name": "Ja Morant",
+        "rank": 66,
+        "elo": 1556.0
+      },
+      {
+        "name": "Patrick Ewing",
+        "rank": 67,
+        "elo": 1549.3
+      },
+      {
+        "name": "Robert Parish",
+        "rank": 68,
+        "elo": 1548.7
+      },
+      {
+        "name": "Draymond Green",
+        "rank": 69,
+        "elo": 1542.8
+      },
+      {
+        "name": "Grant Hill",
+        "rank": 70,
+        "elo": 1541.5
+      },
+      {
+        "name": "Elgin Baylor",
+        "rank": 71,
+        "elo": 1538.9
+      },
+      {
+        "name": "Isiah Thomas",
+        "rank": 72,
+        "elo": 1537.1
+      },
+      {
+        "name": "Kyle Lowry",
+        "rank": 73,
+        "elo": 1535.4
+      },
+      {
+        "name": "Ben Wallace",
+        "rank": 74,
+        "elo": 1512.3
+      },
+      {
+        "name": "Pascal Siakam",
+        "rank": 75,
+        "elo": 1510.2
+      },
+      {
+        "name": "Dennis Johnson",
+        "rank": 76,
+        "elo": 1509.3
+      },
+      {
+        "name": "Walt Frazier",
+        "rank": 77,
+        "elo": 1496.4
+      },
+      {
+        "name": "Elvin Hayes",
+        "rank": 78,
+        "elo": 1473.1
+      },
+      {
+        "name": "Earl Monroe",
+        "rank": 79,
+        "elo": 1471.0
+      },
+      {
+        "name": "David Robinson",
+        "rank": 80,
+        "elo": 1456.5
+      },
+      {
+        "name": "Carmelo Anthony",
+        "rank": 81,
+        "elo": 1453.9
+      },
+      {
+        "name": "Manu Ginobili",
+        "rank": 82,
+        "elo": 1448.5
+      },
+      {
+        "name": "Al Horford",
+        "rank": 83,
+        "elo": 1448.3
+      },
+      {
+        "name": "Kevin McHale",
+        "rank": 84,
+        "elo": 1435.1
+      },
+      {
+        "name": "Dominique Wilkins",
+        "rank": 85,
+        "elo": 1429.6
+      },
+      {
+        "name": "Jerry Lucas",
+        "rank": 86,
+        "elo": 1428.6
+      },
+      {
+        "name": "Jrue Holiday",
+        "rank": 87,
+        "elo": 1424.1
+      },
+      {
+        "name": "Charles Barkley",
+        "rank": 88,
+        "elo": 1418.9
+      },
+      {
+        "name": "Artis Gilmore",
+        "rank": 89,
+        "elo": 1414.1
+      },
+      {
+        "name": "Shawn Kemp",
+        "rank": 90,
+        "elo": 1403.7
+      },
+      {
+        "name": "Adrian Dantley",
+        "rank": 91,
+        "elo": 1392.2
+      },
+      {
+        "name": "Pete Maravich",
+        "rank": 92,
+        "elo": 1391.1
+      },
+      {
+        "name": "Wes Unseld",
+        "rank": 93,
+        "elo": 1374.0
+      },
+      {
+        "name": "Vince Carter",
+        "rank": 94,
+        "elo": 1366.5
+      },
+      {
+        "name": "Nate Thurmond",
+        "rank": 95,
+        "elo": 1362.5
+      },
+      {
+        "name": "Pau Gasol",
+        "rank": 96,
+        "elo": 1362.1
+      },
+      {
+        "name": "Rasheed Wallace",
+        "rank": 97,
+        "elo": 1356.8
+      },
+      {
+        "name": "Tim Hardaway",
+        "rank": 98,
+        "elo": 1343.6
+      },
+      {
+        "name": "Chris Mullin",
+        "rank": 99,
+        "elo": 1337.6
+      },
+      {
+        "name": "Andre Iguodala",
+        "rank": 100,
+        "elo": 1336.8
+      },
+      {
+        "name": "Amar'e Stoudemire",
+        "rank": 101,
+        "elo": 1336.2
+      },
+      {
+        "name": "Willis Reed",
+        "rank": 102,
+        "elo": 1329.1
+      },
+      {
+        "name": "Sam Jones",
+        "rank": 103,
+        "elo": 1317.9
+      },
+      {
+        "name": "DeMar DeRozan",
+        "rank": 104,
+        "elo": 1315.2
+      },
+      {
+        "name": "Tom Heinsohn",
+        "rank": 105,
+        "elo": 1308.6
+      },
+      {
+        "name": "Alonzo Mourning",
+        "rank": 106,
+        "elo": 1306.3
+      },
+      {
+        "name": "Bill Walton",
+        "rank": 107,
+        "elo": 1293.9
+      },
+      {
+        "name": "Mitch Richmond",
+        "rank": 108,
+        "elo": 1283.9
+      },
+      {
+        "name": "Chris Bosh",
+        "rank": 109,
+        "elo": 1281.7
+      },
+      {
+        "name": "Marc Gasol",
+        "rank": 110,
+        "elo": 1272.2
+      },
+      {
+        "name": "Shawn Marion",
+        "rank": 111,
+        "elo": 1243.5
+      },
+      {
+        "name": "Dwight Howard",
+        "rank": 112,
+        "elo": 1238.2
+      },
+      {
+        "name": "LaMarcus Aldridge",
+        "rank": 113,
+        "elo": 1235.6
+      },
+      {
+        "name": "Rick Barry",
+        "rank": 114,
+        "elo": 1226.1
+      },
+      {
+        "name": "George Mikan",
+        "rank": 115,
+        "elo": 1213.0
+      },
+      {
+        "name": "Penny Hardaway",
+        "rank": 116,
+        "elo": 1197.2
+      },
+      {
+        "name": "Paul Westphal",
+        "rank": 117,
+        "elo": 1190.3
+      },
+      {
+        "name": "Spencer Haywood",
+        "rank": 118,
+        "elo": 1173.5
+      },
+      {
+        "name": "Dave DeBusschere",
+        "rank": 119,
+        "elo": 1172.3
+      },
+      {
+        "name": "Billy Cunningham",
+        "rank": 120,
+        "elo": 1141.1
+      },
+      {
+        "name": "Bill Sharman",
+        "rank": 121,
+        "elo": 1124.1
+      },
+      {
+        "name": "Baron Davis",
+        "rank": 122,
+        "elo": 1123.6
+      },
+      {
+        "name": "Dennis Rodman",
+        "rank": 123,
+        "elo": 1112.0
+      },
+      {
+        "name": "Yao Ming",
+        "rank": 124,
+        "elo": 1091.0
+      },
+      {
+        "name": "Anthony Edwards",
+        "rank": 125,
+        "elo": 1074.6
+      },
+      {
+        "name": "Bob McAdoo",
+        "rank": 126,
+        "elo": 1068.0
+      },
+      {
+        "name": "Joe Dumars",
+        "rank": 127,
+        "elo": 1050.4
+      },
+      {
+        "name": "Dikembe Mutombo",
+        "rank": 128,
+        "elo": 1048.1
+      },
+      {
+        "name": "Gail Goodrich",
+        "rank": 129,
+        "elo": 1019.8
+      },
+      {
+        "name": "Gilbert Arenas",
+        "rank": 130,
+        "elo": 984.8
+      },
+      {
+        "name": "Alex English",
+        "rank": 131,
+        "elo": 984.5
+      },
+      {
+        "name": "Sidney Moncrief",
+        "rank": 132,
+        "elo": 976.8
+      },
+      {
+        "name": "Chris Webber",
+        "rank": 133,
+        "elo": 974.7
+      },
+      {
+        "name": "John Wall",
+        "rank": 134,
+        "elo": 964.5
+      },
+      {
+        "name": "Dave Bing",
+        "rank": 135,
+        "elo": 963.0
+      },
+      {
+        "name": "Paul Arizin",
+        "rank": 136,
+        "elo": 961.4
+      },
+      {
+        "name": "Bernard King",
+        "rank": 137,
+        "elo": 960.3
+      },
+      {
+        "name": "Marques Johnson",
+        "rank": 138,
+        "elo": 956.1
+      },
+      {
+        "name": "Dolph Schayes",
+        "rank": 139,
+        "elo": 955.2
+      },
+      {
+        "name": "Lamar Odom",
+        "rank": 140,
+        "elo": 911.4
+      },
+      {
+        "name": "Lenny Wilkens",
+        "rank": 141,
+        "elo": 844.0
+      },
+      {
+        "name": "World B. Free",
+        "rank": 142,
+        "elo": 788.4
+      },
+      {
+        "name": "Connie Hawkins",
+        "rank": 143,
+        "elo": 781.5
+      },
+      {
+        "name": "Jack Sikma",
+        "rank": 144,
+        "elo": 729.2
+      }
+    ]
+  },
+  "agreement_matrix": {
+    "gemma3:12b": {
+      "gemma3:12b": null,
+      "llama3.1:8b": 73.2,
+      "mistral:7b": 62.7,
+      "phi4:14b": 80.0,
+      "qwen2.5:7b": 68.3
+    },
+    "llama3.1:8b": {
+      "gemma3:12b": 73.2,
+      "llama3.1:8b": null,
+      "mistral:7b": 69.3,
+      "phi4:14b": 75.9,
+      "qwen2.5:7b": 71.8
+    },
+    "mistral:7b": {
+      "gemma3:12b": 62.7,
+      "llama3.1:8b": 69.3,
+      "mistral:7b": null,
+      "phi4:14b": 65.3,
+      "qwen2.5:7b": 70.6
+    },
+    "phi4:14b": {
+      "gemma3:12b": 80.0,
+      "llama3.1:8b": 75.9,
+      "mistral:7b": 65.3,
+      "phi4:14b": null,
+      "qwen2.5:7b": 74.7
+    },
+    "qwen2.5:7b": {
+      "gemma3:12b": 68.3,
+      "llama3.1:8b": 71.8,
+      "mistral:7b": 70.6,
+      "phi4:14b": 74.7,
+      "qwen2.5:7b": null
+    }
+  },
+  "consensus": [
+    {
+      "name": "Michael Jordan",
+      "mean_rank": 2.2,
+      "min_rank": 1,
+      "max_rank": 3
+    },
+    {
+      "name": "Kareem Abdul-Jabbar",
+      "mean_rank": 3.4,
+      "min_rank": 1,
+      "max_rank": 6
+    },
+    {
+      "name": "LeBron James",
+      "mean_rank": 4.4,
+      "min_rank": 3,
+      "max_rank": 7
+    },
+    {
+      "name": "Nikola Jokic",
+      "mean_rank": 7.0,
+      "min_rank": 1,
+      "max_rank": 16
+    },
+    {
+      "name": "Bill Russell",
+      "mean_rank": 7.0,
+      "min_rank": 1,
+      "max_rank": 11
+    },
+    {
+      "name": "Hakeem Olajuwon",
+      "mean_rank": 8.4,
+      "min_rank": 5,
+      "max_rank": 14
+    },
+    {
+      "name": "Larry Bird",
+      "mean_rank": 9.2,
+      "min_rank": 2,
+      "max_rank": 18
+    },
+    {
+      "name": "Giannis Antetokounmpo",
+      "mean_rank": 9.8,
+      "min_rank": 2,
+      "max_rank": 16
+    },
+    {
+      "name": "Tim Duncan",
+      "mean_rank": 12.0,
+      "min_rank": 7,
+      "max_rank": 18
+    },
+    {
+      "name": "Kobe Bryant",
+      "mean_rank": 12.0,
+      "min_rank": 8,
+      "max_rank": 16
+    },
+    {
+      "name": "Stephen Curry",
+      "mean_rank": 12.8,
+      "min_rank": 8,
+      "max_rank": 20
+    }
+  ],
+  "decades": [
+    "1950s",
+    "1960s",
+    "1970s",
+    "1980s",
+    "1990s",
+    "2000s",
+    "2010s",
+    "2020s"
+  ],
+  "era_slopes": {
+    "gemma3:12b": {
+      "1950s": {
+        "avg_elo": 1733.3,
+        "n": 12
+      },
+      "1960s": {
+        "avg_elo": 1585.6,
+        "n": 19
+      },
+      "1970s": {
+        "avg_elo": 1430.7,
+        "n": 22
+      },
+      "1980s": {
+        "avg_elo": 1620.1,
+        "n": 20
+      },
+      "1990s": {
+        "avg_elo": 1534.1,
+        "n": 24
+      },
+      "2000s": {
+        "avg_elo": 1399.5,
+        "n": 23
+      },
+      "2010s": {
+        "avg_elo": 1343.8,
+        "n": 23
+      },
+      "2020s": {
+        "avg_elo": 1283.1,
+        "n": 1
+      }
+    },
+    "llama3.1:8b": {
+      "1950s": {
+        "avg_elo": 1600.4,
+        "n": 12
+      },
+      "1960s": {
+        "avg_elo": 1487.5,
+        "n": 19
+      },
+      "1970s": {
+        "avg_elo": 1321.8,
+        "n": 22
+      },
+      "1980s": {
+        "avg_elo": 1580.7,
+        "n": 20
+      },
+      "1990s": {
+        "avg_elo": 1532.1,
+        "n": 24
+      },
+      "2000s": {
+        "avg_elo": 1430.3,
+        "n": 23
+      },
+      "2010s": {
+        "avg_elo": 1605.9,
+        "n": 23
+      },
+      "2020s": {
+        "avg_elo": 1237.5,
+        "n": 1
+      }
+    },
+    "mistral:7b": {
+      "1950s": {
+        "avg_elo": 1471.4,
+        "n": 12
+      },
+      "1960s": {
+        "avg_elo": 1369.2,
+        "n": 19
+      },
+      "1970s": {
+        "avg_elo": 1446.7,
+        "n": 22
+      },
+      "1980s": {
+        "avg_elo": 1536.1,
+        "n": 20
+      },
+      "1990s": {
+        "avg_elo": 1584.9,
+        "n": 24
+      },
+      "2000s": {
+        "avg_elo": 1508.0,
+        "n": 23
+      },
+      "2010s": {
+        "avg_elo": 1559.0,
+        "n": 23
+      },
+      "2020s": {
+        "avg_elo": 1199.2,
+        "n": 1
+      }
+    },
+    "phi4:14b": {
+      "1950s": {
+        "avg_elo": 1586.5,
+        "n": 12
+      },
+      "1960s": {
+        "avg_elo": 1483.0,
+        "n": 19
+      },
+      "1970s": {
+        "avg_elo": 1398.2,
+        "n": 22
+      },
+      "1980s": {
+        "avg_elo": 1610.6,
+        "n": 20
+      },
+      "1990s": {
+        "avg_elo": 1484.7,
+        "n": 24
+      },
+      "2000s": {
+        "avg_elo": 1455.8,
+        "n": 23
+      },
+      "2010s": {
+        "avg_elo": 1544.2,
+        "n": 23
+      },
+      "2020s": {
+        "avg_elo": 1179.7,
+        "n": 1
+      }
+    },
+    "qwen2.5:7b": {
+      "1950s": {
+        "avg_elo": 1455.9,
+        "n": 12
+      },
+      "1960s": {
+        "avg_elo": 1339.5,
+        "n": 19
+      },
+      "1970s": {
+        "avg_elo": 1373.2,
+        "n": 22
+      },
+      "1980s": {
+        "avg_elo": 1551.6,
+        "n": 20
+      },
+      "1990s": {
+        "avg_elo": 1546.9,
+        "n": 24
+      },
+      "2000s": {
+        "avg_elo": 1501.5,
+        "n": 23
+      },
+      "2010s": {
+        "avg_elo": 1700.2,
+        "n": 23
+      },
+      "2020s": {
+        "avg_elo": 1074.6,
+        "n": 1
+      }
+    }
+  },
+  "rorschach": [
+    {
+      "name": "Lamar Odom",
+      "combined_rank": 136,
+      "by_model": {
+        "gemma3:12b": 728.8,
+        "llama3.1:8b": 1346.5,
+        "mistral:7b": 1835.9,
+        "phi4:14b": 947.2,
+        "qwen2.5:7b": 911.4
+      },
+      "lo": 728.8,
+      "hi": 1835.9,
+      "spread": 1107.1
+    },
+    {
+      "name": "Shawn Marion",
+      "combined_rank": 111,
+      "by_model": {
+        "gemma3:12b": 1069.6,
+        "llama3.1:8b": 1303.2,
+        "mistral:7b": 1839.3,
+        "phi4:14b": 754.6,
+        "qwen2.5:7b": 1243.5
+      },
+      "lo": 754.6,
+      "hi": 1839.3,
+      "spread": 1084.7
+    },
+    {
+      "name": "Amar'e Stoudemire",
+      "combined_rank": 99,
+      "by_model": {
+        "gemma3:12b": 766.5,
+        "llama3.1:8b": 1211.4,
+        "mistral:7b": 1786.6,
+        "phi4:14b": 845.1,
+        "qwen2.5:7b": 1336.2
+      },
+      "lo": 766.5,
+      "hi": 1786.6,
+      "spread": 1020.1
+    },
+    {
+      "name": "Bam Adebayo",
+      "combined_rank": 28,
+      "by_model": {
+        "gemma3:12b": 980.0,
+        "llama3.1:8b": 1366.7,
+        "mistral:7b": 1107.4,
+        "phi4:14b": 1288.7,
+        "qwen2.5:7b": 1893.4
+      },
+      "lo": 980.0,
+      "hi": 1893.4,
+      "spread": 913.4
+    },
+    {
+      "name": "Artis Gilmore",
+      "combined_rank": 84,
+      "by_model": {
+        "gemma3:12b": 1196.9,
+        "llama3.1:8b": 1261.6,
+        "mistral:7b": 1893.1,
+        "phi4:14b": 983.7,
+        "qwen2.5:7b": 1414.1
+      },
+      "lo": 983.7,
+      "hi": 1893.1,
+      "spread": 909.4
+    },
+    {
+      "name": "Donovan Mitchell",
+      "combined_rank": 40,
+      "by_model": {
+        "gemma3:12b": 1045.8,
+        "llama3.1:8b": 1906.2,
+        "mistral:7b": 1610.2,
+        "phi4:14b": 1627.0,
+        "qwen2.5:7b": 1753.1
+      },
+      "lo": 1045.8,
+      "hi": 1906.2,
+      "spread": 860.4
+    }
+  ]
+}
