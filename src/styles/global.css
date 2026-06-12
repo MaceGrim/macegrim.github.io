@@ -1110,3 +1110,311 @@ html.js .reveal.in { opacity: 1; transform: none; }
   .nav { gap: 16px; }
   .nav .nav-collapse { display: none; }
 }
+
+
+/* =================================================================
+   Article extras — data-journalism components in the bone & ink system.
+   Reusable across posts: receipts, voter cards, chart frames, the
+   prompt block, and the vote-lookup list. Requires colors_and_type.css
+   + blog.css. Components live inside .prose and inherit its rhythm.
+   ================================================================= */
+
+:root {
+  /* Chart palette — theme-aware. Clay is the protagonist; a muted
+     teal is the only counterpoint, used for an opposing data series. */
+  --chart-accent:      var(--accent);
+  --chart-accent-soft: #ddb7a4;   /* the "low" end of a range bar */
+  --chart-2:           #3f7d86;   /* cool counterpoint (teal) */
+  --chart-grid:        var(--line);
+  --chart-label:       var(--muted);
+  --chart-ink:         var(--ink);
+}
+html[data-theme="dark"] {
+  --chart-accent-soft: #7a4a35;
+  --chart-2:           #6fb3bd;
+  --chart-grid:        var(--line-strong);
+}
+
+/* A column a touch wider than reading measure, for data blocks */
+.data-block { margin-block: 1.6em; }
+
+/* ---------- Receipts (two facing top-5 lists) ---------- */
+.receipts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.receipt-list {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.receipt-list h3 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.receipt-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 7px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  border-bottom: 1px solid var(--line);
+}
+.receipt-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.receipt-note {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.receipt-row .rank {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  width: 34px;
+  flex: none;
+}
+.receipt-row .name { flex: 1; color: var(--ink); }
+.receipt-row .val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.receipt-row.bad .name { color: var(--accent); }
+
+/* ---------- Voter cards ---------- */
+.voters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+.voter {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  transition: border-color 0.3s var(--ease);
+}
+.voter:hover { border-color: var(--line-strong); }
+.voter .vmeta { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.voter .vname {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+.voter .vnum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+/* Relative parameter-count bar (width set inline, % of the largest model) */
+.voter .psize {
+  height: 3px;
+  margin-top: 10px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.voter .psize span {
+  display: block;
+  height: 100%;
+  background: var(--chart-accent-soft);
+  border-radius: 2px;
+}
+.voter .epithet {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  margin: 8px 0 10px;
+}
+.voter .top3 {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+}
+.voter .why {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin: 10px 0 0;
+}
+/* Verdict stamps — rubber-stamp ruling on each voter card */
+.voter .stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  padding: 5px 12px;
+  margin: 12px 0 2px;
+  transform: rotate(-2deg);
+}
+.voter:nth-child(even) .stamp { transform: rotate(1.4deg); }
+
+/* ---------- Chart frame ---------- */
+figure.chart {
+  margin: 1.6em 0;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px clamp(16px, 2.4vw, 26px);
+}
+figure.chart svg { display: block; width: 100%; height: auto; }
+figure.chart figcaption {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: 14px;
+}
+/* Chart text inherits the mono label color unless overridden inline */
+figure.chart svg text { font-family: var(--font-mono); }
+
+/* ---------- The prompt block ---------- */
+.system-line {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+}
+.system-line .role {
+  color: var(--accent);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+/* Scoped under .prose so it outranks `.prose p { text-wrap: pretty }`, which
+   would otherwise override the nowrap and let the line break. */
+.prose .inline-prompt {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.3vw, 1.75rem);
+  line-height: 1.55;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  /* Break the question out of the reading measure into a wider centered band so
+     long name pairs stay on one line instead of orphaning the "?". Symmetric
+     margins (not left/transform) so it never adds horizontal page scroll. */
+  --band: min(94vw, 1040px);
+  box-sizing: border-box;
+  width: var(--band);
+  margin: 1.2em calc((100% - var(--band)) / 2);
+  white-space: nowrap;
+  text-wrap: nowrap;
+  text-align: center;
+}
+/* The instruction underneath keeps the normal reading width + wrapping. */
+.prose .inline-prompt .small {
+  white-space: normal;
+  text-wrap: pretty;
+  text-align: left;
+  margin-inline: auto;
+}
+@media (max-width: 720px) {
+  .prose .inline-prompt {
+    width: auto;
+    margin-inline: 0;
+    white-space: normal;
+    text-wrap: pretty;
+    text-align: left;
+  }
+}
+.inline-prompt .pill {
+  color: var(--accent);
+  font-style: italic;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100% 1px;
+  background-position: 0 96%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.02em;
+}
+.inline-prompt .small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-top: 16px;
+  max-width: 60ch;
+}
+
+/* ---------- Vote-lookup list ---------- */
+.votes-out {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2px 20px;
+}
+.votes-out .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.votes-out .row:last-child { border-bottom: 0; }
+.votes-out .judge {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.votes-out .pick { font-family: var(--font-body); font-weight: 600; }
+.votes-out .pick.A { color: var(--accent); }
+.votes-out .pick.B { color: var(--chart-2); }
+
+/* ---------- Methodology footer ---------- */
+.methodology {
+  max-width: var(--measure);
+  margin: clamp(36px, 5vw, 60px) auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.methodology p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.methodology p strong { color: var(--ink); font-weight: 600; }
+.methodology a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  transition: color 0.25s var(--ease);
+}
+.methodology a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .receipts { grid-template-columns: 1fr; }
+}
