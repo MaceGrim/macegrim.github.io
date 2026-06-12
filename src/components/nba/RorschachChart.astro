@@ -1,0 +1,151 @@
+---
+// The chaos zone — same player, five verdicts. The judges the models disagree
+// on most: each row is the Elo range across the five models, with a dot per
+// model. The width of the bar is the whole story. Build-time SVG for the top
+// spreads, plus a picker so a reader can drop in any of the 144 players and see
+// where their spread lands on the same scale.
+import viz from '../../data/nba/nba_viz.json';
+import { MODEL_COLOR, shortModel } from './palette';
+
+const models: string[] = viz.models;
+const data: { name: string; combined_rank: number; by_model: Record<string, number>; lo: number; hi: number; spread: number }[] = viz.rorschach;
+
+// Per-model Elo for every player (from the full per-model ladders) so the picker
+// can show anyone, and so the scale fits the whole field — not just the top six.
+const combinedRank: Record<string, number> = Object.fromEntries(viz.combined_ranking.map((p) => [p.name, p.rank]));
+const byModelAll: Record<string, Record<string, number>> = {};
+for (const m of models) for (const p of viz.model_rankings[m]) (byModelAll[p.name] ??= {})[m] = p.elo;
+const lookup: Record<string, { rank: number; by_model: Record<string, number>; lo: number; hi: number; spread: number }> = {};
+for (const name of viz.players as string[]) {
+  const bm = byModelAll[name];
+  const vals = models.map((m) => bm[m]);
+  const lo = Math.min(...vals), hi = Math.max(...vals);
+  lookup[name] = { rank: combinedRank[name], by_model: bm, lo, hi, spread: Math.round((hi - lo) * 10) / 10 };
+}
+const datalistNames = [...(viz.players as string[])].sort((a, b) => combinedRank[a] - combinedRank[b]);
+
+const allElo = Object.values(byModelAll).flatMap((bm) => models.map((m) => bm[m]));
+const minLo = Math.floor((Math.min(...allElo) - 40) / 100) * 100;
+const maxHi = Math.ceil((Math.max(...allElo) + 40) / 100) * 100;
+
+const W = 700, rowH = 50, padTop = 16, padBottom = 8, labelW = 168;
+const plotL = labelW, plotR = W - 70;
+const H = padTop + data.length * rowH + padBottom;
+const xFor = (e: number) => plotL + ((e - minLo) / (maxHi - minLo)) * (plotR - plotL);
+const ticks = [];
+for (let t = minLo; t <= maxHi; t += 400) ticks.push(t);
+
+const pickH = 70; // height of the interactive "your pick" strip
+const scale = { plotL, plotR, minLo, maxHi, labelW, W };
+---
+
+<figure class="chart chart-rorschach reveal">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Elo spread per model for the most-disputed players">
+    {ticks.map((t) => (
+      <g>
+        <line x1={xFor(t)} y1={padTop} x2={xFor(t)} y2={H - padBottom} class="grid" />
+        <text x={xFor(t)} y={H - padBottom + 2} text-anchor="middle" class="axis">{t}</text>
+      </g>
+    ))}
+    {data.map((d, i) => {
+      const y = padTop + i * rowH + rowH / 2 - 4;
+      return (
+        <g>
+          <text x={labelW - 14} y={y - 2} text-anchor="end" class="name">{d.name}</text>
+          <text x={labelW - 14} y={y + 13} text-anchor="end" class="sub">#{d.combined_rank} overall · spread {d.spread.toFixed(0)}</text>
+          <line x1={xFor(d.lo)} y1={y} x2={xFor(d.hi)} y2={y} class="track" />
+          {models.map((m) => (
+            <circle cx={xFor(d.by_model[m])} cy={y} r="4.5" fill={MODEL_COLOR[m]} class="dot">
+              <title>{shortModel(m)}: {d.by_model[m].toFixed(0)}</title>
+            </circle>
+          ))}
+          <text x={xFor(d.lo) - 8} y={y + 4} text-anchor="end" class="endval">{d.lo.toFixed(0)}</text>
+          <text x={xFor(d.hi) + 8} y={y + 4} text-anchor="start" class="endval">{d.hi.toFixed(0)}</text>
+        </g>
+      );
+    })}
+  </svg>
+
+  <div class="rorschach-pick">
+    <label class="pick-label" for="rorschach-input">See any player's spread</label>
+    <input id="rorschach-input" class="pick-input" type="text" list="rorschach-players" placeholder="e.g. Michael Jordan" autocomplete="off" spellcheck="false" />
+    <datalist id="rorschach-players">
+      {datalistNames.map((n) => <option value={n}></option>)}
+    </datalist>
+    <svg class="pick-svg" viewBox={`0 0 ${W} ${pickH}`} role="img" aria-label="Selected player's Elo spread">
+      {ticks.map((t) => <line x1={xFor(t)} y1={8} x2={xFor(t)} y2={pickH - 20} class="grid" />)}
+      {ticks.map((t) => <text x={xFor(t)} y={pickH - 6} text-anchor="middle" class="axis">{t}</text>)}
+      <g id="rorschach-pick-row"></g>
+      <text id="rorschach-pick-empty" x={labelW - 14} y={36} text-anchor="end" class="pick-empty">type a name above ↑</text>
+    </svg>
+  </div>
+
+  <figcaption>
+    The six players with the widest Elo spread across the five judges. <strong>{data[0].name}</strong> runs from {data[0].lo.toFixed(0)} to {data[0].hi.toFixed(0)}: bench-warmer to borderline star, depending who you ask. Each dot is one model
+    (<span style="color:#3f7d86">gemma3</span>, <span style="color:#a8492c">llama3.1</span>, <span style="color:#9a5b6b">mistral</span>, <span style="color:#6b7f4e">phi4</span>, <span style="color:#cf8a3b">qwen2.5</span>). Drop in any player above to see where their spread lands.
+  </figcaption>
+</figure>
+
+<script define:vars={{ lookup, models, colors: MODEL_COLOR, scale }}>
+  const SVG = 'http://www.w3.org/2000/svg';
+  const el = (tag, attrs, text) => {
+    const n = document.createElementNS(SVG, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  };
+  const xMap = (e) => scale.plotL + ((e - scale.minLo) / (scale.maxHi - scale.minLo)) * (scale.plotR - scale.plotL);
+
+  const input = document.getElementById('rorschach-input');
+  const row = document.getElementById('rorschach-pick-row');
+  const empty = document.getElementById('rorschach-pick-empty');
+  if (input && row) {
+    const render = (name) => {
+      row.replaceChildren();
+      const p = lookup[name];
+      empty.style.display = p ? 'none' : '';
+      if (!p) return;
+      const y = 30;
+      row.appendChild(el('text', { x: scale.labelW - 14, y: y - 2, 'text-anchor': 'end', class: 'name' }, name));
+      row.appendChild(el('text', { x: scale.labelW - 14, y: y + 13, 'text-anchor': 'end', class: 'sub' }, `#${p.rank} overall · spread ${Math.round(p.spread)}`));
+      row.appendChild(el('line', { x1: xMap(p.lo), y1: y, x2: xMap(p.hi), y2: y, class: 'track pick' }));
+      for (const m of models) {
+        const c = el('circle', { cx: xMap(p.by_model[m]), cy: y, r: 4.5, fill: colors[m], class: 'dot' });
+        c.appendChild(el('title', {}, `${m.split(':')[0]}: ${Math.round(p.by_model[m])}`));
+        row.appendChild(c);
+      }
+      row.appendChild(el('text', { x: xMap(p.lo) - 8, y: y + 4, 'text-anchor': 'end', class: 'endval' }, Math.round(p.lo)));
+      row.appendChild(el('text', { x: xMap(p.hi) + 8, y: y + 4, 'text-anchor': 'start', class: 'endval' }, Math.round(p.hi)));
+    };
+    input.addEventListener('input', () => render(input.value.trim()));
+    input.addEventListener('change', () => render(input.value.trim()));
+  }
+</script>
+
+<!-- Global (not scoped): the pick row is built in JS, so its nodes never get
+     Astro's scope attribute — scoped rules wouldn't reach them. All selectors are
+     namespaced under .chart-rorschach, so nothing leaks. -->
+<style is:global>
+  .chart-rorschach .grid { stroke: var(--chart-grid); stroke-width: 1; }
+  .chart-rorschach .axis { fill: var(--muted); font-size: 10px; font-family: var(--font-mono); }
+  .chart-rorschach .name { fill: var(--ink); font-size: 14px; font-family: var(--font-display); font-weight: 500; }
+  .chart-rorschach .sub { fill: var(--muted); font-size: 10px; font-family: var(--font-mono); }
+  .chart-rorschach .track { stroke: var(--line-strong); stroke-width: 2; }
+  .chart-rorschach .track.pick { stroke: var(--accent); stroke-opacity: 0.55; }
+  .chart-rorschach .dot { stroke: var(--paper); stroke-width: 1; }
+  .chart-rorschach .endval { fill: var(--muted); font-size: 10px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+  .chart-rorschach .pick-empty { fill: var(--muted); font-size: 12px; font-family: var(--font-mono); }
+
+  .rorschach-pick { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .rorschach-pick .pick-label {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-right: 12px;
+  }
+  .rorschach-pick .pick-input {
+    font-family: var(--font-body); font-size: 15px; color: var(--ink);
+    background: var(--paper-2); border: 1px solid var(--line-strong); border-radius: var(--radius);
+    padding: 6px 12px; min-width: 220px;
+  }
+  .rorschach-pick .pick-input:focus { outline: none; border-color: var(--accent); }
+  .rorschach-pick .pick-svg { display: block; margin-top: 10px; width: 100%; height: auto; }
+</style>

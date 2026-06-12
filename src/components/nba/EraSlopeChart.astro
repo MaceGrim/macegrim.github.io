@@ -1,0 +1,98 @@
+---
+// Era bias — each judge's average Elo by player debut decade. The slope is the
+// story: who leans old-school, who leans recency. Point size = players in that
+// decade bucket (so the lone 2020s point reads as the small sample it is).
+// Build-time SVG; hover a line, its end-label, or a model name in the caption
+// to isolate that judge.
+import viz from '../../data/nba/nba_viz.json';
+import { MODEL_COLOR as COLOR, shortModel } from './palette';
+
+const models: string[] = viz.models;
+const decades: string[] = viz.decades;
+const slopes: Record<string, Record<string, { avg_elo: number; n: number }>> = viz.era_slopes;
+
+const W = 720, H = 400, padL = 52, padR = 96, padT = 24, padB = 44;
+const plotL = padL, plotR = W - padR, plotT = padT, plotB = H - padB;
+
+const allElo = models.flatMap((m) => decades.map((d) => slopes[m][d].avg_elo));
+const yMin = Math.floor((Math.min(...allElo) - 30) / 50) * 50;
+const yMax = Math.ceil((Math.max(...allElo) + 30) / 50) * 50;
+const xFor = (i: number) => plotL + (i / (decades.length - 1)) * (plotR - plotL);
+const yFor = (e: number) => plotB - ((e - yMin) / (yMax - yMin)) * (plotB - plotT);
+const rFor = (n: number) => 2 + Math.sqrt(n) * 0.9;
+const yTicks = [];
+for (let t = yMin; t <= yMax; t += 100) yTicks.push(t);
+
+const series = models.map((m) => {
+  const pts = decades.map((d, i) => ({ x: xFor(i), y: yFor(slopes[m][d].avg_elo), n: slopes[m][d].n }));
+  return { m, color: COLOR[m], poly: pts.map((p) => `${p.x},${p.y}`).join(' '), pts, end: pts[pts.length - 1] };
+});
+
+// De-collide the right-edge labels: sort by y, push any that crowd a neighbor.
+const labels = series.map((s) => ({ model: s.m, name: shortModel(s.m), color: s.color, y: s.end.y })).sort((a, b) => a.y - b.y);
+const MIN_GAP = 13;
+for (let i = 1; i < labels.length; i++) {
+  if (labels[i].y - labels[i - 1].y < MIN_GAP) labels[i].y = labels[i - 1].y + MIN_GAP;
+}
+---
+
+<figure class="chart chart-era reveal">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Average Elo by player debut decade, per model">
+    {yTicks.map((t) => (
+      <g>
+        <line x1={plotL} y1={yFor(t)} x2={plotR} y2={yFor(t)} class="grid" />
+        <text x={plotL - 10} y={yFor(t) + 4} text-anchor="end" class="axis">{t}</text>
+      </g>
+    ))}
+    {decades.map((d, i) => (
+      <text x={xFor(i)} y={plotB + 22} text-anchor="middle" class="axis">{d}</text>
+    ))}
+    {series.map((s) => (
+      <g class="series" data-model={s.m}>
+        <polyline points={s.poly} class="hit" />
+        <polyline points={s.poly} class="line" fill="none" stroke={s.color} stroke-width="2" stroke-linejoin="round" />
+        {s.pts.map((p) => <circle cx={p.x} cy={p.y} r={rFor(p.n)} fill={s.color} class="pt" />)}
+      </g>
+    ))}
+    {labels.map((l) => (
+      <text x={plotR + 10} y={l.y + 4} class="series-label" data-model={l.model} style={`fill:${l.color}`}>{l.name}</text>
+    ))}
+  </svg>
+  <figcaption>
+    Average Elo of players grouped by NBA debut decade. <strong class="legend" data-model="gemma3:12b" style="color:#3f7d86">gemma3</strong> rates the 1950s–60s highest (old-school);
+    <strong class="legend" data-model="llama3.1:8b" style="color:#a8492c">llama3.1</strong> and <strong class="legend" data-model="qwen2.5:7b" style="color:#cf8a3b">qwen2.5</strong> climb toward the 2010s (recency). Dot size = players in that decade; the 2020s point is Anthony Edwards alone (n=1).
+  </figcaption>
+</figure>
+
+<script>
+  // Hover a line / end-label / caption name to isolate that judge.
+  document.querySelectorAll<HTMLElement>('.chart-era').forEach((fig) => {
+    const keyed = fig.querySelectorAll<HTMLElement>('[data-model]');
+    const set = (model: string | null) => {
+      fig.classList.toggle('active', !!model);
+      keyed.forEach((el) => el.classList.toggle('hi', el.dataset.model === model));
+    };
+    keyed.forEach((el) => {
+      el.addEventListener('mouseenter', () => set(el.dataset.model ?? null));
+      el.addEventListener('mouseleave', () => set(null));
+    });
+  });
+</script>
+
+<style>
+  .chart-era .grid { stroke: var(--chart-grid); stroke-width: 1; }
+  .chart-era .axis { fill: var(--muted); font-size: 10px; font-family: var(--font-mono); }
+  .chart-era .series-label { font-size: 11px; font-weight: 700; font-family: var(--font-mono); cursor: pointer; }
+  .chart-era .legend { cursor: pointer; }
+
+  /* Wide invisible stroke makes the thin line easy to hover. */
+  .chart-era .hit { stroke: transparent; stroke-width: 18; fill: none; pointer-events: stroke; }
+  .chart-era .line, .chart-era .pt { transition: opacity 0.15s var(--ease), stroke-width 0.15s var(--ease); }
+
+  /* When a series is active, fade everything that isn't hovered. */
+  .chart-era.active .series:not(.hi) .line,
+  .chart-era.active .series:not(.hi) .pt { opacity: 0.14; }
+  .chart-era.active .series-label:not(.hi),
+  .chart-era.active .legend:not(.hi) { opacity: 0.35; }
+  .chart-era.active .series.hi .line { stroke-width: 3.5; }
+</style>

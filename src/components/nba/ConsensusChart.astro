@@ -1,0 +1,50 @@
+---
+// The consensus zone — the players who land in every model's top-20. Each row
+// is a range bar from the player's best to worst rank across the five judges,
+// with a dot at the mean. Short bars = tight agreement. Build-time SVG.
+import viz from '../../data/nba/nba_viz.json';
+
+const data: { name: string; mean_rank: number; min_rank: number; max_rank: number }[] = viz.consensus;
+
+const W = 700, rowH = 34, padTop = 28, padBottom = 8;
+const labelW = 168, plotL = labelW, plotR = W - 24;
+const H = padTop + data.length * rowH + padBottom;
+const maxRank = Math.max(...data.map((d) => d.max_rank));
+const xFor = (rank: number) => plotL + ((rank - 1) / (maxRank - 1)) * (plotR - plotL);
+const ticks = [1, 5, 10, 15, 20].filter((t) => t <= maxRank);
+---
+
+<figure class="chart chart-consensus reveal">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Players in every model's top 20, by rank spread">
+    {ticks.map((t) => (
+      <g>
+        <line x1={xFor(t)} y1={padTop - 8} x2={xFor(t)} y2={H - padBottom} class="grid" />
+        <text x={xFor(t)} y={padTop - 14} text-anchor="middle" class="axis">{t}</text>
+      </g>
+    ))}
+    {data.map((d, i) => {
+      const y = padTop + i * rowH + rowH / 2;
+      return (
+        <g class="row">
+          <text x={labelW - 14} y={y + 4} text-anchor="end" class="name">{d.name}</text>
+          <line x1={xFor(d.min_rank)} y1={y} x2={xFor(d.max_rank)} y2={y} class="bar" />
+          <circle cx={xFor(d.min_rank)} cy={y} r="2.5" class="cap" />
+          <circle cx={xFor(d.max_rank)} cy={y} r="2.5" class="cap" />
+          <circle cx={xFor(d.mean_rank)} cy={y} r="5" class="mean" />
+        </g>
+      );
+    })}
+  </svg>
+  <figcaption>
+    The {data.length} players in all five judges' top-20, sorted by mean rank. The bar spans each player's best-to-worst rank across models; the dot is the mean. Jordan barely moves ({data[0].min_rank}–{data[0].max_rank}); names lower down rattle around.
+  </figcaption>
+</figure>
+
+<style>
+  .chart-consensus .grid { stroke: var(--chart-grid); stroke-width: 1; }
+  .chart-consensus .axis { fill: var(--muted); font-size: 10px; font-family: var(--font-mono); }
+  .chart-consensus .name { fill: var(--ink); font-size: 13px; font-family: var(--font-body); }
+  .chart-consensus .bar { stroke: var(--chart-accent-soft); stroke-width: 6; stroke-linecap: round; }
+  .chart-consensus .cap { fill: var(--chart-accent-soft); }
+  .chart-consensus .mean { fill: var(--chart-accent); }
+</style>
