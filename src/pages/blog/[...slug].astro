@@ -23,7 +23,7 @@ const { Content } = await render(post);
         {post.data.category && post.data.date && <span class="dot">·</span>}
         {post.data.date && (
           <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}
           </time>
         )}
       </div>
@@ -39,7 +39,7 @@ const { Content } = await render(post);
           <div class="who">Mason Grimshaw</div>
           <div class="when">
             {post.data.date && (
-              <span>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+              <span>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
             )}
             {post.data.tags && post.data.tags.length > 0 && (
               <span><span class="sep">/</span>{post.data.tags.join(' · ')}</span>
