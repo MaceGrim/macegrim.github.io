@@ -1,0 +1,155 @@
+---
+title: "Five Tiny AIs Ranked 144 NBA Legends"
+date: 2026-05-01
+category: "Experiment"
+description: "They agree at the very top, but could fill some serious radio time with their disagreements."
+excerpt: "Five small open-source LLMs were each asked every head-to-head matchup between 144 NBA legends: 51,473 votes in all. They agree at the very top, but could fill some serious radio time with their disagreements."
+tags: ["Data & AI", "LLMs", "Basketball"]
+titleBanner: "does-ai-know-ball"
+---
+
+import ConsensusChart from '../../components/nba/ConsensusChart.astro';
+import EraSlopeChart from '../../components/nba/EraSlopeChart.astro';
+import RorschachChart from '../../components/nba/RorschachChart.astro';
+import ChordChart from '../../components/nba/ChordChart.astro';
+import BumpChart from '../../components/nba/BumpChart.astro';
+import VoteLookup from '../../components/nba/VoteLookup.astro';
+
+<div class="data-block reveal">
+          <div class="receipts">
+            <div class="receipt-list">
+              <h3>What they all agree on</h3>
+              <div class="receipt-row"><span class="rank">1</span><span class="name">Michael Jordan</span><span class="val">2678</span></div>
+              <div class="receipt-row"><span class="rank">2</span><span class="name">Kareem Abdul-Jabbar</span><span class="val">2631</span></div>
+              <div class="receipt-row"><span class="rank">3</span><span class="name">LeBron James</span><span class="val">2585</span></div>
+              <div class="receipt-row"><span class="rank">4</span><span class="name">Bill Russell</span><span class="val">2494</span></div>
+              <div class="receipt-row"><span class="rank">5</span><span class="name">Kevin Durant</span><span class="val">2406</span></div>
+              <div class="receipt-note">Numbers are Elo ratings, combined across all five judges.</div>
+            </div>
+            <div class="receipt-list">
+              <h3>What they very much don't</h3>
+              <div class="receipt-row bad"><span class="rank">#1</span><span class="name">Nikola Jokić</span><span class="val">llama3.1</span></div>
+              <div class="receipt-row bad"><span class="rank">#1</span><span class="name">Bill Russell</span><span class="val">mistral</span></div>
+              <div class="receipt-row bad"><span class="rank">#2</span><span class="name">Joel Embiid</span><span class="val">qwen2.5</span></div>
+              <div class="receipt-row bad"><span class="rank">#3</span><span class="name">Jerry West</span><span class="val">mistral</span></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="opening">I took five, tiny, open-source LLMs you can run on a Mac, asked each of them every possible matchup between 144 NBA all-time candidates (10,296 head-to-heads per model, 51,473 valid votes), and tallied who they think can ball. Fair warning, there are some TERRIBLE takes ahead.</p>
+
+        <h2>How I <em>asked.</em></h2>
+        <p>The whole experiment is one prompt, run 51,480 times. Pick any two players and see how each judge voted:</p>
+
+        <VoteLookup />
+
+        <h2>Meet the <em>voters.</em></h2>
+        <p>Five small models, 7 to 14 billion parameters each (that's the B, and the bar on each card). The closed models from the big labs are estimated at 100 to 1000 times that size; this whole experiment ran on one Mac without noticeably warming the ocean. Each voter has a basketball agenda.</p>
+
+        <div class="data-block">
+          <div class="voters">
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">llama3.1 : 8B</span><span class="vnum">01</span></div>
+              <div class="psize"><span style="width:57%"></span></div>
+              <div class="epithet">The NBA Twitter guy.</div>
+              <div class="top3">Top 3: Jokić · Giannis · Jordan</div>
+              <p class="why">Heaviest recency lean. Luka top-5, Donovan Mitchell top-20.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">mistral : 7B</span><span class="vnum">02</span></div>
+              <div class="psize"><span style="width:50%"></span></div>
+              <div class="epithet">Your dad at the cookout.</div>
+              <div class="top3">Top 3: Russell · Jordan · Jerry West</div>
+              <p class="why">Mid-century Celtics lean. James Worthy #7. Disagrees with everyone, but might have a point?</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">qwen2.5 : 7B</span><span class="vnum">03</span></div>
+              <div class="psize"><span style="width:50%"></span></div>
+              <div class="epithet">The Embiid stan.</div>
+              <div class="top3">Top 3: Jordan · Embiid · LeBron</div>
+              <p class="why">Made Joel Embiid the second-best player in NBA history. I'm as surprised as you.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">phi4 : 14B</span><span class="vnum">04</span></div>
+              <div class="psize"><span style="width:100%"></span></div>
+              <div class="epithet">The analyst.</div>
+              <div class="top3">Top 3: Kareem · Jordan · LeBron</div>
+              <p class="why">Centrist takes. Agrees with gemma3 80% of the time, the highest pair in the room.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">gemma3 : 12B</span><span class="vnum">05</span></div>
+              <div class="psize"><span style="width:86%"></span></div>
+              <div class="epithet">The median voice.</div>
+              <div class="top3">Top 3: Kareem · Larry Bird · Jordan</div>
+              <p class="why">Old-school lean. Sneaks Mikan and Elgin Baylor into the top 20.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>The consensus zone.</h2>
+        <p>If you put every model's ballot on the wall, a small group of names show up on every ballot, in roughly the same neighborhood. These are the players everyone loves.</p>
+
+        <ConsensusChart />
+
+        <h2>The <em>chaos</em> zone.</h2>
+        <p>Past the top tier, the ladder breaks. Era-wars open up. Models start disagreeing by hundreds of Elo points on the same player.</p>
+
+        <EraSlopeChart />
+
+        <RorschachChart />
+
+        <h2>Model <em>(dis)agreement.</em></h2>
+        <p>Most of the models get along, but <strong>mistral</strong> is contrarian.</p>
+
+        <ChordChart />
+
+        <h2>Five ballots, <em>side by side.</em></h2>
+        <p>Each judge's top 15, with the combined ladder (every vote pooled into one shared Elo) on the far right. Flat lines are consensus. Names that dive between columns, or show up on only one ballot, are the most contentious.</p>
+
+        <BumpChart />
+
+        <h2>The <em>verdicts.</em></h2>
+        <p>Time to grade the room. Would I listen to them on the radio or change the channel?</p>
+
+        <div class="data-block">
+          <div class="voters">
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">llama3.1 : 8B</span><span class="vnum">01</span></div>
+              <div class="stamp">Does not know ball*</div>
+              <p class="why">*Maybe if the model was 15 years old, but Jokić at #1 is indefensible, LeBron sits at #7, and Donovan Mitchell at #20 is looney tunes.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">mistral : 7B</span><span class="vnum">02</span></div>
+              <div class="stamp">Remembers ball</div>
+              <p class="why">Russell first, Jerry West third, James Worthy seventh. An impeccable ballot, graded on a forty-year delay. I'd leave it on for the stories.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">qwen2.5 : 7B</span><span class="vnum">03</span></div>
+              <div class="stamp">Does not know ball</div>
+              <p class="why">Jordan at #1 was a promising start. Joel Embiid at #2 ended the interview.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">phi4 : 14B</span><span class="vnum">04</span></div>
+              <div class="stamp">Knows ball</div>
+              <p class="why">Kareem, Jordan, LeBron. The one ballot in the room you could read on the air without apologizing.</p>
+            </div>
+            <div class="voter reveal">
+              <div class="vmeta"><span class="vname">gemma3 : 12B</span><span class="vnum">05</span></div>
+              <div class="stamp">Almost knows ball</div>
+              <p class="why">A defensible podium, and the George Mikan homework is charming. But LeBron at #5, behind Wilt and Bird? Changing the channel.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Final count: one keeper, one history hour, three channel changes. So, does tiny AI know ball? phi4 does. Everyone else is just good(?) radio.</p>
+
+        <h2>Why the takes are like <em>this.</em></h2>
+        <p><strong>They're small.</strong> 7 to 14 billion parameters is a fraction of a frontier model. These models know less about basketball and everything else.</p>
+        <p><strong>Order might matter.</strong> I only asked each matchup in one direction, and LLMs can be sensitive to which name comes first. I didn't measure that here, so treat the rankings as a strong signal of model personality.</p>
+        <p><strong>The reading list skews recent.</strong> It wouldn't surprise me if much of what these models consumed was written in the last decade, which would explain the boosts for currently good players over historically great ones. It does not explain the general LeBron hate (the best player ever).</p>
+
+<footer class="methodology reveal">
+        <p><strong>The setup.</strong> Judges: gemma3:12b, llama3.1:8b, phi4:14b, mistral:7b, qwen2.5:7b, all served locally via Ollama at temperature 0.3.</p>
+        <p><strong>The math.</strong> Rankings are Elo with K=32, starting at 1500. Per-model Elo runs each judge's votes through an independent ladder; combined Elo runs every valid vote through one shared ladder. 51,473 valid votes out of 51,480 (99.99% parse success).</p>
+        <p><strong>The code.</strong> <a href="https://github.com/MaceGrim/nba-llm-comps" target="_blank" rel="noopener">github.com/MaceGrim/nba-llm-comps</a> · matchups.csv, elo_ranker.py, analyze.py.</p>
+      </footer>
