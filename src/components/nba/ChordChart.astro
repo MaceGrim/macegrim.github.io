@@ -1,0 +1,151 @@
+---
+// Agreement chord — five judges on a ring, ropes weighted by how often each
+// pair picked the same winner. Build-time SVG; ported from the source repo's
+// renderChord(). Themed to the bone/ink chart palette.
+import viz from '../../data/nba/nba_viz.json';
+
+const models: string[] = viz.models;
+const matrix: Record<string, Record<string, number | null>> = viz.agreement_matrix;
+
+const cx = 220, cy = 220, r = 145, n = models.length;
+const angle = (i: number) => -Math.PI / 2 + (i / n) * Math.PI * 2;
+const pos = models.map((_, i) => ({ x: cx + r * Math.cos(angle(i)), y: cy + r * Math.sin(angle(i)) }));
+
+const vals: number[] = [];
+for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) vals.push(matrix[models[i]][models[j]] as number);
+const minV = Math.min(...vals), maxV = Math.max(...vals);
+const widthFor = (v: number) => 1.5 + ((v - minV) / (maxV - minV)) * 11;
+const opacFor = (v: number) => 0.25 + ((v - minV) / (maxV - minV)) * 0.7;
+
+const edges = [];
+for (let i = 0; i < n; i++) {
+  for (let j = i + 1; j < n; j++) {
+    const v = matrix[models[i]][models[j]] as number;
+    const a = pos[i], b = pos[j];
+    const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+    const cxp = mx + (cx - mx) * 0.6, cyp = my + (cy - my) * 0.6;
+    edges.push({ d: `M ${a.x} ${a.y} Q ${cxp} ${cyp} ${b.x} ${b.y}`, w: widthFor(v), o: opacFor(v), v, lx: cxp, ly: cyp, a: i, b: j });
+  }
+}
+
+// Each judge's average agreement with the other four drives its dot size.
+const avgs = models.map((m) => {
+  const others = models.filter((o) => o !== m);
+  return others.reduce((s, o) => s + (matrix[m][o] as number), 0) / others.length;
+});
+const minA = Math.min(...avgs), maxA = Math.max(...avgs);
+const dotR = (a: number) => 4.5 + ((a - minA) / (maxA - minA)) * 5.5;
+
+const nodes = models.map((m, i) => {
+  const p = pos[i];
+  const lx = cx + (r + 30) * Math.cos(angle(i));
+  const ly = cy + (r + 30) * Math.sin(angle(i));
+  return {
+    x: p.x, y: p.y, lx, ly,
+    anchor: lx > cx + 5 ? 'start' : lx < cx - 5 ? 'end' : 'middle',
+    name: m.replace(':', ' : '),
+    lone: m.startsWith('mistral'),
+    r: dotR(avgs[i]),
+    avg: avgs[i],
+    // The avg pill sits a step inside the ring, along this node's spoke.
+    px: p.x + (cx - p.x) * (28 / r),
+    py: p.y + (cy - p.y) * (28 / r),
+  };
+});
+const steadiest = matrix['phi4:14b']['gemma3:12b'];
+---
+
+<figure class="chart chart-chord reveal">
+  <svg viewBox="-110 0 660 440" role="img" aria-label="Model agreement chord chart">
+    {edges.map((e, i) => (
+      <g class="edge-g" data-i={i} data-a={e.a} data-b={e.b}>
+        <path d={e.d} class="hit" />
+        <path d={e.d} class="edge" stroke-width={e.w} stroke-opacity={e.o} />
+      </g>
+    ))}
+    {nodes.map((nd, i) => (
+      <g class="node-g" data-n={i}>
+        <circle cx={nd.x} cy={nd.y} r={nd.r + 8} class="node-hit" />
+        <circle cx={nd.x} cy={nd.y} r={nd.r} class="node-dot" />
+        <text x={nd.lx} y={nd.ly} class:list={['label', { lone: nd.lone }]} text-anchor={nd.anchor} dominant-baseline="middle">{nd.name}</text>
+      </g>
+    ))}
+    <!-- Pills last so they paint above every rope. -->
+    {edges.map((e, i) => (
+      <g class="pill" data-i={i} transform={`translate(${e.lx} ${e.ly})`}>
+        <rect x="-22" y="-12" width="44" height="24" rx="12" />
+        <text text-anchor="middle" dominant-baseline="central">{e.v.toFixed(0)}%</text>
+      </g>
+    ))}
+    {nodes.map((nd, i) => (
+      <g class="pill" data-n={i} transform={`translate(${nd.px} ${nd.py})`}>
+        <rect x="-30" y="-12" width="60" height="24" rx="12" />
+        <text text-anchor="middle" dominant-baseline="central">avg {nd.avg.toFixed(0)}%</text>
+      </g>
+    ))}
+  </svg>
+  <figcaption>
+    Each rope is how often two judges picked the same winner across all 10,296 shared matchups; thicker = more agreement, and each judge's dot is sized by its average agreement with the room. Hover a rope or a dot for the number.
+    <strong>phi4 ↔ gemma3</strong> is the steadiest pair at {steadiest}%; every line touching <strong>mistral</strong> is thin (all below 71%).
+  </figcaption>
+</figure>
+
+<script>
+  // Hover a rope: show its percentage pill, fade the other ropes.
+  // Hover a dot: show that judge's average pill and light up its four ropes.
+  document.querySelectorAll<HTMLElement>('.chart-chord').forEach((fig) => {
+    const pills = fig.querySelectorAll<SVGGElement>('.pill');
+    const edges = fig.querySelectorAll<SVGGElement>('.edge-g');
+    const clear = () => {
+      fig.classList.remove('active');
+      edges.forEach((e) => e.classList.remove('hi'));
+      pills.forEach((p) => p.classList.remove('show'));
+    };
+    edges.forEach((g) => {
+      g.addEventListener('mouseenter', () => {
+        clear();
+        fig.classList.add('active');
+        g.classList.add('hi');
+        pills.forEach((p) => p.classList.toggle('show', p.dataset.i === g.dataset.i));
+      });
+      g.addEventListener('mouseleave', clear);
+    });
+    fig.querySelectorAll<SVGGElement>('.node-g').forEach((g) => {
+      g.addEventListener('mouseenter', () => {
+        clear();
+        fig.classList.add('active');
+        const n = g.dataset.n;
+        edges.forEach((e) => e.classList.toggle('hi', e.dataset.a === n || e.dataset.b === n));
+        pills.forEach((p) => p.classList.toggle('show', p.dataset.n === n));
+      });
+      g.addEventListener('mouseleave', clear);
+    });
+  });
+</script>
+
+<style>
+  /* Unboxed and oversized: floats on the page and breaks out of the prose
+     measure into a wide centered band so the ropes can breathe. */
+  .chart-chord {
+    --band: min(92vw, 880px);
+    background: none; border: none; padding: 0;
+    width: var(--band);
+    margin: 2.6em calc((100% - var(--band)) / 2);
+  }
+  .chart-chord svg { margin: 0 auto; }
+  .chart-chord figcaption { max-width: 560px; margin-inline: auto; text-align: center; }
+  .chart-chord .edge { stroke: var(--chart-accent); fill: none; stroke-linecap: round; transition: opacity 0.15s var(--ease); }
+  /* Wide invisible stroke makes thin ropes easy to hover. */
+  .chart-chord .hit { stroke: transparent; stroke-width: 20; fill: none; pointer-events: stroke; }
+  .chart-chord.active .edge-g:not(.hi) .edge { opacity: 0.18; }
+  .chart-chord .edge-g.hi .edge { stroke-opacity: 1; }
+  .chart-chord .node-g { cursor: pointer; }
+  .chart-chord .node-hit { fill: transparent; }
+  .chart-chord .node-dot { fill: var(--ink); }
+  .chart-chord .label { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: var(--font-mono); }
+  .chart-chord .label.lone { fill: var(--accent); }
+  .chart-chord .pill { opacity: 0; pointer-events: none; transition: opacity 0.15s var(--ease); }
+  .chart-chord .pill.show { opacity: 1; }
+  .chart-chord .pill rect { fill: var(--paper); stroke: var(--line-strong); }
+  .chart-chord .pill text { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: var(--font-mono); }
+</style>

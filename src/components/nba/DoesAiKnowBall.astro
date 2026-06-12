@@ -1,0 +1,21 @@
+---
+// Poster headline for the NBA post — a friend's outlined-vector logo
+// ("DOES (TINY) AI KNOW BALL", with BALL filled by a basketball image).
+// Inlined so the lettering's `currentColor` inherits the site ink (themes in
+// light/dark); the basketball fill is an external, cacheable JPG.
+import svg from './ball-logo.svg?raw';
+---
+
+<h1 class="ball-banner" aria-label="Does tiny AI know ball?" set:html={svg}></h1>
+
+<style>
+  .ball-banner {
+    color: var(--ink); /* drives currentColor in the SVG lettering */
+    /* Break out of the article's reading measure into a wide, centered band. */
+    --band: min(92vw, var(--maxw));
+    box-sizing: border-box;
+    width: var(--band);
+    margin: 0.1em calc((100% - var(--band)) / 2) 0;
+  }
+  .ball-banner :global(svg) { display: block; width: 100%; height: auto; }
+</style>

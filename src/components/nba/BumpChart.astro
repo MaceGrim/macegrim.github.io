@@ -1,0 +1,130 @@
+---
+// "Five ballots, side by side" — one column per model, top-15 each, ranked,
+// plus a final column for the combined ladder (all votes pooled). A player's
+// appearances are linked across columns; hover any name to trace it through the
+// room. Build-time SVG (ported from the source repo's renderBump) + a small
+// hover script.
+import viz from '../../data/nba/nba_viz.json';
+
+const models: string[] = viz.models;
+const rankings: Record<string, { name: string; rank: number; elo: number }[]> = viz.model_rankings;
+const topN = 15;
+
+const cols = [
+  ...models.map((m) => ({ label: m.replace(':', ' : '), players: rankings[m].slice(0, topN), combined: false })),
+  { label: 'combined', players: (viz.combined_ranking as { name: string; rank: number }[]).slice(0, topN), combined: true },
+];
+
+// Columns are laid out across CONTENT_W; the viewBox is a touch wider so the
+// last column's names have room to run into the right gutter without clipping.
+const CONTENT_W = 900, RIGHT_GUTTER = 44, W = CONTENT_W + RIGHT_GUTTER;
+// Labels hang off the right side of each column rule, so the rendered content
+// sits right of the geometric center (measured bbox: x 33 to 948). Shifting the
+// viewBox start rebalances the side margins inside the card.
+const VIEW_X = 18;
+const H = 600, headerH = 44;
+const rowH = (H - headerH - 20) / topN;
+const colW = CONTENT_W / cols.length;
+const colCenter = (i: number) => colW * i + colW / 2;
+const yFor = (rank: number) => headerH + (rank - 0.5) * rowH;
+const maxChars = Math.max(8, Math.floor((colW - 30) / 7.4));
+
+// player -> [{col, rank}] across the columns it lands in
+const playerCols: Record<string, { col: number; rank: number }[]> = {};
+cols.forEach((c, ci) => {
+  c.players.forEach((p) => {
+    (playerCols[p.name] ??= []).push({ col: ci, rank: p.rank });
+  });
+});
+
+const players = Object.entries(playerCols).map(([name, cols]) => {
+  const links = [];
+  for (let k = 0; k < cols.length - 1; k++) {
+    const a = cols[k], b = cols[k + 1];
+    const x1 = colCenter(a.col), y1 = yFor(a.rank);
+    const x2 = colCenter(b.col), y2 = yFor(b.rank);
+    const dx = (x2 - x1) * 0.45;
+    links.push(`M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`);
+  }
+  const nodes = cols.map((c) => ({
+    x: colCenter(c.col), y: yFor(c.rank), rank: c.rank,
+    display: name.length > maxChars ? name.slice(0, maxChars - 1) + '…' : name,
+  }));
+  return { name, links, nodes };
+});
+---
+
+<figure class="chart chart-bump reveal">
+  <svg viewBox={`${VIEW_X} 0 ${W} ${H}`} role="img" aria-label="Top-15 per model, with players traced across columns">
+    {cols.map((c, i) => (
+      <g>
+        <text x={colCenter(i)} y={26} text-anchor="middle" class:list={['col-head', { combined: c.combined }]}>{c.label}</text>
+        <line x1={colCenter(i)} y1={34} x2={colCenter(i)} y2={H - 12} class:list={['col-rule', { combined: c.combined }]} />
+      </g>
+    ))}
+    {players.map((p) => (
+      <g class="player" data-player={p.name}>
+        {p.links.map((d) => <path d={d} class="link" />)}
+        {p.nodes.map((nd) => (
+          <g>
+            <circle cx={nd.x} cy={nd.y} r="3" class="node" />
+            <text x={nd.x - 8} y={nd.y + 4} text-anchor="end" class="rank">{nd.rank}</text>
+            <text x={nd.x + 8} y={nd.y + 4} class="name">{nd.display}</text>
+          </g>
+        ))}
+      </g>
+    ))}
+  </svg>
+  <figcaption>
+    Each model's top 15, plus the combined ladder. Hover a name to trace it through the room.
+  </figcaption>
+</figure>
+
+<script>
+  // Hover-to-trace: highlight the hovered player across all columns, dim the rest.
+  document.querySelectorAll<SVGElement>('.chart-bump svg').forEach((svg) => {
+    const groups = svg.querySelectorAll<SVGGElement>('g.player');
+    const clear = () => groups.forEach((g) => g.classList.remove('hi', 'dim'));
+    groups.forEach((g) => {
+      const name = g.getAttribute('data-player');
+      g.addEventListener('mouseenter', () => {
+        groups.forEach((o) => o.classList.toggle('hi', o.getAttribute('data-player') === name));
+        groups.forEach((o) => o.classList.toggle('dim', o.getAttribute('data-player') !== name));
+      });
+      g.addEventListener('mouseleave', clear);
+    });
+  });
+</script>
+
+<style>
+  /* Wide centered band: this one needs the elbow room, but keeps its card. */
+  .chart-bump {
+    --band: min(92vw, 980px);
+    overflow: hidden;
+    width: var(--band);
+    margin-inline: calc((100% - var(--band)) / 2);
+  }
+  .chart-bump svg { font-family: var(--font-body); }
+  .chart-bump .col-head { font-family: var(--font-mono); font-size: 11px; fill: var(--accent); font-weight: 700; letter-spacing: 0.04em; }
+  .chart-bump .col-head.combined { fill: var(--ink); }
+  .chart-bump .col-rule { stroke: var(--chart-grid); stroke-width: 1; }
+  .chart-bump .col-rule.combined { stroke: var(--line-strong); }
+  .chart-bump .rank { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .chart-bump .name { fill: var(--ink); font-size: 12px; }
+  /* Halo the labels in the card color so links pass under them legibly. */
+  .chart-bump .name, .chart-bump .rank {
+    stroke: var(--paper-2);
+    stroke-width: 3.5;
+    stroke-linejoin: round;
+    paint-order: stroke;
+  }
+  .chart-bump .link { fill: none; stroke: var(--ink-soft); stroke-opacity: 0.14; stroke-width: 1.5; transition: stroke 0.15s, stroke-opacity 0.15s, stroke-width 0.15s; }
+  .chart-bump .node { fill: var(--ink-soft); transition: fill 0.15s; }
+  .chart-bump g.player.dim .link { stroke-opacity: 0.05; }
+  .chart-bump g.player.dim .name { fill-opacity: 0.3; }
+  .chart-bump g.player.dim .node { fill-opacity: 0.3; }
+  .chart-bump g.player.dim .rank { fill-opacity: 0.3; }
+  .chart-bump g.player.hi .link { stroke: var(--accent); stroke-opacity: 1; stroke-width: 2.5; }
+  .chart-bump g.player.hi .name { fill: var(--accent); font-weight: 600; }
+  .chart-bump g.player.hi .node { fill: var(--accent); }
+</style>

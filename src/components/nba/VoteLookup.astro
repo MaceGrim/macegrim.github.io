@@ -1,0 +1,186 @@
+---
+// "How I asked" — the live prompt. Pick any two of the 144 players and see how
+// each judge actually voted on that head-to-head. Dropdown data is embedded at
+// build; the 10,296-pair vote table is fetched at runtime. Combobox + lookup
+// logic ported from the source repo's index.html.
+import viz from '../../data/nba/nba_viz.json';
+
+const items: { name: string; rank: number }[] = viz.combined_ranking;
+const players: string[] = viz.players; // index order — pair_votes keys reference these
+const pairsUrl = import.meta.env.BASE_URL + 'data/nba/pair_votes.json';
+---
+
+<div class="system-line reveal"><span class="role">System</span>You are a sports analyst. When asked to compare players, you must pick one. No hedging.</div>
+
+<p class="inline-prompt reveal">
+  Who is the better NBA player:
+  <span class="combo" id="combo-a"><input id="player-a" class="inline-select" type="text" value="Kareem Abdul-Jabbar" autocomplete="off" spellcheck="false" placeholder="player A" /><span class="popup" role="listbox"></span></span>
+  or
+  <span class="combo" id="combo-b"><input id="player-b" class="inline-select" type="text" value="LeBron James" autocomplete="off" spellcheck="false" placeholder="player B" /><span class="popup" role="listbox"></span></span>?
+  <span class="small">Consider career achievements, impact, skill, and legacy. You MUST pick exactly one winner. Reply with ONLY the winner's full name exactly as written above. No explanation, no punctuation, no other text — just the full name.</span>
+</p>
+
+<div class="votes-out reveal" id="votes-out">
+  <div class="row"><span class="judge">loading…</span><span class="pick">—</span></div>
+</div>
+
+<script define:vars={{ items, players, models: viz.models, pairsUrl }}>
+  const playerSet = new Set(players);
+
+  // Size each input's underline to its actual text, not the longest name.
+  const measurer = document.createElement('canvas').getContext('2d');
+  function sizeInput(input) {
+    const cs = getComputedStyle(input);
+    measurer.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    const text = input.value || input.placeholder || '';
+    // +14 clears the input's horizontal padding (border-box) plus a small buffer
+    // so the trailing letter never clips.
+    input.style.width = Math.ceil(measurer.measureText(text).width + 14) + 'px';
+  }
+
+  function showMessage(msg) {
+    document.getElementById('votes-out').innerHTML =
+      `<div class="row"><span class="judge">${msg}</span><span class="pick">—</span></div>`;
+  }
+
+  function renderVotes(selA, selB, pairs) {
+    const a = selA.value.trim(), b = selB.value.trim();
+    selA.classList.toggle('invalid', a !== '' && !playerSet.has(a));
+    selB.classList.toggle('invalid', b !== '' && !playerSet.has(b));
+    if (!playerSet.has(a) || !playerSet.has(b)) return showMessage('finish typing both players');
+    if (a === b) return showMessage('pick two different players');
+    const ai = players.indexOf(a), bi = players.indexOf(b);
+    const lo = Math.min(ai, bi), hi = Math.max(ai, bi);
+    const loName = players[lo], hiName = players[hi];
+    const votes = pairs[`${lo},${hi}`];
+    if (!votes) return showMessage('no data for this pair');
+    const out = document.getElementById('votes-out');
+    out.innerHTML = '';
+    for (let i = 0; i < models.length; i++) {
+      const ch = votes[i];
+      const winner = ch === 'A' ? loName : ch === 'B' ? hiName : '—';
+      const cls = winner === a ? 'A' : winner === b ? 'B' : '';
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `<span class="judge">${models[i]}</span><span class="pick ${cls}">${winner}</span>`;
+      out.appendChild(row);
+    }
+  }
+
+  function createCombo(comboEl, input, onChange) {
+    const popup = comboEl.querySelector('.popup');
+    let visible = items.slice();
+    let activeIdx = -1;
+    const paint = () => {
+      popup.innerHTML = visible.length === 0
+        ? '<div class="empty">no matches</div>'
+        : visible.map((it, i) =>
+            `<div class="opt${i === activeIdx ? ' active' : ''}" data-i="${i}"><span class="rk">${it.rank}</span><span class="nm">${it.name}</span></div>`
+          ).join('');
+    };
+    const open = () => {
+      const wasOpen = comboEl.classList.contains('open');
+      comboEl.classList.add('open');
+      const idx = visible.findIndex((it) => it.name === input.value.trim());
+      activeIdx = idx >= 0 ? idx : (visible.length ? 0 : -1);
+      paint();
+      if (!wasOpen) popup.querySelector(`[data-i="${activeIdx}"]`)?.scrollIntoView({ block: 'nearest' });
+    };
+    const close = () => { comboEl.classList.remove('open'); activeIdx = -1; };
+    const filter = () => {
+      const q = input.value.trim().toLowerCase();
+      visible = !q ? items.slice() : items.filter((it) => it.name.toLowerCase().includes(q));
+      activeIdx = visible.length ? 0 : -1;
+      paint();
+    };
+    const pick = (it) => { input.value = it.name; sizeInput(input); close(); onChange(); };
+    const move = (delta) => {
+      if (!comboEl.classList.contains('open')) open();
+      if (!visible.length) return;
+      activeIdx = Math.max(0, Math.min(visible.length - 1, activeIdx + delta));
+      paint();
+      popup.querySelector(`[data-i="${activeIdx}"]`)?.scrollIntoView({ block: 'nearest' });
+    };
+    input.addEventListener('focus', open);
+    input.addEventListener('click', (e) => { e.stopPropagation(); open(); });
+    // The chevron (::after) belongs to the combo span — clicking it focuses the
+    // input, which opens the popup.
+    comboEl.addEventListener('click', (e) => { if (e.target !== input) input.focus(); });
+    input.addEventListener('input', () => { sizeInput(input); open(); filter(); onChange(); });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') return close();
+      if (e.key === 'ArrowDown') { e.preventDefault(); move(+1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+      else if (e.key === 'Enter') { e.preventDefault(); activeIdx >= 0 && visible[activeIdx] ? pick(visible[activeIdx]) : close(); }
+    });
+    input.addEventListener('blur', () => setTimeout(() => { if (!comboEl.contains(document.activeElement)) close(); }, 120));
+    popup.addEventListener('mousedown', (e) => {
+      const opt = e.target.closest('.opt');
+      if (!opt) return;
+      e.preventDefault();
+      const it = visible[parseInt(opt.getAttribute('data-i'), 10)];
+      if (it) pick(it);
+    });
+    document.addEventListener('mousedown', (e) => { if (!comboEl.contains(e.target)) close(); });
+  }
+
+  fetch(pairsUrl)
+    .then((r) => r.json())
+    .then((pairData) => {
+      const selA = document.getElementById('player-a');
+      const selB = document.getElementById('player-b');
+      const update = () => renderVotes(selA, selB, pairData.pairs);
+      createCombo(document.getElementById('combo-a'), selA, update);
+      createCombo(document.getElementById('combo-b'), selB, update);
+      const sizeBoth = () => { sizeInput(selA); sizeInput(selB); };
+      sizeBoth();
+      // Re-measure once the serif loads — its metrics differ from the fallback.
+      if (document.fonts?.ready) document.fonts.ready.then(sizeBoth);
+      update();
+    })
+    .catch((e) => { console.error('vote lookup failed:', e); showMessage('could not load vote data'); });
+</script>
+
+<style is:global>
+  /* Combobox — created/destroyed by script, so these must be global (unscoped). */
+  .inline-prompt .combo { position: relative; display: inline-block; cursor: pointer; }
+  /* Dropdown affordance: a small chevron after each name, flipping when open. */
+  .inline-prompt .combo::after {
+    content: '▾';
+    display: inline-block;
+    font-size: 0.5em;
+    color: var(--accent);
+    margin: 0 5px 0 3px;
+    vertical-align: 0.45em;
+    transition: transform 0.15s var(--ease);
+  }
+  .inline-prompt .combo.open::after { transform: rotate(180deg); }
+  .inline-prompt .combo:hover .inline-select { border-bottom-color: var(--ink); }
+  .inline-prompt .inline-select {
+    background: transparent; color: var(--accent);
+    border: none; border-bottom: 2px solid var(--accent);
+    padding: 0 4px 2px; font-family: inherit; font-size: inherit; font-weight: 500;
+    cursor: text; appearance: none; -webkit-appearance: none; text-align: left;
+  }
+  .inline-prompt .inline-select::placeholder { color: var(--line-strong); font-weight: 400; }
+  .inline-prompt .inline-select:focus { outline: none; border-bottom-color: var(--ink); color: var(--ink); }
+  .inline-prompt .inline-select.invalid { color: var(--line-strong); border-bottom-style: dashed; }
+  .inline-prompt .combo .popup {
+    position: absolute; top: calc(100% + 6px); left: 0;
+    min-width: 280px; max-height: 340px; overflow-y: auto;
+    background: var(--paper-2); border: 1px solid var(--line-strong); border-radius: var(--radius);
+    z-index: 50; display: none; padding: 4px 0; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  }
+  .inline-prompt .combo.open .popup { display: block; }
+  .inline-prompt .popup .opt {
+    display: flex; gap: 12px; align-items: baseline; padding: 7px 14px; cursor: pointer;
+    font-family: var(--font-body); font-size: 14px; font-weight: 400;
+  }
+  .inline-prompt .popup .opt:hover, .inline-prompt .popup .opt.active { background: var(--paper-3); }
+  .inline-prompt .popup .opt .rk {
+    font-family: var(--font-mono); color: var(--muted); font-size: 12px;
+    font-variant-numeric: tabular-nums; min-width: 28px; text-align: right;
+  }
+  .inline-prompt .popup .opt .nm { color: var(--ink); }
+  .inline-prompt .popup .empty { padding: 12px 14px; color: var(--muted); font-size: 13px; }
+</style>
