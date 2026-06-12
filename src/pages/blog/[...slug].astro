@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import DoesAiKnowBall from '../../components/nba/DoesAiKnowBall.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -26,12 +27,14 @@ const { Content } = await render(post);
           </time>
         )}
       </div>
-      <h1 class="article-title">{post.data.title}</h1>
+      {post.data.titleBanner === 'does-ai-know-ball'
+        ? <DoesAiKnowBall />
+        : <h1 class="article-title">{post.data.title}</h1>}
       {post.data.description && (
         <p class="article-standfirst">{post.data.description}</p>
       )}
       <div class="byline">
-        <img src="/images/profile.png" alt="Mason Grimshaw" />
+        <img src="/favicon.png" alt="Mason Grimshaw" />
         <div>
           <div class="who">Mason Grimshaw</div>
           <div class="when">

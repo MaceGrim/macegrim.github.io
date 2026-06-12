@@ -59,6 +59,7 @@ const blog = defineCollection({
     excerpt: z.string().optional(),
     permalink: z.string().optional(),
     collection: z.string().optional(),
+    titleBanner: z.string().optional(),
   }).passthrough(),
 });
 

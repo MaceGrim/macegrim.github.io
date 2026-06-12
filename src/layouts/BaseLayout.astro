@@ -13,6 +13,7 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isHome = path === '/';
 const isExperience = path === '/experience';
 const isTalks = path === '/talks';
+const isWriting = path === '/blog' || path.startsWith('/blog/');
 ---
 
 <!doctype html>
@@ -58,6 +59,7 @@ const isTalks = path === '/talks';
           <a href="/" aria-current={isHome ? 'page' : undefined}>Home</a>
           <a href="/experience" class="nav-collapse" aria-current={isExperience ? 'page' : undefined}>Experience</a>
           <a href="/talks" aria-current={isTalks ? 'page' : undefined}>Talks</a>
+          <a href="/blog" aria-current={isWriting ? 'page' : undefined}>Writing</a>
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
             <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="4"></circle>
