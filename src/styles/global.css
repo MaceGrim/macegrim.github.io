@@ -1418,3 +1418,10 @@ figure.chart svg text { font-family: var(--font-mono); }
 @media (max-width: 560px) {
   .receipts { grid-template-columns: 1fr; }
 }
+
+/* ---------- Decode-on-reveal headers (public/js/decode.js) ---------- */
+.dc { white-space: pre; }
+html.js .dc.pre { opacity: 0; }
+.dc.cyc { color: var(--muted); }
+.tkc { display: inline-block; min-width: 1ch; text-align: center; opacity: 0.5; }
+.tkc.on { opacity: 1; }
