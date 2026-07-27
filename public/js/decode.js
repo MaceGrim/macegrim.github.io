@@ -69,9 +69,27 @@
   }
 
   /* Cycle then lock left-to-right. Lock speed scales with length so short
-     and long headers both resolve in roughly 1.2s. */
+     and long headers both resolve in roughly 1.2s.
+
+     Before cycling starts, freeze every cyclable span at the measured width
+     of its final character (which is already rendered, invisibly). Random
+     glyphs in a proportional face are often wider than the real text, and
+     on lines that end near the container edge that width jitter crosses a
+     wrap point and the header jumps between one and two lines. Fixed-width
+     boxes mean the line geometry never changes; widths are released as each
+     character locks, which is a visual no-op since the widths are equal. */
   function decode(spans, pool) {
     if (!spans.length) return;
+    spans.forEach(function (s) {
+      if (CYCLABLE.test(s.dataset.ch)) {
+        var w = s.getBoundingClientRect().width;
+        if (w > 0) {
+          s.style.display = 'inline-block';
+          s.style.width = w + 'px';
+          s.style.textAlign = 'center';
+        }
+      }
+    });
     var lockStep = Math.min(55, Math.max(18, 950 / spans.length));
     var start = performance.now();
     var iv = setInterval(function () {
@@ -85,6 +103,9 @@
         if (now >= lockAt) {
           s.textContent = ch;
           s.className = 'dc';
+          s.style.display = '';
+          s.style.width = '';
+          s.style.textAlign = '';
           s.dataset.done = '1';
         } else {
           allLocked = false;
@@ -200,10 +221,23 @@
     }, 4200);
   }
 
+  /* Wait for webfonts (bounded) so widths are measured in the real face,
+     not the fallback. fonts.ready resolves immediately when cached. */
+  function start() {
+    var go = function () { initHeaders(); initTicker(); };
+    var done = false;
+    var once = function () { if (!done) { done = true; go(); } };
+    if (document.fonts && document.fonts.ready && document.fonts.ready.then) {
+      document.fonts.ready.then(once);
+      setTimeout(once, 800);
+    } else {
+      once();
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { initHeaders(); initTicker(); });
+    document.addEventListener('DOMContentLoaded', start);
   } else {
-    initHeaders();
-    initTicker();
+    start();
   }
 })();
