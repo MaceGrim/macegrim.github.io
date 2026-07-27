@@ -133,10 +133,15 @@
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.2 });
     targets.forEach(function (t) { io.observe(t.el); });
 
-    /* Safety net, mirroring the .reveal one: never leave headers invisible. */
+    /* Safety net, mirroring the .reveal one: if the observer never fires at
+       all (broken/blocked), show everything. Otherwise trust it — below-fold
+       headers must stay armed so they can decode when scrolled to. */
     setTimeout(function () {
-      targets.forEach(function (t) { if (!t.fired) { t.fired = true; lockNow(t.spans); io.unobserve(t.el); } });
-    }, 6000);
+      var any = targets.some(function (t) { return t.fired; });
+      if (!any) {
+        targets.forEach(function (t) { t.fired = true; lockNow(t.spans); io.unobserve(t.el); });
+      }
+    }, 1800);
   }
 
   function initTicker() {
