@@ -25,15 +25,23 @@ const education = [
   },
 ];
 
+const focus = [
+  { title: 'AI systems', text: 'Agents, retrieval and RAG, LLM applications, local and open models.' },
+  { title: 'Geospatial AI', text: 'Earth observation, geospatial foundation models, spatial data systems, mapping and visualization.' },
+  { title: 'Language & community AI', text: 'Low-resource language technology, Indigenous data sovereignty, community-governed AI.' },
+  { title: 'Applied engineering', text: 'Turning ambiguous problems into working prototypes and production systems: APIs, data pipelines, cloud infrastructure, interactive tools.' },
+];
+
 const work = [
   {
     org: 'Ode Partners',
-    role: 'Partner, Data Science',
+    role: 'AI Engineer',
     place: 'Remote (Rapid City, SD)',
     when: 'Jul 2023 – Present',
     points: [
-      'Creating digital products and solutions for environmental impact.',
-      '"Full stack" data scientist: sourcing, joining, preparing, visualizing, and modeling data.',
+      'Design and build AI systems that combine agents, retrieval (RAG), geospatial data, and interactive applications for environmental and public-interest work.',
+      'Lead technical architecture from messy problem definition through prototype and production handoff, working directly with the people who own the problem.',
+      "Run local and open-model infrastructure and geospatial foundation models where hosted APIs don't fit the data, the budget, or the sovereignty requirements.",
     ],
   },
   {
@@ -107,11 +115,21 @@ const work = [
     <span class="eyebrow reveal"><span class="tick">◆</span> Background</span>
     <h1 class="reveal"><em>Experience.</em></h1>
     <p class="page-lead reveal">
-      I went to MIT, grew up on the Rosebud Reservation, and have spent the last eight years turning data into tools that actually help people — from optimizing transit routes in Boston to teaching AI to Lakota youth.
+      I went to MIT, grew up on the Rosebud Reservation, and have spent the last eight years turning data into tools that actually help people — from building agentic and geospatial AI systems at Ode Partners to teaching AI to Lakota youth.
     </p>
   </section>
 
   <section class="wrap" style="padding-bottom: clamp(40px, 7vw, 80px);">
+    <h2 class="subhead reveal">What I <em>work on.</em></h2>
+    <div class="cards two-up">
+      {focus.map((f) => (
+        <div class="card reveal">
+          <h3>{f.title}</h3>
+          <p class="card-text">{f.text}</p>
+        </div>
+      ))}
+    </div>
+
     <h2 class="subhead reveal"><em>Education.</em></h2>
     <div class="cards">
       {education.map((c) => (
