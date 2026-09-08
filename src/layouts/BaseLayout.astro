@@ -13,6 +13,7 @@ const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isHome = path === '/';
 const isExperience = path === '/experience';
 const isTalks = path === '/talks';
+const isPublications = path === '/publications';
 const isWriting = path === '/blog' || path.startsWith('/blog/');
 
 // Absolute URLs for social/canonical metadata (Astro.site is set in astro.config.mjs).
@@ -64,6 +65,7 @@ const shareImage = new URL('/images/profile.png', Astro.site).href;
           <a href="/" aria-current={isHome ? 'page' : undefined}>Home</a>
           <a href="/experience" class="nav-collapse" aria-current={isExperience ? 'page' : undefined}>Experience</a>
           <a href="/talks" aria-current={isTalks ? 'page' : undefined}>Talks</a>
+          <a href="/publications" class="nav-collapse" aria-current={isPublications ? 'page' : undefined}>Publications</a>
           <a href="/blog" aria-current={isWriting ? 'page' : undefined}>Writing</a>
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
             <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
