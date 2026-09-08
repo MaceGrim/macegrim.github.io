@@ -14,6 +14,10 @@ const isHome = path === '/';
 const isExperience = path === '/experience';
 const isTalks = path === '/talks';
 const isWriting = path === '/blog' || path.startsWith('/blog/');
+
+// Absolute URLs for social/canonical metadata (Astro.site is set in astro.config.mjs).
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = new URL('/images/profile.png', Astro.site).href;
 ---
 
 <!doctype html>
@@ -36,11 +40,12 @@ const isWriting = path === '/blog' || path.startsWith('/blog/');
     <meta name="generator" content={Astro.generator} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://macegrim.github.io/favicon.png" />
-    <meta property="og:url" content="https://macegrim.github.io" />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="https://macegrim.github.io/favicon.png" />
+    <meta name="twitter:image" content={shareImage} />
+    <link rel="canonical" href={canonical} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
